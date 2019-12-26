@@ -1,0 +1,57 @@
+@import "variables";
+@import "mixins";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 1s;
+}
+
+.contenido {
+  .contenidoFluido {
+    width: 100%;
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: auto;
+    margin: 0 auto;
+
+    /* Media Querys */
+
+    @include Asmall() {
+      padding: 0px 15px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include smallTablet() {
+      max-width: $mWtablet;
+    }
+
+    @include tabletLaptop() {
+      grid-template-columns: repeat(3, auto);
+      max-width: $mWlaptop;
+    }
+
+    @include laptopDesktop() {
+      grid-template-columns: repeat(2, auto);
+      max-width: $mWdesktop;
+    }
+
+    @include desktopFull() {
+      grid-template-columns: repeat(3, auto);
+      max-width: $mWfull;
+    }
+  }
+}
+
+.cntPrimer{
+  background: $deg-uno;
+}
+.cntSegundo{
+  background: orange;
+}
+.cntTercer{
+  background: green;
+
+}
