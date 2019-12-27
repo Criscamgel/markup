@@ -6,20 +6,17 @@
   margin: 0;
   padding: 0;
   transition: all 1s;
+  font-family: 'montserrat', 'montserratBold';
 }
 
 .contenido {
   .contenidoFluido {
     width: 100%;
-    display: grid;
-    grid-auto-columns: auto;
-    grid-auto-rows: auto;
     margin: 0 auto;
 
     /* Media Querys */
 
     @include Asmall() {
-      padding: 0px 15px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -29,29 +26,1141 @@
     }
 
     @include tabletLaptop() {
-      grid-template-columns: repeat(3, auto);
       max-width: $mWlaptop;
     }
 
     @include laptopDesktop() {
-      grid-template-columns: repeat(2, auto);
       max-width: $mWdesktop;
     }
 
     @include desktopFull() {
-      grid-template-columns: repeat(3, auto);
       max-width: $mWfull;
     }
   }
 }
 
-.cntPrimer{
-  background: $deg-uno;
+.pPal {
+  display: grid;
+
+  @include tabletLaptop() {
+      grid-auto-rows: auto;
+      background: url(../assets/img/fondo.png);
+      background-repeat: no-repeat;
+      background-position: center top;
+      display: grid;
+      background-size: 100%;
+  }
 }
-.cntSegundo{
-  background: orange;
+
+
+.sEncabezado {
+    display: none;
+
+    @include tabletLaptop() {
+        display: block;
+        color: white;
+        font-size: 10px;
+        margin: 0px 8%;
+        padding: 1% 0px;
+    }
+
+    @include desktopFull() {
+        padding: 1% 4%;
+    }
+
+    @include tabletLaptop() {
+      display: block;
+      color: white;
+      font-size: 10px;
+      margin: 0px 8%;
+      padding: 1% 0px;
+  }
 }
-.cntTercer{
-  background: green;
+
+.encabezadoText {
+    margin: 0px 8% 0px 8%;
+
+    @include tabletLaptop() {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 5% 0px 15% 10%;
+        color: white;
+        grid-gap: 0px 80px;
+    }
+
+    /* @include desktopFull(){
+
+    } */
+
+    /* @include laptopDesktop() {
+        grid-gap: 3px;
+        padding-right: 10%;
+        margin: 5% 0px 15% 12%;
+        grid-gap: 0px 80px;
+    } */
+
+    .vivamus {
+        display: none;
+
+        @include tabletLaptop() {
+            display: block;
+        }
+    }
+
+    h1 {
+        @include tabletLaptop() {
+            grid-column: 1;
+            margin: 5px 0;
+            font-size: 20px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 34px;
+        }
+    }
+
+    .parrafo {
+        margin-bottom: $topMargin;
+
+        @include tabletLaptop() {
+            grid-column: 1;
+            margin-bottom: 0px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 15px;
+        }
+    }
+}
+
+h1 {
+    font-size: 16px;
+    margin: $topMargin 0px;
 
 }
+
+h3 {
+    font-size: 11px;
+}
+
+hr {
+    margin: 15px 0;
+    border: solid 1px $grisTenue;
+}
+
+button {
+    background-color: $blueGaes;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 9px;
+    padding: 5% 15% 5% 15%;
+    font-family: montserratBold;
+
+    @include tabletLaptop() {
+        padding: 3% 15% 3% 15%;
+    }
+}
+
+.parrafo {
+    font-size: 12px;
+    font-family: montserrat;
+}
+
+.encabezado {
+    background-color: $blueGaes;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+
+    @include tabletLaptop() {
+        grid-template-columns: repeat(6, 1fr);
+        background-color: white;
+        padding: 0px 8%;
+    }
+
+    /* Ipad 
+
+    @include ipad() {
+        padding: 0px 8%;
+    }
+
+    */
+
+    @include laptopDesktop() {
+        padding: 0px 10%;
+    }
+
+    .gaesLogoM {
+        grid-column: 1;
+        justify-self: center;
+        align-self: center;
+        width: 50%;
+        padding: 3%;
+
+        @include tabletLaptop() {
+            display: none;
+        }
+    }
+
+    .santanderLogoM {
+        grid-column: 2;
+        align-self: center;
+        justify-self: center;
+        width: 75%;
+
+        @include tabletLaptop() {
+            display: none;
+        }
+    }
+
+    .gaesLogo {
+        display: none;
+
+        @include tabletLaptop() {
+            display: block;
+            align-self: center;
+            justify-self: center;
+            width: 80%;
+        }
+    }
+
+    .santanderLogo {
+        display: none;
+
+        @include tabletLaptop() {
+            display: block;
+            align-self: center;
+            justify-self: center;
+            width: 100%;
+        }
+    }
+}
+
+/* Opciones */
+
+.contSolicitud {
+    border-radius: 5px;
+    box-shadow: 0 0 6px #c8c8c8;
+    margin: 0px 6% 6%;
+    padding: 5%;
+
+    @include tabletLaptop() {
+        margin: -4% 6% 0;
+        box-shadow: none;
+    }
+    /* Ipad
+    @include tabletLaptop()() {
+        margin: 0% 6% 0;
+    } */
+
+    @include laptopDesktop() {
+        margin: 3% 6% 0px 6%;
+    }
+}
+
+.cntOpciones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 25px;
+
+    @include tabletLaptop() {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .opcion {
+        text-align: center;
+
+        @include tabletLaptop() {
+            line-height: 30px;
+        }
+
+        @include laptopDesktop() {
+            line-height: 50px;
+        }
+
+        h3 {
+            @include tabletLaptop() {
+                font-size: 15px;
+            }
+
+            @include laptopDesktop() {
+                font-size: 22px;
+            }
+        }
+
+        .precio {
+            color: $blueGaes;
+            font-size: 11px;
+            font-family: montserratBold;
+
+            @include tabletLaptop() {
+                font-size: 15px;
+            }
+
+            @include laptopDesktop() {
+                font-size: 22px;
+            }
+        }
+
+        .btnSeleccionar {
+            button {
+                background-color: $blueGaes;
+                border: none;
+                border-radius: 6px;
+                color: white;
+                font-size: 9px;
+                padding: 5% 15% 5% 15%;
+
+                @include tabletLaptop() {
+                    width: 100%;
+                }
+
+                @include laptopDesktop() {
+                    font-size: 18px;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}
+
+.contPeriodo {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
+    margin: 10px 0px 10px 0px;
+
+    span {
+        grid-row: 1;
+    }
+}
+
+/* Radio Buttons */
+
+/* style your lables/button */
+input[type=radio]+div {
+    /* keep pointer so that you get the little hand showing when you are on a button */
+    cursor: pointer;
+    /* the following are the styles */
+    border-radius: 5px;
+    padding: 5px 5px;
+    background-color: $grisTenue;
+    border: none;
+
+    @include tabletLaptop() {
+        padding: 10% 20%;
+    }
+
+    /* Ipad 
+    @include tabletLaptop()() {
+        padding: 5% 15%;
+    } 
+    */
+
+    @include laptopDesktop() {
+        padding: 5% 25%;
+        border-radius: 30px;
+    }
+}
+
+input[type=radio]:checked+div {
+    /* style for the checked/selected state */
+    border-radius: 5px;
+    box-shadow: 0px 1px 7px 0px $grisOscuro;
+    padding: 5px 10px;
+    background-color: white;
+    border: none;
+
+    @include tabletLaptop() {
+        padding: 10% 20%;
+    }
+
+    @include laptopDesktop() {
+        padding: 10% 30%;
+        border-radius: 30px;
+    }
+}
+
+/* Radio Button */
+
+.radio {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto;
+
+    input {
+        opacity: 0;
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+        justify-self: center;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+
+    div {
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        grid-auto-rows: auto;
+        align-self: center;
+        justify-self: center;
+
+        .numBer {
+            grid-row: 1;
+            font-family: montserratBold;
+            color: $grissOscuro;
+            font-size: 20px;
+
+            @include tabletLaptop() {
+                font-size: 55px;
+                font-weight: 600;
+                font-family: montserrat;
+            }
+
+            /* Ipad
+            
+            @include ipad(){
+                font-size: 40px;
+            }
+            
+            */
+
+            
+        }
+
+        .mes {
+            grid-row: 2;
+            font-size: 10px;
+            color: $blueGaes;
+
+            @include tabletLaptop() {
+                margin-top: -8px;
+                margin-bottom: 5px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            /* Ipad 
+            
+            @include ipad(){
+                font-size: 15px;
+            }
+            
+            */
+        }
+    }
+}
+
+/* End Radio Buttons */
+
+/* tooltip */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 170px;
+    background-color: #000000c9;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 110;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -160px;
+    opacity: 0;
+    transition: opacity 1s;
+    font-size: 12px;
+    padding: 80%;
+}
+
+.tooltip:after {
+    position: absolute;
+    bottom: 80%;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    border-top: 5px solid #000;
+    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+
+.tooltip:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Fin tooltip */
+
+.cntPie {
+    display: grid;
+    grid-template-rows: 60px;
+    background-color: $blueGaes;
+
+    .small {
+        font-family: montserrat;
+        color: white;
+        font-size: 8px;
+        grid-row: 1;
+        align-self: center;
+        justify-self: center;
+
+        @include tabletLaptop() {
+            font-size: 10px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 15px;
+        }
+    }
+}
+
+.cntAprox {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr;
+    background-color: $grisTenue;
+    padding: 1%;
+    border-radius: 3px;
+    margin-top: 10px;
+
+    .grayParrf {
+        grid-row: 1;
+        font-size: 9px;
+        color: $grisOscuro;
+        grid-column: 1/5;
+
+        @include tabletLaptop() {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        @include laptopDesktop() {
+            font-size: 20px;
+        }
+    }
+
+    .cifraBlack {
+        grid-row: 1;
+        grid-column: 5/8;
+        justify-self: initial;
+        align-self: center;
+        font-size: 12px;
+        font-family: montserratBold;
+
+        @include tabletLaptop() {
+            font-size: 20px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 25px;
+        }
+    }
+
+    .tooltip {
+        grid-row: 1;
+        grid-column: 6;
+        align-self: center;
+        justify-self: end;
+
+        i {
+            font-size: 12px;
+            color: $grisOscuro;
+
+            @include tabletLaptop() {
+                font-size: 25px;
+            }
+
+            @include laptopDesktop() {
+                font-size: 38px;
+            }
+        }
+    }
+
+
+}
+
+.cntBotones {
+    button {
+        width: 100%;
+        font-size: 13px;
+        margin-top: 30px;
+        font-family: montserratBold;
+
+        @include laptopDesktop() {
+            font-size: 22px;
+            border-radius: 20px;
+        }
+    }
+}
+
+/* Boton Ayuda */
+
+.buttonHelp {
+    display: none;
+    grid-column: 6;
+    align-self: center;
+    justify-self: center;
+
+    @include tabletLaptop() {
+        display: block;
+    }
+
+    button {
+        border-radius: 15px;
+        width: 100%;
+        align-self: center;
+        justify-self: end;
+        background-color: $blueGaes;
+        height: 35px;
+        padding: 0px;
+        border: none;
+
+        .itemButton {
+            display: grid;
+
+            @include tabletLaptop() {
+                grid-template-columns: 40px 1fr;
+            }
+
+            .bigTitle {
+                font-size: 15px;
+                align-self: center;
+                justify-self: initial;
+                font-size: 12px;
+                margin-right: 15px;
+            }
+
+            .fa-question-circle {
+                align-self: center;
+                justify-self: center;
+                font-size: 15px;
+            }
+        }
+
+        @include tabletLaptop() {
+            width: 100%;
+        }
+
+        i {
+            color: white;
+            font-size: 20px;
+        }
+    }
+}
+
+.calcPdos {
+    h3 {
+        @include tabletLaptop() {
+            font-size: 15px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 30px;
+            margin-bottom: $topMargin;
+        }
+    }
+
+    .contPeriodo {
+        @include laptopDesktop() {
+            margin-bottom: $topMargin;
+        }
+    }
+}
+
+.ayudaM {
+    @include tabletLaptop() {
+        display: none;
+    }
+
+    button {
+        background-color: $grisTenue;
+        color: $grissOscuro;
+        width: 100%;
+        border-radius: 15px;
+        margin-top: 5%;
+
+        .itemButton {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            font-size: 15px;
+
+            i {
+                text-align: left;
+            }
+
+            .bigTitle {
+                text-align: left;
+                font-family: montserratBold;
+                font-size: 16px;
+            }
+        }
+    }
+
+}
+
+.volverM {
+    text-align: center;
+    display: block;
+
+    @include tabletLaptop() {
+        display: none;
+    }
+
+    button {
+        background-color: $grisTenue;
+        color: $grissOscuro;
+        width: 90%;
+        border-radius: 15px;
+        margin: 5% 0px;
+
+        .itemButton {
+            display: grid;
+            grid-template-columns: 1fr;
+            font-size: 15px;
+
+            .bigTitle {
+                text-align: center;
+                font-family: montserratBold;
+                font-size: 16px;
+            }
+        }
+    }
+
+}
+
+/* Ayuda Ventas */
+
+.manSolicitud {
+    padding: 0px 20px 0px 20px;
+
+    .pasos {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-gap: 50px;
+
+        .paso {
+            .parrafo {
+                margin: 0px 0px 15px 0px;
+                font-size: 13px;
+            }
+
+            .imagePaso {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}
+
+.imageAventas {
+    img {
+        width: 100%;
+    }
+
+}
+
+.manSolicitud {
+    @include tabletLaptop() {
+        padding: 0px 10% 0px 10%;
+    }
+
+    @include laptopDesktop() {
+        padding: 0px 15% 0px 15%;
+    }
+}
+
+.titleManSol {
+    @include tabletLaptop() {
+        margin: 50px 0px 50px 0px;
+    }
+
+    h1 {
+        font-family: montserratBold;
+
+        @include tabletLaptop() {
+            font-size: 20px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 30px;
+            font-family: montserratBold;
+        }
+
+
+    }
+
+    .title {
+        font-family: montserratBold;
+    }
+}
+
+.pasos {
+    @include tabletLaptop() {
+        display: grid;
+        grid-template-rows: repeat(8, auto);
+    }
+
+    .paso {
+        @include tabletLaptop() {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-gap: 50px;
+
+            img {
+                max-width: 70%;
+            }
+        }
+
+        .textParrafo:first-letter {
+            font-weight: 600;
+        }
+
+        .textParrafo {
+            text-align: right;
+            padding-top: 30px;
+
+            @include Asmall() {
+                text-align: left;
+            }
+        }
+    }
+}
+
+.pasoFinal {
+    font-size: 12px;
+}
+
+.contDosBig {
+    display: none;
+
+    @include tabletLaptop() {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        padding: 5%;
+
+        .item {
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+
+            embed.reloj {
+                width: 25%;
+                margin-bottom: 20px;
+            }
+
+            embed.personal {
+                width: 30%;
+                margin-bottom: 20px;
+            }
+
+            embed.martillo {
+                width: 30%;
+                margin-bottom: 20px;
+            }
+
+            .title {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+
+            .textContent {
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+    }
+
+}
+
+.partDosIcons {
+    display: none;
+    background-color: $grisTenue;
+    margin: 50px 0;
+
+    @include tabletLaptop() {
+        display: block;
+    }
+
+    h1 {
+        padding: 50px 0px 0px 15%;
+    }
+}
+
+.buttonVolver {
+    display: none;
+
+    @include tabletLaptop() {
+        display: block;
+        grid-column: 6;
+        align-self: center;
+        text-align: center;
+
+    }
+
+    .buttonAyuda {
+        grid-column: 6;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 5% 15% 5% 15%;
+        border-radius: 15px;
+
+        .itemButton {
+            grid-column: 6;
+        }
+    }
+}
+
+/* Animaciones */
+
+.animated {
+    -webkit-animation-duration: 2000mss;
+    animation-duration: 2000ms;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.btnSeleccionar {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    input[type=radio] {
+        opacity: 0;
+        position: absolute;
+        grid-column: 1;
+        grid-row: 1;
+        width: 35%;
+        height: 4%;
+
+        @include tabletLaptop() {
+            width: 17%;
+            height: 7%;
+
+        }
+
+    }
+
+    input[type=radio]+div {
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: $grisTenue;
+        border: none;
+        color: $grissOscuro;
+        font-weight: 700;
+        font-size: 10px;
+
+        @include tabletLaptop() {
+            font-size: 15px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 20px;
+            border-radius: 15px;
+        }
+    }
+
+    input[type=radio]:checked+div {
+        border-radius: 5px;
+        box-shadow: 0px 1px 7px 0px #B5B5B5;
+        padding: 5px 10px;
+        background-color: $blueGaes;
+        border: none;
+        color: white;
+        font-weight: 700;
+        font-size: 10px;
+
+        @include tabletLaptop() {
+            font-size: 15px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 20px;
+            border-radius: 15px;
+        }
+    }
+}
+
+/* Button Imprimir */
+
+button.imprimir {
+    margin-top: 15px;
+}
+
+.cell {
+    @include tabletLaptop() {
+        font-size: 20px !important;
+    }
+
+    @include laptopDesktop() {
+        font-size: 25px !important;
+    }
+}
+
+.cellInput {
+    border: 2px solid transparent;
+    width: 100%;    
+    font-weight: 700;
+    color: #4CB2DD;
+    outline: none;
+    text-align: center;
+    font-size: 12px;
+    @include tabletLaptop(){
+        font-size: 20px;
+    }
+    @include laptopDesktop(){
+        font-size: 25px;
+    }
+  }
+
+.contacto {
+    padding: 50px 15% 50px 15%;
+
+    p {
+        font-size: 15px;
+    }
+}
+
+.noDesk {
+    @include laptopDesktop() {
+        display: none;
+    }
+}
+
+.tooltipPrint{
+    display: none;
+}
+
+#cuotaInicial{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    .cuotaInicial{
+        justify-self: initial;
+        align-self: center;
+        grid-column: 5/8;      
+    }
+}
+
+/* Print */
+
+@media print{
+    .doNotPrint{
+        display:none;
+    }
+
+    .printOk{
+        display: block;
+        .tooltipPrint{
+            text-align: center;
+            font-size: 12px;
+        }
+    }
+
+    input[type=radio]:checked + div {
+        border: 5px solid red;
+    }
+
+    /* input[type=radio]:checked {
+        border: 5px solid red !important;
+    } */
+
+    /* .btnSeleccionar{
+        input[type=radio]:checked {
+            border: 5px solid red;
+        }   
+    } */
+    .btnSeleccionar{
+        input[type=radio]:checked + div, .opcion{
+            border: 5px solid red !important;
+        }
+    }       
+    
+    .encabezado{
+        text-align: center;
+        img#gaesLogo, img#santanderLogo{
+            display:inline-block;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+            padding: 10px;
+        }
+    }
+    
+
+    form, .pPal, .encabezado .contSolicitud{
+        height: 0px;
+        margin: 0 auto;
+    }
+
+    .cntAprox{
+        .grayParrf{
+            font-size: 15px;
+        }
+        .cifraBlack{
+            justify-self: initial;
+            align-self: center;
+        }
+    }
+    
+
+}
+
+
+

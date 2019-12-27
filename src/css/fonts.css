@@ -1,0 +1,16 @@
+@font-face {
+    font-family: montserrat;
+    src: url(../assets/fonts/Montserrat-Regular.ttf) format("opentype");
+  }
+@font-face {
+    font-family: montserratBold;
+    src: url(../assets/fonts/Montserrat-Bold.ttf) format("opentype");
+  }
+@font-face {
+    font-family: raleway;
+    src: url(../assets/fonts/Raleway-Regular.ttf) format("opentype");
+  }
+@font-face {
+    font-family: ralewayBold;
+    src: url(../assets/fonts/Raleway-Bold.ttf) format("opentype");
+  }
