@@ -9,7 +9,7 @@ import { disableDebugTools } from '@angular/platform-browser';
 export class HomeComponent{
 
   cuotas;
-  tasa = 0;
+  tasa = 0.21;
   valorSolicitado = 0;
   vlrSolSinCi;
   vlrCuota;
