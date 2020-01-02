@@ -11,13 +11,13 @@ export class HomeComponent{
   cuotas;
   tasa = 0.0000000000001;
   valorSolicitado = 0;
-  vlrSolSinCi;
+  vlrSolSinCi = 0;
   vlrCuota;
   cuatroMil = 0;
 
   inCuatroSeg = 0;
 
-  vlrCuotaCliente;
+  vlrCuotaCliente = 0;
 
   /* descuento; */
   vlrDto;
@@ -38,6 +38,7 @@ export class HomeComponent{
   checkDos = false;
   checkTres = false;
   checkCuatro = false;
+  showDetails = false;
 
 
   vlrCuotaSs = 0;
@@ -409,6 +410,11 @@ export class HomeComponent{
       default:
         break;
     }
+  }
+
+  details(){
+    this.showDetails = !this.showDetails;
+    
   }
   
 
