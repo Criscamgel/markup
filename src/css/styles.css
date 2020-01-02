@@ -395,14 +395,14 @@ button {
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .contSolicitud {
-    margin: -4% 6% 0;
+    margin: 0% 6% 0;
     box-shadow: none;
   }
 }
 
 @media (min-width: 1200px) {
   .contSolicitud {
-    margin: -4% 6% 0;
+    margin: 0% 6% 0;
     box-shadow: none;
   }
 }
@@ -805,7 +805,13 @@ input[type=radio]:checked + div {
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .cntAprox .grayParrf {
-    font-size: 20px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cntAprox .grayParrf {
+    font-size: 18px;
   }
 }
 
@@ -826,7 +832,13 @@ input[type=radio]:checked + div {
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .cntAprox .cifraBlack {
-    font-size: 25px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .cntAprox .cifraBlack {
+    font-size: 20px;
   }
 }
 
