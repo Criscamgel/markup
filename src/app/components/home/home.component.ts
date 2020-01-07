@@ -9,12 +9,15 @@ import { disableDebugTools } from '@angular/platform-browser';
 export class HomeComponent{
 
   cuotas;
-  tasa = 0.21;
+  tasa = 0.0000000000001;
   valorSolicitado = 0;
-  vlrSolSinCi;
+  vlrSolSinCi = 0;
   vlrCuota;
+  cuatroMil = 0;
 
-  vlrCuotaCliente;
+  inCuatroSeg = 0;
+
+  vlrCuotaCliente = 0;
 
   /* descuento; */
   vlrDto;
@@ -35,6 +38,7 @@ export class HomeComponent{
   checkDos = false;
   checkTres = false;
   checkCuatro = false;
+  showDetails = false;
 
 
   vlrCuotaSs = 0;
@@ -80,8 +84,9 @@ export class HomeComponent{
           }
 
           /* -- */
-
           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+
+
 
        break;
 
@@ -200,9 +205,47 @@ export class HomeComponent{
           this.seguroCta = seguroCta;
           this.vlrCuota = Math.round(vlrCuota + seguroCta);
           /* Monto total */
-          this.montoTotal = Math.round(seguroTotal + vlrActual)     
+          this.montoTotal = Math.round(seguroTotal + vlrActual)
+          
+          /* Cuatro por Mil */          
+          this.cuatroMil = 0;
+          this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+          
+          /* inCuatroSeg 
+          Es la suma entre el costo del interes mas seguro mas 4 * 1000
+          */
+          this.inCuatroSeg = 0;
+          var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil;
+          console.log("sumandoFin", sumandoFin);          
+
+          this.inCuatroSeg = (this.vlrSolSinCi * (1 - (Math.pow((1 + nmv), -cuota))) / nmv)
+          console.log("this.inCuatroSeg", this.inCuatroSeg);
+          
+
+
+
+
+          /* var inCuatroSegNum;
+          var inCuatroSegDos;
+
+          inCuatroSegNum = Math.round(Math.pow(1 + nmv, -cuota))
+          console.log("vlrCuota", this.vlrCuota);          
+          inCuatroSegNum = (1 - inCuatroSegNum) * this.vlrCuota;
+          console.log("inCuatroSegNum", inCuatroSegNum);
+          this.inCuatroSeg = inCuatroSegNum / nmv;
+          console.log("inCuatroSeg", this.inCuatroSeg);
+
+          debugger;
+          inCuatroSegDos = this.vlrSolSinCi + seguroTotal + this.cuatroMil;
+          console.log("inCuatroSegDos", inCuatroSegDos);
+                    
+
+          this.inCuatroSeg = inCuatroSegDos - this.inCuatroSeg;
+          console.log("inCuatroSeg - Final", this.inCuatroSeg);
+           */
                               
         break;
+
       case 12:
         
           /* Anticipo */
@@ -367,6 +410,11 @@ export class HomeComponent{
       default:
         break;
     }
+  }
+
+  details(){
+    this.showDetails = !this.showDetails;
+    
   }
   
 

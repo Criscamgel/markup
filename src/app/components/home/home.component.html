@@ -104,7 +104,7 @@
                                                 <div class="numBer">18</div>
                                                 <div class="mes">meses</div>
                                             </div>
-                                        </span>
+                                        </span>                                        
                     
                                         <span class="radio">
                                             <input id="veinticuatro" [(ngModel)]="cuotas" name="cuota"
@@ -125,6 +125,52 @@
                                         </span>
                     
                                     </div>
+
+                                    <hr>
+
+                                    <!-- Slider Descuento -->
+
+                                    <div class="calcPtres">
+                                        <p class="title">Porcentaje de descuento</p>
+                                        <div class="slidecontainer doNotPrint">
+                                            <input 
+                                                type="range" 
+                                                min="{{minDes}}" 
+                                                max="{{maxDes}}" 
+                                                step="1"
+                                                value="0" 
+                                                class="slider"
+                                                [(ngModel)]="descuentoSlide"
+                                                name="dtoSlide"
+                                                #DtoSlide="ngModel"
+                                                id="myRange"
+                                                [disabled]="cuotas == 36 ? 'disabled' : null"
+                                                (change)="descuento($event)"
+                                                >
+                                        </div>
+                                        <div class="contMinMax doNotPrint">
+                                            <div class="contMin">
+                                                <p class="grayParrf">Mín:</p>
+                                                <p class="cifraGray">{{minDes}}%</p>
+                                            </div>
+                                            <div class="contMax doNotPrint">
+                                                <p class="grayParrf">Máx:</p>
+                                                <p class="cifraGray">{{maxDes}}%</p>
+                                            </div>
+                                        </div>
+                                        <div class="cntAprox">
+                                            <p class="grayParrf doNotPrint">Descuento:</p>
+                                            <p class="cifraBlack">{{descuentoSlide}}%</p>
+            
+                                            <!-- <div class="tooltip doNotPrint">
+                                                <i class="fa fa-question-circle"></i>
+                                                <span class="tooltiptext">
+                                                    Contenido
+                                                </span>
+                                            </div> -->
+                                        </div>
+                                        <hr>
+                                    </div>  
                     
                                     <div id="cuotaInicial" class="cntAprox">
                                         <p class="grayParrf">Cuota inicial (10%):</p>
@@ -147,70 +193,58 @@
                                     <div class="cntAprox">
                                         <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
                                             (incluye seguro de vida)</p>
-                                        <p class="cifraBlack">$ {{vlrCuota | number:'1.0'}}</p>                                        
+                                        <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>                                        
                     
                                         <div class="tooltip doNotPrint">
-                                            <i class="fa fa-question-circle"></i>
-                                            <span class="tooltiptext">
+                                            <i class="fa fa-question-circle" (click)="details()"></i>
+                                            <!-- <span class="tooltiptext">
                                                 <div class="titleTooltip">Monto a financiar:</div><strong>$ {{vlrSolSinCi | number:'1.0'}}</strong><br>
                                                 <div class="titleTooltip">Valor cuota sin seguro:</div><strong>$ {{vlrCuotaSs | number:'1.0'}}</strong><br>
                                                 <div class="titleTooltip">Costo total del seguro:</div><strong>$ {{seguroTotal | number:'1.0'}}</strong><br>
                                                 <div class="titleTooltip">Cuota mensual del seguro:</div><strong>$ {{seguroCta | number:'1.0'}}</strong><br>
                                                 <div class="titleTooltip">Monto total a financiar:</div><strong>$ {{montoTotal | number:'1.0'}}</strong><br>
+                                                <div class="titleTooltip">4*1000:</div><strong>$ {{cuatroMil | number:'1.0'}}</strong><br>                                                
                                                 <div class="titleTooltip">Tasa Aplicada:<strong><br> 21% </strong>E.A</div>
                                                 <div class="titleTooltip"><strong> 1.6 </strong>NMV</div><br>
-                                            </span>
+                                            </span> -->
                                         </div>
                     
                                     </div>
 
-                                    <p class="cifraBlack">Cuota Cliente: $ {{vlrCuotaCliente | number:'1.0'}}</p>
+                                    <!-- Detalles -->
 
-                                    <!-- Slider Descuento -->
+                                    <div class="cntAprox details" *ngIf="showDetails">
 
-                                    <div class="calcPtres">
-                                            <p class="title">Descuento</p>
-                                            <div class="slidecontainer doNotPrint">
-                                                <input 
-                                                    type="range" 
-                                                    min="{{minDes}}" 
-                                                    max="{{maxDes}}" 
-                                                    step="1"
-                                                    value="0" 
-                                                    class="slider"
-                                                    [(ngModel)]="descuentoSlide"
-                                                    name="dtoSlide"
-                                                    #DtoSlide="ngModel"
-                                                    id="myRange"
-                                                    [disabled]="cuotas == 36 ? 'disabled' : null"
-                                                    (change)="descuento($event)"
-                                                    >
-                                            </div>
-                                            <div class="contMinMax doNotPrint">
-                                                <div class="contMin">
-                                                    <p class="grayParrf">Mín:</p>
-                                                    <p class="cifraGray">{{minDes}}%</p>
-                                                </div>
-                                                <div class="contMax doNotPrint">
-                                                    <p class="grayParrf">Máx:</p>
-                                                    <p class="cifraGray">{{maxDes}}%</p>
-                                                </div>
-                                            </div>
-                                            <div class="cntAprox">
-                                                <p class="grayParrf doNotPrint">Descuento:</p>
-                                                <p class="cifraBlack">{{descuentoSlide}}%</p>
-                
-                                                <!-- <div class="tooltip doNotPrint">
-                                                    <i class="fa fa-question-circle"></i>
-                                                    <span class="tooltiptext">
-                                                        Contenido
-                                                    </span>
-                                                </div> -->
-                                            </div>
-                                            <hr>
-                                        </div>                                    
-                    
-                                    <span class="tooltipPrint printOk">
+                                        <div class="contDetail">
+                                            <p class="grayParrf">Monto a financiar:</p>
+                                            <p class="cifraBlack">$ {{vlrSolSinCi | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div class="contDetail">
+                                            <p class="grayParrf">Valor del seguro:</p>
+                                            <p class="cifraBlack">Gratis</p>
+                                        </div>
+
+                                        <div class="contDetail">
+                                        <p class="grayParrf">Valor de la cuota:</p>
+                                        <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div class="contDetail">
+                                            <p class="grayParrf">Tasa E.A:</p>
+                                            <p class="cifraBlack">0%</p>
+                                        </div>
+
+                                        <div class="contDetail">
+                                            <p class="grayParrf">Tasa NMV</p>
+                                            <p class="cifraBlack">0%</p>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Detalles -->
+                                                 
+                                    <span class="tooltipPrint doNotPrint">
                                         <hr>
                                         <div class="titleTooltip">Monto a financiar:</div><strong>$ {{vlrSolSinCi | number:'1.0'}}</strong><br>
                                         <div class="titleTooltip">Valor cuota sin seguro:</div><strong>$ {{vlrCuotaSs | number:'1.0'}}</strong><br>
