@@ -36,7 +36,7 @@
                                 <div class="cntOpciones">
                                     <div class="opcion">
                                         <h3>Gama Básica</h3>
-                                        <app-edit-input [data]='vlrUno' (focusOut)='vlrUno = $event; valorSolicitado = $event;' (click)="checkUno = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrUno' (change)="changeButton($event.target); changeButtonCliente($event.target)" (focusOut)='vlrUno = $event; valorSolicitado = $event;' (click)="checkUno = true"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="basica" (click)="valorSolicitado = $event.target.value" name="gama" type="radio" value="{{vlrUno}}" [checked]="checkUno">
                                             <div>SELECCIONAR</div>
@@ -232,7 +232,7 @@
 
                                         <div class="contDetail">
                                             <p class="grayParrf">Tasa E.A:</p>
-                                            <p class="cifraBlack">{{tasa}}%</p>
+                                            <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
                                         </div>
 
                                         <div class="contDetail">

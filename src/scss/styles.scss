@@ -748,14 +748,12 @@ input[type=radio]:checked+div {
         @include laptopDesktop() {
             width: 100%;
             font-size: 13px;
-            margin-top: 30px;
             font-family: montserratBold;
         }
 
         @include desktopFull(){
             width: 100%;
             font-size: 13px;
-            margin-top: 30px;
             font-family: montserratBold;
         }
     }

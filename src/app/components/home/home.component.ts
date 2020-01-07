@@ -67,7 +67,10 @@ export class HomeComponent{
     this.changeButtonCliente(this.cuotas);
   }
 
-  changeButtonCliente(val){    
+  changeButtonCliente(val){
+    
+    console.log("Entró");
+    
     
     if(val.value !== undefined){
     var cuota = Number(val.value);
