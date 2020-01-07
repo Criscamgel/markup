@@ -36,7 +36,7 @@
                                 <div class="cntOpciones">
                                     <div class="opcion">
                                         <h3>Gama Básica</h3>
-                                        <app-edit-input [data]='vlrUno' (focusOut)='vlrUno = $event; valorSolicitado = $event; checkUno = false' (click)="checkUno = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrUno' (focusOut)='vlrUno = $event; valorSolicitado = $event;' (click)="checkUno = true"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="basica" (click)="valorSolicitado = $event.target.value" name="gama" type="radio" value="{{vlrUno}}" [checked]="checkUno">
                                             <div>SELECCIONAR</div>
@@ -45,7 +45,7 @@
                     
                                     <div class="opcion">
                                         <h3>Gama Confort</h3>
-                                        <app-edit-input [data]='vlrDos' (focusOut)='vlrDos = $event; valorSolicitado = $event; checkDos = false' (click)="checkDos = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrDos' (focusOut)='vlrDos = $event; valorSolicitado = $event;' (click)="checkDos = true"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="confort" name="gama" (click)="valorSolicitado = $event.target.value" type="radio" value="{{vlrDos}}" [checked]="checkDos">
                                             <div>SELECCIONAR</div>
@@ -54,7 +54,7 @@
                     
                                     <div class="opcion">
                                         <h3>Gama Advance</h3>
-                                        <app-edit-input [data]='vlrTres' (focusOut)='vlrTres = $event; valorSolicitado = $event; checkTres = false' (click)="checkTres = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrTres' (focusOut)='vlrTres = $event; valorSolicitado = $event;' (click)="checkTres = true"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="advance" name="gama" (click)="valorSolicitado = $event.target.value" type="radio" value="{{vlrTres}}" [checked]="checkTres">
                                             <div>SELECCIONAR</div>
@@ -63,7 +63,7 @@
                     
                                     <div class="opcion">
                                         <h3>Gama Premium</h3>
-                                        <app-edit-input [data]='vlrCuatro' (focusOut)='vlrCuatro = $event; valorSolicitado = $event; checkCuatro = false' (click)="checkCuatro = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrCuatro' (focusOut)='vlrCuatro = $event; valorSolicitado = $event;' (click)="checkCuatro = true"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="premium" name="gama"  (click)="valorSolicitado = $event.target.value" type="radio" value="{{vlrCuatro}}" [checked]="checkCuatro">
                                             <div>SELECCIONAR</div>
@@ -232,12 +232,12 @@
 
                                         <div class="contDetail">
                                             <p class="grayParrf">Tasa E.A:</p>
-                                            <p class="cifraBlack">0%</p>
+                                            <p class="cifraBlack">{{tasa}}%</p>
                                         </div>
 
                                         <div class="contDetail">
                                             <p class="grayParrf">Tasa NMV</p>
-                                            <p class="cifraBlack">0%</p>
+                                            <p class="cifraBlack">{{nmv}}%</p>
                                         </div>
 
                                     </div>

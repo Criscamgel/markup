@@ -14,6 +14,7 @@ export class HomeComponent{
   vlrSolSinCi = 0;
   vlrCuota;
   cuatroMil = 0;
+  nmv = 0;
 
   inCuatroSeg = 0;
 
@@ -25,7 +26,7 @@ export class HomeComponent{
   maxDes = 10;
   descuentoSlide = 0;
   montoTotal;
-  cuotaInicial;
+  cuotaInicial = 0;
 
   /* Valores */
 
@@ -61,84 +62,108 @@ export class HomeComponent{
     /*  */  
     dto = Math.round(this.vlrSolSinCi * (Number(val.srcElement.value) / 100));    
     this.vlrDto = this.vlrSolSinCi - dto;
-    this.changeButtonCliente(Number(this.cuotas));
-      
+    this.vlrSolSinCi = this.vlrDto;
+    this.cuotas = Number(this.cuotas)    
+    this.changeButtonCliente(this.cuotas);
   }
 
-  changeButtonCliente(val){
+  changeButtonCliente(val){    
     
     if(val.value !== undefined){
     var cuota = Number(val.value);
     }else{
       var cuota = Number(val);
-    }
+    }   
+
     switch (cuota) {
       case 6:
-
+          this.tasa = 0;
+          this.nmv = 0;
+          if(this.vlrSolSinCi === 0){
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+          }else{
+            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          }
 
           /* Aplicando Dto */
 
-          if(this.vlrDto !== 0 && this.vlrDto !== undefined){
+          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
             this.vlrSolSinCi = this.vlrDto;  
-          }
+          } */
 
           /* -- */
-          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          
 
 
 
        break;
 
        case 12:
-          
+          this.tasa = 0;
+          this.nmv = 0;
+          if(this.vlrSolSinCi === 0){
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+          }else{
+            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          }
 
           /* Aplicando Dto */
 
-          if(this.vlrDto !== 0 && this.vlrDto !== undefined){
+          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
             this.vlrSolSinCi = this.vlrDto;  
-          }
+          } */
 
           /* -- */
-
-          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
        
        break;
 
        case 18:
-         
+          this.tasa = 0;
+          this.nmv = 0;
+          if(this.vlrSolSinCi === 0){
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+          }else{
+            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          }
 
           /* Aplicando Dto */
 
-          if(this.vlrDto !== 0 && this.vlrDto !== undefined){
+          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
             this.vlrSolSinCi = this.vlrDto;  
-          }
+          } */
 
           /* -- */
-
-          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
 
        break;
 
        case 24:
-         
+          this.tasa = 0;
+          this.nmv = 0;
+          if(this.vlrSolSinCi === 0){
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+          }else{
+            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          }
 
           /* Aplicando Dto */
 
-          if(this.vlrDto !== 0 && this.vlrDto !== undefined){
+          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
             this.vlrSolSinCi = this.vlrDto;  
-          }
+          } */
 
           /* -- */
-
-          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
 
        break;
 
        case 36:
+
+          var nmv;
+          /* var seguroTotal = 0.0000000000001; */
+          var vlrActual;
+          var vlrCuota;
+
+          this.tasa = 0.0604;
+          nmv = Math.pow((1 + this.tasa),(1/12))-1;
          
           this.descuentoSlide = 0;
           this.vlrDto = 0;
@@ -146,13 +171,36 @@ export class HomeComponent{
 
           /* Aplicando Dto */
 
-          if(this.vlrDto !== 0 && this.vlrDto !== undefined){
+          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
             this.vlrSolSinCi = this.vlrDto;  
-          }
+          } */
 
           /* -- */
 
+          var vlrPartuno = vlrActual * nmv;
+          var vlrPartdos = Math.pow((1 + nmv), - cuota)
+          vlrPartdos = 1 - vlrPartdos;
+          vlrCuota = vlrPartuno / vlrPartdos;
+          vlrCuota = Math.round(vlrCuota);
+
+          /* Valor Cuota sin seguro */
+
+          this.vlrCuotaSs = vlrCuota;  
+
+          /* var vlrPartunoSeg = seguroTotal * nmv;      
+          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+          vlrPartdosSeg = 1 - vlrPartdosSeg;
+          var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
+          seguroCta = Math.round(seguroCta); */
+
+          /* Seguro de la cuota */
+
+          /* this.seguroCta = seguroCta;
+          this.vlrCuota = Math.round(vlrCuota + seguroCta); */
           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+
+          this.nmv = 0.643;
+          this.tasa = 7.99;
 
        break;
     
@@ -215,11 +263,9 @@ export class HomeComponent{
           Es la suma entre el costo del interes mas seguro mas 4 * 1000
           */
           this.inCuatroSeg = 0;
-          var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil;
-          console.log("sumandoFin", sumandoFin);          
+          var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil;  
 
           this.inCuatroSeg = (this.vlrSolSinCi * (1 - (Math.pow((1 + nmv), -cuota))) / nmv)
-          console.log("this.inCuatroSeg", this.inCuatroSeg);
           
 
 

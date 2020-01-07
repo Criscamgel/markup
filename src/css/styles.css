@@ -866,10 +866,13 @@ input[type=radio]:checked + div {
   }
 }
 
+.cntBotones {
+  margin-top: 15px;
+}
+
 .cntBotones button {
   width: 100%;
   font-size: 13px;
-  margin-top: 30px;
   font-family: montserratBold;
 }
 
@@ -1504,10 +1507,6 @@ input[type=radio]:checked + div {
 }
 
 /* Button Imprimir */
-button.imprimir {
-  margin-top: 15px;
-}
-
 @media (min-width: 767.98px) and (max-width: 991.98px) {
   .cell {
     font-size: 20px !important;
@@ -1688,13 +1687,7 @@ input {
   }
   .encabezado img#gaesLogo, .encabezado img#santanderLogo {
     display: inline-block;
-    page-break-after: avoid;
-    page-break-inside: avoid;
     padding: 10px;
-  }
-  form, .pPal, .encabezado {
-    height: 0px;
-    margin: 0 auto;
   }
   .cntAprox .grayParrf {
     font-size: 15px;
@@ -1702,5 +1695,8 @@ input {
   .cntAprox .cifraBlack {
     justify-self: initial;
     align-self: center;
+  }
+  .cntPie {
+    text-align: center;
   }
 }

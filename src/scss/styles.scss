@@ -737,10 +737,12 @@ input[type=radio]:checked+div {
 }
 
 .cntBotones {
+
+    margin-top: 15px;
+
     button {
         width: 100%;
-        font-size: 13px;
-        margin-top: 30px;
+        font-size: 13px;        
         font-family: montserratBold;
 
         @include laptopDesktop() {
@@ -1296,10 +1298,6 @@ input[type=radio]:checked+div {
 
 /* Button Imprimir */
 
-button.imprimir {
-    margin-top: 15px;
-}
-
 .cell {
     @include tabletLaptop() {
         font-size: 20px !important;
@@ -1472,17 +1470,10 @@ button.imprimir {
         text-align: center;
         img#gaesLogo, img#santanderLogo{
             display:inline-block;
-            page-break-after: avoid;
-            page-break-inside: avoid;
-            padding: 10px;
+            padding: 10px;            
+            
         }
-    }
-    
-
-    form, .pPal, .encabezado{
-        height: 0px;
-        margin: 0 auto;
-    }
+    }    
 
     .cntAprox{
         .grayParrf{
@@ -1492,6 +1483,10 @@ button.imprimir {
             justify-self: initial;
             align-self: center;
         }
+    }
+
+    .cntPie{
+        text-align: center;
     }
     
 
