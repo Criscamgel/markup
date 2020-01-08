@@ -8,7 +8,7 @@ import { disableDebugTools } from '@angular/platform-browser';
 })
 export class HomeComponent{
 
-  cuotas;
+  cuotas = 0;
   tasa = 0.0000000000001;
   valorSolicitado = 0;
   vlrSolSinCi = 0;
@@ -22,6 +22,7 @@ export class HomeComponent{
 
   /* descuento; */
   vlrDto;
+  pDto = 0;
   minDes = 0;
   maxDes = 10;
   descuentoSlide = 0;
@@ -53,108 +54,72 @@ export class HomeComponent{
 
   saveMonto(val){
     this.valorSolicitado = val;    
+    this.changeButtonCliente(this.cuotas);  
   }
 
-  descuento(val){
+  descuento(val){    
+
     var dto = 0;
+    this.pDto = Number(val.srcElement.value);    
     /* Preservando valor sin cuota Inicial */
     this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-    /*  */  
-    dto = Math.round(this.vlrSolSinCi * (Number(val.srcElement.value) / 100));    
-    this.vlrDto = this.vlrSolSinCi - dto;
+
+    dto = Math.round(this.vlrSolSinCi * (this.pDto / 100));    
+    this.vlrDto = this.vlrSolSinCi - dto; 
     this.vlrSolSinCi = this.vlrDto;
-    this.cuotas = Number(this.cuotas)    
-    this.changeButtonCliente(this.cuotas);
+    this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
   }
 
-  changeButtonCliente(val){
+  changeButtonCliente(val){    
     
-    console.log("Entró");
+    if(val !== undefined){
+
+      if(val.value !== undefined){
+      var cuota = Number(val.value);
+      }else{
+        var cuota = Number(val);
+      }
     
-    
-    if(val.value !== undefined){
-    var cuota = Number(val.value);
-    }else{
-      var cuota = Number(val);
-    }   
+    }
 
     switch (cuota) {
-      case 6:
+      case 6:                   
+
           this.tasa = 0;
-          this.nmv = 0;
-          if(this.vlrSolSinCi === 0){
+          this.nmv = 0;     
+
+          this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-          }else{
-            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-          }
-
-          /* Aplicando Dto */
-
-          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
-            this.vlrSolSinCi = this.vlrDto;  
-          } */
-
-          /* -- */
-          
-
-
-
-       break;
+          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          break;
 
        case 12:
           this.tasa = 0;
-          this.nmv = 0;
-          if(this.vlrSolSinCi === 0){
+          this.nmv = 0;     
+
+          this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-          }else{
-            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-          }
-
-          /* Aplicando Dto */
-
-          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
-            this.vlrSolSinCi = this.vlrDto;  
-          } */
-
-          /* -- */
+          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
        
        break;
 
        case 18:
           this.tasa = 0;
-          this.nmv = 0;
-          if(this.vlrSolSinCi === 0){
+          this.nmv = 0;     
+
+          this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-          }else{
-            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-          }
-
-          /* Aplicando Dto */
-
-          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
-            this.vlrSolSinCi = this.vlrDto;  
-          } */
-
-          /* -- */
+          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
 
        break;
 
        case 24:
           this.tasa = 0;
-          this.nmv = 0;
-          if(this.vlrSolSinCi === 0){
+          this.nmv = 0;     
+
+          this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-          }else{
-            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-          }
-
-          /* Aplicando Dto */
-
-          /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
-            this.vlrSolSinCi = this.vlrDto;  
-          } */
-
-          /* -- */
+          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
 
        break;
 

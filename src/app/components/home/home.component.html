@@ -36,36 +36,36 @@
                                 <div class="cntOpciones">
                                     <div class="opcion">
                                         <h3>Gama Básica</h3>
-                                        <app-edit-input [data]='vlrUno' (change)="changeButton($event.target); changeButtonCliente($event.target)" (focusOut)='vlrUno = $event; valorSolicitado = $event;' (click)="checkUno = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrUno' (change)="saveMonto($event.target.value); checkUno = true"></app-edit-input>
                                         <div class="btnSeleccionar">
-                                            <input id="basica" (click)="valorSolicitado = $event.target.value" name="gama" type="radio" value="{{vlrUno}}" [checked]="checkUno">
+                                            <input id="basica" (click)="saveMonto($event.target.value)" name="gama" type="radio" value="{{vlrUno}}" [checked]="checkUno">
                                             <div>SELECCIONAR</div>
                                         </div>
                                     </div>
                     
                                     <div class="opcion">
                                         <h3>Gama Confort</h3>
-                                        <app-edit-input [data]='vlrDos' (focusOut)='vlrDos = $event; valorSolicitado = $event;' (click)="checkDos = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrDos' (change)="saveMonto($event.target.value); checkDos = true"></app-edit-input>
                                         <div class="btnSeleccionar">
-                                            <input id="confort" name="gama" (click)="valorSolicitado = $event.target.value" type="radio" value="{{vlrDos}}" [checked]="checkDos">
+                                            <input id="confort" name="gama" (click)="saveMonto($event.target.value)" type="radio" value="{{vlrDos}}" [checked]="checkDos">
                                             <div>SELECCIONAR</div>
                                         </div>
                                     </div>
                     
                                     <div class="opcion">
                                         <h3>Gama Advance</h3>
-                                        <app-edit-input [data]='vlrTres' (focusOut)='vlrTres = $event; valorSolicitado = $event;' (click)="checkTres = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrTres' (change)="saveMonto($event.target.value); checkTres = true"></app-edit-input>
                                         <div class="btnSeleccionar">
-                                            <input id="advance" name="gama" (click)="valorSolicitado = $event.target.value" type="radio" value="{{vlrTres}}" [checked]="checkTres">
+                                            <input id="advance" name="gama" (click)="saveMonto($event.target.value)" type="radio" value="{{vlrTres}}" [checked]="checkTres">
                                             <div>SELECCIONAR</div>
                                         </div>
                                     </div>
                     
                                     <div class="opcion">
                                         <h3>Gama Premium</h3>
-                                        <app-edit-input [data]='vlrCuatro' (focusOut)='vlrCuatro = $event; valorSolicitado = $event;' (click)="checkCuatro = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrCuatro' (change)="saveMonto($event.target.value); checkCuatro = true"></app-edit-input>
                                         <div class="btnSeleccionar">
-                                            <input id="premium" name="gama"  (click)="valorSolicitado = $event.target.value" type="radio" value="{{vlrCuatro}}" [checked]="checkCuatro">
+                                            <input id="premium" name="gama"  (click)="saveMonto($event.target.value)" type="radio" value="{{vlrCuatro}}" [checked]="checkCuatro">
                                             <div>SELECCIONAR</div>
                                         </div>
                                     </div>
@@ -81,7 +81,8 @@
                     
                                         <span class="radio">
                                             <input id="seis" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" type="radio" value="6">
+                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                type="radio" value="6">
                                             <div>
                                                 <div class="numBer">06</div>
                                                 <div class="mes">meses</div>
@@ -89,7 +90,8 @@
                                         </span>
                     
                                         <span class="radio">
-                                            <input id="doce" [(ngModel)]="cuotas" name="cuota" (click)="changeButton($event.target); changeButtonCliente($event.target)"
+                                            <input id="doce" [(ngModel)]="cuotas" name="cuota" 
+                                            (click)="changeButton($event.target); changeButtonCliente($event.target)"
                                                 type="radio" value="12">
                                             <div>
                                                 <div class="numBer">12</div>
@@ -99,7 +101,8 @@
                     
                                         <span class="radio">
                                             <input id="diesiocho" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" type="radio" value="18">
+                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                type="radio" value="18">
                                             <div>
                                                 <div class="numBer">18</div>
                                                 <div class="mes">meses</div>
@@ -108,7 +111,8 @@
                     
                                         <span class="radio">
                                             <input id="veinticuatro" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" type="radio" value="24">
+                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                type="radio" value="24">
                                             <div>
                                                 <div class="numBer">24</div>
                                                 <div class="mes">meses</div>
@@ -117,7 +121,8 @@
                     
                                         <span class="radio">
                                             <input id="cuarentayocho" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" type="radio" value="36">
+                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                type="radio" value="36">
                                             <div>
                                                 <div class="numBer">36</div>
                                                 <div class="mes">meses</div>
