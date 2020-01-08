@@ -15,10 +15,12 @@ export class HomeComponent{
   vlrCuota;
   cuatroMil = 0;
   nmv = 0;
-
+  costoInterez = 0;
+  dtoFinancia = 0;
   inCuatroSeg = 0;
-
   vlrCuotaCliente = 0;
+  costoGaes = 0;
+  costoTotalGaes = 0;
 
   /* descuento; */
   vlrDto;
@@ -41,6 +43,8 @@ export class HomeComponent{
   checkTres = false;
   checkCuatro = false;
   showDetails = false;
+  showDetailsOne = true;
+  showDetailsTwo = false;
 
 
   vlrCuotaSs = 0;
@@ -70,6 +74,11 @@ export class HomeComponent{
     this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
   }
 
+  detailsTwo(){
+    this.showDetailsTwo = !this.showDetailsTwo;
+    this.showDetailsOne = !this.showDetailsOne;
+  }
+
   changeButtonCliente(val){    
     
     if(val !== undefined){
@@ -86,7 +95,7 @@ export class HomeComponent{
       case 6:                   
 
           this.tasa = 0;
-          this.nmv = 0;     
+          this.nmv = 0;    
 
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
@@ -231,32 +240,16 @@ export class HomeComponent{
           Es la suma entre el costo del interes mas seguro mas 4 * 1000
           */
           this.inCuatroSeg = 0;
-          var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil;  
-
-          this.inCuatroSeg = (this.vlrSolSinCi * (1 - (Math.pow((1 + nmv), -cuota))) / nmv)
-          
-
-
-
-
-          /* var inCuatroSegNum;
-          var inCuatroSegDos;
-
-          inCuatroSegNum = Math.round(Math.pow(1 + nmv, -cuota))
-          console.log("vlrCuota", this.vlrCuota);          
-          inCuatroSegNum = (1 - inCuatroSegNum) * this.vlrCuota;
-          console.log("inCuatroSegNum", inCuatroSegNum);
-          this.inCuatroSeg = inCuatroSegNum / nmv;
-          console.log("inCuatroSeg", this.inCuatroSeg);
-
-          debugger;
-          inCuatroSegDos = this.vlrSolSinCi + seguroTotal + this.cuatroMil;
-          console.log("inCuatroSegDos", inCuatroSegDos);
-                    
-
-          this.inCuatroSeg = inCuatroSegDos - this.inCuatroSeg;
-          console.log("inCuatroSeg - Final", this.inCuatroSeg);
-           */
+          this.tasa = 0.0000000000001;
+          /* var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil; */
+          let nmvUno = Math.pow((1 + this.tasa), (1/12)) - 1;          
+          let potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+          let numerador = this.vlrCuotaCliente * potencia;
+          let resultado = numerador / nmvUno;
+          this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+          this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+          this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+          this.costoTotalGaes = Number(this.costoGaes) + 10;
                               
         break;
 

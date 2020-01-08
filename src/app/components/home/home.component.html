@@ -81,7 +81,7 @@
                     
                                         <span class="radio">
                                             <input id="seis" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                (click)="changeButtonCliente($event.target); changeButton($event.target)" 
                                                 type="radio" value="6">
                                             <div>
                                                 <div class="numBer">06</div>
@@ -118,10 +118,11 @@
                                                 <div class="mes">meses</div>
                                             </div>
                                         </span>
+
+                                        <!-- (click)="changeButton($event.target); changeButtonCliente($event.target)" -->
                     
                                         <span class="radio">
-                                            <input id="cuarentayocho" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                            <input id="cuarentayocho" [(ngModel)]="cuotas" name="cuota"                                                 
                                                 type="radio" value="36">
                                             <div>
                                                 <div class="numBer">36</div>
@@ -219,31 +220,112 @@
                                     <!-- Detalles -->
 
                                     <div class="cntAprox details" *ngIf="showDetails">
+                                        <div class="tooltip">
+                                            <i class="fa fa-question-circle" (click)="detailsTwo()"></i>
+                                        </div>
 
-                                        <div class="contDetail">
+                                        <div *ngIf="showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Monto a financiar:</p>
                                             <p class="cifraBlack">$ {{vlrSolSinCi | number:'1.0'}}</p>
                                         </div>
 
-                                        <div class="contDetail">
+                                        <div *ngIf="showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Valor del seguro:</p>
                                             <p class="cifraBlack">Gratis</p>
                                         </div>
 
-                                        <div class="contDetail">
+                                        <div *ngIf="showDetailsOne" class="contDetail">
                                         <p class="grayParrf">Valor de la cuota:</p>
                                         <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
                                         </div>
 
-                                        <div class="contDetail">
+                                        <div *ngIf="cuotas !== '36' && showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Tasa E.A:</p>
                                             <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
                                         </div>
 
-                                        <div class="contDetail">
+                                        <div *ngIf="cuotas !== '36' && showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Tasa NMV</p>
                                             <p class="cifraBlack">{{nmv}}%</p>
+                                        </div>                                        
+
+                                        <!-- Detalle Segundo grado -->
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                                <p class="grayParrf">Valor del audífono:</p>
+                                                <p class="cifraBlack">$ {{valorSolicitado | number:'1.0'}}</p>
                                         </div>
+
+                                        <!-- <div class="contDetail">
+                                                <p class="grayParrf">% cuota inicial:</p>
+                                                <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
+                                        </div> -->
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                                <p class="grayParrf">Valor audífono con cuota inicial:</p>
+                                                <p class="cifraBlack">$ {{vlrSolSinCi | number:'1.0'}}</p>
+                                        </div>
+    
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Descuento Gaes:</p>
+                                            <p class="cifraBlack">{{descuentoSlide}}%</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Monto a financiar</p>
+                                            <p class="cifraBlack">$ {{vlrSolSinCi | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Costo total seguro:</p>
+                                            <p class="cifraBlack">$ {{seguroTotal | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Costo 4 x mil:</p>
+                                            <p class="cifraBlack">$ {{cuatroMil | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Plazo:</p>
+                                            <p class="cifraBlack">{{cuotas}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Costo de interez:</p>
+                                            <p class="cifraBlack">$ {{costoInterez | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div *ngIf="cuotas !== '36' && showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Tasa efectivo anual:</p>
+                                            <p class="cifraBlack">% {{cuotas === '36' ? 21 : 0}}</p>
+                                        </div>
+
+                                        <div *ngIf="cuotas !== '36' && showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Tasa nominal mes vencido:</p>
+                                            <p class="cifraBlack">% {{cuotas === '36' ? 1.60 : 0}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Cuota cliente:</p>
+                                            <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Descuento sobre valor a financiar:</p>
+                                            <p class="cifraBlack">% {{dtoFinancia}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Costo Gaes:</p>
+                                            <p class="cifraBlack">% {{costoGaes}}</p>
+                                        </div>
+
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Costo total Gaes:</p>
+                                            <p class="cifraBlack">% {{costoTotalGaes}}</p>
+                                        </div>
+
 
                                     </div>
 
