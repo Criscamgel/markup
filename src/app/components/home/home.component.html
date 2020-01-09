@@ -36,16 +36,16 @@
                                 <div class="cntOpciones">
                                     <div class="opcion">
                                         <h3>Gama Básica</h3>
-                                        <app-edit-input [data]='vlrUno' (change)="saveMonto($event.target.value); checkUno = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrUno' (change)="saveMonto($event.target.value); checkUno = true; vlrUno = $event.target.value; valorSolicitado = $event.target.value"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="basica" (click)="saveMonto($event.target.value)" name="gama" type="radio" value="{{vlrUno}}" [checked]="checkUno">
-                                            <div>SELECCIONAR</div>
+                                            <div (click)="saveMonto($event.target.value)">SELECCIONAR</div>
                                         </div>
                                     </div>
                     
                                     <div class="opcion">
                                         <h3>Gama Confort</h3>
-                                        <app-edit-input [data]='vlrDos' (change)="saveMonto($event.target.value); checkDos = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrDos' (change)="saveMonto($event.target.value); checkDos = true; vlrDos = $event.target.value; valorSolicitado = $event.target.value"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="confort" name="gama" (click)="saveMonto($event.target.value)" type="radio" value="{{vlrDos}}" [checked]="checkDos">
                                             <div>SELECCIONAR</div>
@@ -54,7 +54,7 @@
                     
                                     <div class="opcion">
                                         <h3>Gama Advance</h3>
-                                        <app-edit-input [data]='vlrTres' (change)="saveMonto($event.target.value); checkTres = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrTres' (change)="saveMonto($event.target.value); checkTres = true; vlrTres = $event.target.value; valorSolicitado = $event.target.value"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="advance" name="gama" (click)="saveMonto($event.target.value)" type="radio" value="{{vlrTres}}" [checked]="checkTres">
                                             <div>SELECCIONAR</div>
@@ -63,7 +63,7 @@
                     
                                     <div class="opcion">
                                         <h3>Gama Premium</h3>
-                                        <app-edit-input [data]='vlrCuatro' (change)="saveMonto($event.target.value); checkCuatro = true"></app-edit-input>
+                                        <app-edit-input [data]='vlrCuatro' (change)="saveMonto($event.target.value); checkCuatro = true; vlrCuatro = $event.target.value; valorSolicitado = $event.target.value"></app-edit-input>
                                         <div class="btnSeleccionar">
                                             <input id="premium" name="gama"  (click)="saveMonto($event.target.value)" type="radio" value="{{vlrCuatro}}" [checked]="checkCuatro">
                                             <div>SELECCIONAR</div>
@@ -254,7 +254,7 @@
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                                 <p class="grayParrf">Valor del audífono:</p>
-                                                <p class="cifraBlack">$ {{valorSolicitado | number:'1.0'}}</p>
+                                                <p class="cifraBlack">$ {{valorSolicitadoDto === 0 ? valorSolicitado : valorSolicitadoDto | number:'1.0'}}</p>
                                         </div>
 
                                         <!-- <div class="contDetail">

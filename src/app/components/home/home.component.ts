@@ -10,6 +10,7 @@ export class HomeComponent{
   cuotas = 0;
   tasa = 0.0000000000001;
   valorSolicitado = 0;
+  valorSolicitadoDto = 0;
   vlrSolSinCi = 0;
   vlrCuota;
   cuatroMil = 0;
@@ -55,7 +56,7 @@ export class HomeComponent{
       
   }
 
-  saveMonto(val){
+  saveMonto(val){      
     this.valorSolicitado = val;    
     this.changeButtonCliente(this.cuotas);      
   }
@@ -63,13 +64,17 @@ export class HomeComponent{
   descuento(val){    
 
     var dto = 0;
+    this.valorSolicitadoDto = this.valorSolicitado;
     this.pDto = Number(val.srcElement.value);    
-    /* Preservando valor sin cuota Inicial */
-    this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+    
+    dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
+    this.valorSolicitadoDto -= dto;    
 
-    dto = Math.round(this.vlrSolSinCi * (this.pDto / 100));    
+    /* Sacando la Cuota Inicial */
+    this.cuotaInicial = this.valorSolicitadoDto * 0.10;
+
+    this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
     this.vlrDto = this.vlrSolSinCi - dto; 
-    this.vlrSolSinCi = this.vlrDto;
     this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
 
     this.changeButton(this.cuotas);
@@ -93,8 +98,7 @@ export class HomeComponent{
     }
 
     switch (cuota) {
-      case 6:                   
-
+      case 6:
           this.tasa = 0;
           this.nmv = 0;
           this.descuentoSlide = 0;
@@ -194,17 +198,28 @@ export class HomeComponent{
   
 
   changeButton(val){
-    let cuota = Number(val.value);
+
+    let cuota = 0;       
     let nmv = Math.pow((1 + this.tasa),(1/12))-1;
-    let seguro;    
+    let seguro;
     
+    if(val.value){
+      cuota = Number(val.value);
+    }else{
+      cuota = Number(val);
+    }
+
+    var valorSolicitado = 0;
+    if(this.valorSolicitadoDto !== 0){
+      valorSolicitado = Math.round(this.valorSolicitadoDto);
+    }else{
+      valorSolicitado = Math.round(this.valorSolicitado);
+    }
+  
     
     switch (cuota) {
-      case 6:
+      case 6:          
 
-          /* Anticipo */
-          /* Vaciando Anticipo */
-          var valorSolicitado = Math.round(this.valorSolicitado)
           var cuotaInicial = Math.round(valorSolicitado * 0.10)
           this.cuotaInicial = cuotaInicial;
           valorSolicitado = Math.round(valorSolicitado) - cuotaInicial;
@@ -261,9 +276,6 @@ export class HomeComponent{
 
       case 12:
         
-          /* Anticipo */
-          /* Vaciando Anticipo */
-          var valorSolicitado = Math.round(this.valorSolicitado)
           var cuotaInicial = Math.round(valorSolicitado * 0.10)
           this.cuotaInicial = cuotaInicial;
           valorSolicitado = Math.round(valorSolicitado) - cuotaInicial;
@@ -314,16 +326,12 @@ export class HomeComponent{
           this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
           this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
           this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
-          this.costoTotalGaes = Number(this.costoGaes) + 10;
-                     
+          this.costoTotalGaes = Number(this.costoGaes) + 10;                     
              
         break;
 
       case 18:
         
-          /* Anticipo */
-          /* Vaciando Anticipo */
-          var valorSolicitado = Math.round(this.valorSolicitado)
           var cuotaInicial = Math.round(valorSolicitado * 0.10)
           this.cuotaInicial = cuotaInicial;
           valorSolicitado = Math.round(valorSolicitado) - cuotaInicial;
@@ -380,9 +388,6 @@ export class HomeComponent{
 
       case 24:
         
-          /* Anticipo */
-          /* Vaciando Anticipo */
-          var valorSolicitado = Math.round(this.valorSolicitado)
           var cuotaInicial = Math.round(valorSolicitado * 0.10)
           this.cuotaInicial = cuotaInicial;
           valorSolicitado = Math.round(valorSolicitado) - cuotaInicial;
@@ -433,15 +438,12 @@ export class HomeComponent{
           this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
           this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
           this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
-          this.costoTotalGaes = Number(this.costoGaes) + 10;        
+          this.costoTotalGaes = Number(this.costoGaes) + 10;       
              
         break;
 
       case 36:
 
-          /* Anticipo */
-          /* Vaciando Anticipo */
-          var valorSolicitado = Math.round(this.valorSolicitado)
           var cuotaInicial = Math.round(valorSolicitado * 0.10)
           this.cuotaInicial = cuotaInicial;
           valorSolicitado = Math.round(valorSolicitado) - cuotaInicial;
