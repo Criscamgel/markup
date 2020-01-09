@@ -57,7 +57,7 @@ export class HomeComponent{
 
   saveMonto(val){
     this.valorSolicitado = val;    
-    this.changeButtonCliente(this.cuotas);  
+    this.changeButtonCliente(this.cuotas);      
   }
 
   descuento(val){    
@@ -71,6 +71,8 @@ export class HomeComponent{
     this.vlrDto = this.vlrSolSinCi - dto; 
     this.vlrSolSinCi = this.vlrDto;
     this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
+
+    this.changeButton(this.cuotas);
   }
 
   detailsTwo(){
@@ -95,7 +97,8 @@ export class HomeComponent{
 
           this.tasa = 0;
           this.nmv = 0;
-          
+          this.descuentoSlide = 0;
+
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
@@ -103,7 +106,8 @@ export class HomeComponent{
 
        case 12:
           this.tasa = 0;
-          this.nmv = 0;     
+          this.nmv = 0;
+          this.descuentoSlide = 0;     
           
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
@@ -113,7 +117,8 @@ export class HomeComponent{
 
        case 18:
           this.tasa = 0;
-          this.nmv = 0;     
+          this.nmv = 0;
+          this.descuentoSlide = 0;     
 
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
@@ -123,7 +128,8 @@ export class HomeComponent{
 
        case 24:
           this.tasa = 0;
-          this.nmv = 0;     
+          this.nmv = 0;
+          this.descuentoSlide = 0;     
 
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;

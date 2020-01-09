@@ -91,7 +91,7 @@
                     
                                         <span class="radio">
                                             <input id="doce" [(ngModel)]="cuotas" name="cuota" 
-                                            (click)="changeButton($event.target); changeButtonCliente($event.target)"
+                                            (click)="changeButtonCliente($event.target); changeButton($event.target)"
                                                 type="radio" value="12">
                                             <div>
                                                 <div class="numBer">12</div>
@@ -101,7 +101,7 @@
                     
                                         <span class="radio">
                                             <input id="diesiocho" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                (click)="changeButtonCliente($event.target); changeButton($event.target)" 
                                                 type="radio" value="18">
                                             <div>
                                                 <div class="numBer">18</div>
@@ -111,7 +111,7 @@
                     
                                         <span class="radio">
                                             <input id="veinticuatro" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButton($event.target); changeButtonCliente($event.target)" 
+                                                (click)="changeButtonCliente($event.target); changeButton($event.target)" 
                                                 type="radio" value="24">
                                             <div>
                                                 <div class="numBer">24</div>
@@ -293,7 +293,7 @@
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
-                                            <p class="grayParrf">Costo de interez:</p>
+                                            <p class="grayParrf">Costo de interes:</p>
                                             <p class="cifraBlack">$ {{costoInterez | number:'1.0'}}</p>
                                         </div>
 
