@@ -122,7 +122,8 @@
                                         <!-- (click)="changeButton($event.target); changeButtonCliente($event.target)" -->
                     
                                         <span class="radio">
-                                            <input id="cuarentayocho" [(ngModel)]="cuotas" name="cuota"                                                 
+                                            <input id="cuarentayocho" [(ngModel)]="cuotas" name="cuota"
+                                            (click)="changeButtonCliente($event.target)"                                                 
                                                 type="radio" value="36">
                                             <div>
                                                 <div class="numBer">36</div>
