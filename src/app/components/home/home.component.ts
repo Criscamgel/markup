@@ -94,8 +94,8 @@ export class HomeComponent{
       case 6:                   
 
           this.tasa = 0;
-          this.nmv = 0;    
-
+          this.nmv = 0;
+          
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
@@ -104,7 +104,7 @@ export class HomeComponent{
        case 12:
           this.tasa = 0;
           this.nmv = 0;     
-
+          
           this.cuotaInicial = this.valorSolicitado * 0.10;
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
@@ -134,6 +134,7 @@ export class HomeComponent{
        case 36:
 
           this.vlrDto = 0;
+          this.cuotas = Number(this.cuotas);
           /* var nmv;
           var vlrActual;
           var vlrCuota;

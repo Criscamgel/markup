@@ -240,12 +240,12 @@
                                         <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
                                         </div>
 
-                                        <div *ngIf="cuotas !== '36' && showDetailsOne" class="contDetail">
+                                        <div *ngIf="cuotas !== 36 && showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Tasa E.A:</p>
                                             <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
                                         </div>
 
-                                        <div *ngIf="cuotas !== '36' && showDetailsOne" class="contDetail">
+                                        <div *ngIf="cuotas !== 36 && showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Tasa NMV</p>
                                             <p class="cifraBlack">{{nmv}}%</p>
                                         </div>                                        
@@ -297,14 +297,14 @@
                                             <p class="cifraBlack">$ {{costoInterez | number:'1.0'}}</p>
                                         </div>
 
-                                        <div *ngIf="cuotas !== '36' && showDetailsTwo" class="contDetail">
+                                        <div *ngIf="cuotas !== 36 && showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Tasa efectivo anual:</p>
-                                            <p class="cifraBlack">% {{cuotas === '36' ? 21 : 0}}</p>
+                                            <p class="cifraBlack">% {{cuotas === 36 ? 21 : 0}}</p>
                                         </div>
 
-                                        <div *ngIf="cuotas !== '36' && showDetailsTwo" class="contDetail">
+                                        <div *ngIf="cuotas !== 36 && showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Tasa nominal mes vencido:</p>
-                                            <p class="cifraBlack">% {{cuotas === '36' ? 1.60 : 0}}</p>
+                                            <p class="cifraBlack">% {{cuotas === 36 ? 1.60 : 0}}</p>
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
