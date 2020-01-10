@@ -64,10 +64,13 @@ export class HomeComponent{
 
   descuento(val){    
 
-    var dto = 0;
-    this.valorSolicitadoDto = this.valorSolicitado;
-    this.pDto = Number(val.srcElement.value);    
+    this.pDto = Number(val.srcElement.value);
+    console.log("this.pDto --->", this.pDto);
     
+    
+    if(this.pDto !== 0){
+    this.valorSolicitadoDto = this.valorSolicitado;
+    var dto = 0;   
     dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
     this.valorSolicitadoDto -= dto;    
 
@@ -77,8 +80,13 @@ export class HomeComponent{
     this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
     this.vlrDto = this.vlrSolSinCi - dto; 
     this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
-
     this.changeButton(this.cuotas);
+
+    }else{
+      console.log("Entra al else de Dto");      
+      this.valorSolicitadoDto = 0;
+      this.changeButton(this.cuotas);
+    }
   }
 
   detailsTwo(){
@@ -210,11 +218,13 @@ export class HomeComponent{
       cuota = Number(val);
     }
 
-    var valorSolicitado = 0;
-    if(this.valorSolicitadoDto !== 0){
-      valorSolicitado = Math.round(this.valorSolicitadoDto);
+    var valorSolicitado = 0;   
+
+    if(this.valorSolicitadoDto !== 0 && this.descuentoSlide !== 0){
+      valorSolicitado = Math.round(this.valorSolicitadoDto);    
     }else{
-      valorSolicitado = Math.round(this.valorSolicitado);     
+      valorSolicitado = Math.round(this.valorSolicitado);
+      this.valorSolicitadoDto = 0;     
     }
   
     
