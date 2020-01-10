@@ -269,7 +269,7 @@
     
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Descuento Gaes:</p>
-                                            <p class="cifraBlack">{{descuentoSlide}}%</p>
+                                            <p class="cifraBlack">{{descuentoSlide}} %</p>
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
@@ -299,12 +299,12 @@
 
                                         <div *ngIf="cuotas !== 36 && showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Tasa efectivo anual:</p>
-                                            <p class="cifraBlack">% {{cuotas === 36 ? 21 : 0}}</p>
+                                            <p class="cifraBlack">{{cuotas === 36 ? 21 : 0}} %</p>
                                         </div>
 
                                         <div *ngIf="cuotas !== 36 && showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Tasa nominal mes vencido:</p>
-                                            <p class="cifraBlack">% {{cuotas === 36 ? 1.60 : 0}}</p>
+                                            <p class="cifraBlack">{{cuotas === 36 ? 1.60 : 0}} %</p>
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
@@ -314,17 +314,17 @@
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Descuento sobre valor a financiar:</p>
-                                            <p class="cifraBlack">% {{dtoFinancia}}</p>
+                                            <p class="cifraBlack">{{dtoFinancia}} %</p>
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Costo Gaes:</p>
-                                            <p class="cifraBlack">% {{costoGaes}}</p>
+                                            <p class="cifraBlack">{{costoGaes}} %</p>
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Costo total Gaes:</p>
-                                            <p class="cifraBlack">% {{costoTotalGaes}}</p>
+                                            <p class="cifraBlack">{{costoTotalGaes}} %</p>
                                         </div>
 
 
@@ -344,11 +344,11 @@
                                     </span>
                                     
                                 </div>
-                                <div class="cntBotones doNotPrint" (click)="linka()">
-                                    <button>INICIAR SOLICITUD</button>
-                                </div>
                                 <div class="cntBotones doNotPrint">
                                     <button class="imprimir" (click)="onPrint()">IMPRIMIR</button>
+                                </div>
+                                <div class="cntBotones doNotPrint" (click)="linka()">
+                                    <button>INICIAR SOLICITUD</button>
                                 </div>
                     
                                 <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
