@@ -81,7 +81,7 @@
                     
                                         <span class="radio">
                                             <input id="seis" [(ngModel)]="cuotas" name="cuota"
-                                                (click)="changeButtonCliente($event.target); changeButton($event.target)" 
+                                                (click)="changeButtonCliente($event.target); changeButton($event.target); " 
                                                 type="radio" value="6">
                                             <div>
                                                 <div class="numBer">06</div>
@@ -254,7 +254,7 @@
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                                 <p class="grayParrf">Valor del audífono:</p>
-                                                <p class="cifraBlack">$ {{valorSolicitadoDto === 0 ? valorSolicitado : valorSolicitadoDto | number:'1.0'}}</p>
+                                                <p class="cifraBlack">$ {{valorSolicitado | number:'1.0'}}</p>
                                         </div>
 
                                         <!-- <div class="contDetail">
@@ -264,7 +264,7 @@
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
                                                 <p class="grayParrf">Valor audífono con cuota inicial:</p>
-                                                <p class="cifraBlack">$ {{vlrSolSinCi | number:'1.0'}}</p>
+                                                <p class="cifraBlack">$ {{vlrSolSinCiSinDto | number:'1.0'}}</p>
                                         </div>
     
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
