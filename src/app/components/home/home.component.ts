@@ -13,6 +13,12 @@ export class HomeComponent{
   valorSolicitadoDto = 0;
   vlrSolSinCi = 0;
   vlrSolSinCiSinDto = 0;
+  valorFinal = 0;
+
+  /* Calculadora de Edad */
+  ageCalc;
+  showAge = 0;
+  diferencia = 0;
 
   vlrCuota;
   cuatroMil = 0;
@@ -67,16 +73,16 @@ export class HomeComponent{
   descuento(val){    
 
     this.pDto = Number(val.srcElement.value);
-    this.valorSolicitadoDto = 0;    
+    this.valorSolicitadoDto = 0;
+    var dto = 0;  
+    dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
+    this.valorFinal = this.valorSolicitado - dto;    
     
     if(this.pDto !== 0){
     this.valorSolicitadoDto = this.valorSolicitado;
     var dto = 0;   
     dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
-    
-    debugger;
     this.valorSolicitadoDto -= dto;
-    console.log("this.valorSolicitadoDto --> ",this.valorSolicitadoDto);
     
 
     /* Sacando la Cuota Inicial */
@@ -564,6 +570,20 @@ export class HomeComponent{
 
   onPrint(){
     window.print();
+  }
+
+  ageCalculator(){
+    if(this.ageCalc){
+      var showAge;
+
+      const convertAge = new Date(this.ageCalc);
+      const timeDiff = Date.now() - convertAge.getTime();
+      showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
+      this.diferencia = Math.round((75 - showAge) * 12);
+      this.showAge = Math.round(showAge);
+
+    }
+    
   }
 
 }

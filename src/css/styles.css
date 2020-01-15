@@ -892,6 +892,10 @@ input[type=radio]:checked + div {
   }
 }
 
+.cntBotones button:disabled, .cntBotones button[disabled] {
+  background-color: #baeaff;
+}
+
 /* Boton Ayuda */
 .buttonHelp {
   display: none;
@@ -1660,6 +1664,83 @@ input {
   .cntAprox.details .contDetail .cifraBlack {
     font-size: 12px;
   }
+}
+
+/* Calculadora Edad */
+.cntCalcAge {
+  margin: 10px 0px;
+}
+
+.cntCalcAge h3 {
+  margin-bottom: 7px;
+}
+
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+  .cntCalcAge h3 {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .cntCalcAge h3 {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cntCalcAge h3 {
+    font-size: 18px !important;
+  }
+}
+
+.cntCalcAge .cntCalcPaciente {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cntCalcAge .cntCalcPaciente input {
+  border: 1px dotted #939393;
+  border-radius: 5px;
+  height: 35px;
+}
+
+.cntCalcAge .cntCalcPaciente input:focus {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.cntCalcAge .cntCalcPaciente .showAge {
+  font-size: 15px;
+  font-weight: 700;
+  justify-self: center;
+  align-self: center;
+}
+
+/* Radio Input, Disabled */
+.radio .disableOption {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: #ffffffad;
+}
+
+.radio input:disabled + div {
+  z-index: -1;
+}
+
+.contCondiciones {
+  margin: 10px 0px;
+}
+
+.contCondiciones h3 {
+  margin: 10px 0px;
+}
+
+.contCondiciones .listaItem {
+  font-size: 12px;
 }
 
 /* Print */

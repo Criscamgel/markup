@@ -31,13 +31,30 @@
                                 auditivas.
                             </p>
                         </div>
-                        
+
+                                              
                             <div id="solicitud" class="contSolicitud">
+                                <div class="cntCalcAge">
+                                <!-- Calculadora de Edad  -->
+                                <h3>Calcula la edad del paciente</h3>
+                                    <div class="cntCalcPaciente">
+                                    <input name="agecalc" type="date" [(ngModel)]="ageCalc" (change)="ageCalculator()"/>
+                                    <div class="showAge">
+                                    {{showAge}} años
+                                    </div>
+                                    <!-- </div>{{diferencia}}</div> -->
+                                </div>
+                                </div>
+
+                                <hr>
+
+                                <!--  -->
+
                                 <div class="cntOpciones">
                                     <div class="opcion">
                                         <h3>Gama Básica</h3>
                                         <app-edit-input [data]='vlrUno' (change)="saveMonto($event.target.value); checkUno = true; vlrUno = $event.target.value; valorSolicitado = $event.target.value"></app-edit-input>
-                                        <div class="btnSeleccionar">
+                                        <div class="btnSeleccionar">                                            
                                             <input id="basica" (click)="saveMonto($event.target.value)" name="gama" type="radio" value="{{vlrUno}}" [checked]="checkUno">
                                             <div (click)="saveMonto($event.target.value)">SELECCIONAR</div>
                                         </div>
@@ -78,11 +95,14 @@
                                     <h3>¿En cuantas cuotas desea pagar el dispositivo?</h3>
                     
                                     <div class="contPeriodo">
-                    
+
                                         <span class="radio">
+
+                                            <div *ngIf="diferencia < 6" class="disableOption"></div>
+
                                             <input id="seis" [(ngModel)]="cuotas" name="cuota"
                                                 (click)="changeButtonCliente($event.target); changeButton($event.target); " 
-                                                type="radio" value="6">
+                                                type="radio" value="6" [disabled]="diferencia < 6">
                                             <div>
                                                 <div class="numBer">06</div>
                                                 <div class="mes">meses</div>
@@ -90,9 +110,12 @@
                                         </span>
                     
                                         <span class="radio">
+
+                                            <div *ngIf="diferencia < 12" class="disableOption"></div>
+
                                             <input id="doce" [(ngModel)]="cuotas" name="cuota" 
                                             (click)="changeButtonCliente($event.target); changeButton($event.target)"
-                                                type="radio" value="12">
+                                                type="radio" value="12" [disabled]="diferencia < 12">
                                             <div>
                                                 <div class="numBer">12</div>
                                                 <div class="mes">meses</div>
@@ -100,9 +123,12 @@
                                         </span>
                     
                                         <span class="radio">
+
+                                            <div *ngIf="diferencia < 18" class="disableOption"></div>
+
                                             <input id="diesiocho" [(ngModel)]="cuotas" name="cuota"
                                                 (click)="changeButtonCliente($event.target); changeButton($event.target)" 
-                                                type="radio" value="18">
+                                                type="radio" value="18" [disabled]="diferencia < 18">
                                             <div>
                                                 <div class="numBer">18</div>
                                                 <div class="mes">meses</div>
@@ -110,9 +136,12 @@
                                         </span>                                        
                     
                                         <span class="radio">
+
+                                            <div *ngIf="diferencia < 24" class="disableOption"></div>
+
                                             <input id="veinticuatro" [(ngModel)]="cuotas" name="cuota"
                                                 (click)="changeButtonCliente($event.target); changeButton($event.target)" 
-                                                type="radio" value="24">
+                                                type="radio" value="24" [disabled]="diferencia < 24">
                                             <div>
                                                 <div class="numBer">24</div>
                                                 <div class="mes">meses</div>
@@ -240,6 +269,11 @@
                                         <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
                                         </div>
 
+                                        <div *ngIf="showDetailsOne" class="contDetail">
+                                        <p class="grayParrf">Valor final:</p>
+                                        <p class="cifraBlack">$ {{valorFinal == 0 ? valorSolicitado : valorFinal | number:'1.0'}}</p>
+                                        </div>                                        
+
                                         <div *ngIf="cuotas !== 36 && showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Tasa E.A:</p>
                                             <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
@@ -345,12 +379,13 @@
                                     
                                 </div>
                                 <div class="cntBotones doNotPrint">
-                                    <button class="imprimir" (click)="onPrint()">IMPRIMIR</button>
+                                    <button class="imprimir" (click)="onPrint()" [disabled]="showAge < 18 || diferencia < 6">IMPRIMIR</button>
                                 </div>
                                 <div class="cntBotones doNotPrint" (click)="linka()">
-                                    <button>INICIAR SOLICITUD</button>
+                                    <button [disabled]="showAge < 18 || diferencia < 6">INICIAR SOLICITUD</button>
                                 </div>
-                    
+                                
+                                
                                 <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
                                     <button class="buttonAyuda">
                                         <div class="itemButton">
@@ -359,8 +394,35 @@
                                         </div>
                                     </button>
                                 </a>
+
+                                <hr>
+
+                                <div class="contCondiciones doNotPrint">
+                                        <h3>Condiciones para el cliente:</h3>
+                                        <p class="listaItem">
+                                            • Debe tener entre 18 y 75 años<br>
+                                            • Ganar más de un salario mínimo<br>
+                                            • El monto mínimo es $800.000<br>
+                                            • El monto máximo es $20.000.000<br>
+                                            • Colombiano o residente con visa e historia laboral<br>
+                                            • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
+                                        </p>
+                                </div>
+
+                                <hr>
+
+                                <div class="contCondiciones doNotPrint">
+
+                                        <h3 class="title">Clientes asalariados:</h3>
+                                            <p class="listaItem">• Continuidad laboral mínima de 12 meses.</p>
+                                        <h3 class="title">Clientes independientes:</h3>
+                                            <p class="listaItem">• Antigüedad en la actividad mínima de 12 meses</p>
+                                            
+                                </div>
                             </div>
                         </div>
+
+
                     <div class="cntPie printOk">
                         <p class="small printOk">Copyright © 2019, Banco Santander</p>
                     </div>
