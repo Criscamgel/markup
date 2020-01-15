@@ -260,7 +260,6 @@ export class HomeComponent{
     if(this.valorSolicitadoDto !== 0 && this.descuentoSlide !== 0){
       valorSolicitado = this.valorSolicitadoDto;  
     }else{
-      debugger;
       valorSolicitado = this.valorSolicitado;
       /* this.valorSolicitadoDto = 0;   */ 
     }
