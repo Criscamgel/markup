@@ -36,7 +36,7 @@
                             <div id="solicitud" class="contSolicitud">
                                 <div class="cntCalcAge">
                                 <!-- Calculadora de Edad  -->
-                                <h3>Calcula la edad del paciente</h3>
+                                <h3>Fecha de nacimiento del paciente</h3>
                                     <div class="cntCalcPaciente">
                                     <input name="agecalc" type="date" [(ngModel)]="ageCalc" (change)="ageCalculator()"/>
                                     <div class="showAge">
@@ -92,7 +92,7 @@
                                 <hr>
                     
                                 <div class="calcPdos">
-                                    <h3>¿En cuantas cuotas desea pagar el dispositivo?</h3>
+                                    <h3>¿En cuántas cuotas desea pagar el dispositivo?</h3>
                     
                                     <div class="contPeriodo">
 
@@ -180,7 +180,7 @@
                                                 name="dtoSlide"
                                                 #DtoSlide="ngModel"
                                                 id="myRange"
-                                                [disabled]="cuotas == 36 ? 'disabled' : null"
+                                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
                                                 (change)="descuento($event)"
                                                 >
                                         </div>
@@ -206,10 +206,41 @@
                                             </div> -->
                                         </div>
                                         <hr>
+
+                                        <!-- Rango de Anticipo -->
+
+                                        <p class="title">Porcentaje de cuota inicial</p>
+                                        <div class="slidecontainer doNotPrint">
+                                            <input 
+                                                type="range" 
+                                                min="{{ctaminDes}}" 
+                                                max="{{ctamaxDes}}" 
+                                                step="10"
+                                                value="0" 
+                                                class="slider"
+                                                [(ngModel)]="ctainicialSlide"
+                                                name="ctaSlide"
+                                                #DtoSlide="ngModel"
+                                                id="myRange"
+                                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                                (change)="descuento($event)"
+                                                >
+                                        </div>
+                                        <div class="contMinMax doNotPrint">
+                                            <div class="contMin">
+                                                <p class="grayParrf">Mín:</p>
+                                                <p class="cifraGray">{{ctaminDes}}%</p>
+                                            </div>
+                                            <div class="contMax doNotPrint">
+                                                <p class="grayParrf">Máx:</p>
+                                                <p class="cifraGray">{{ctamaxDes}}%</p>
+                                            </div>
+                                        </div>
+                                        <hr>
                                     </div>  
                     
                                     <div id="cuotaInicial" class="cntAprox">
-                                        <p class="grayParrf">Cuota inicial (10%):</p>
+                                        <p class="grayParrf">Cuota inicial ({{ctainicialSlide}}%):</p>
                                         <p class="cifraBlack cuotaInicial">$ {{cuotaInicial | number:'1.0'}}</p>
                     
                                         <div class="tooltip">
