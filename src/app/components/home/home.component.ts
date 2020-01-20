@@ -69,7 +69,10 @@ export class HomeComponent{
       
   }
 
-  saveMonto(val){      
+  saveMonto(val){
+    this.ctainicialSlide = 10;
+    this.descuentoSlide = 0;
+    
     this.valorSolicitado = Number(val);    
     this.changeButtonCliente(this.cuotas);
     this.changeButton(this.cuotas);      
