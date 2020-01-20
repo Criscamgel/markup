@@ -70,10 +70,11 @@ export class HomeComponent {
   }
 
   saveMonto(val) {
+    this.valorSolicitado = Number(val);
     this.ctainicialSlide = 10;
     this.descuentoSlide = 0;
+    this.valorSolicitadoDto = 0;
 
-    this.valorSolicitado = Number(val);
     this.changeButtonCliente(this.cuotas);
     this.changeButton(this.cuotas);
   }
@@ -485,7 +486,7 @@ export class HomeComponent {
         break;
 
       case 36:
-        
+
           this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
           seguro = (1200 / 1000000) * this.vlrSolSinCi;
   
