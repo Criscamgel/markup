@@ -32,7 +32,7 @@ export class HomeComponent{
 
   /* descuento; */
   vlrDto;
-  pDto = 0;
+  /* pDto = 0; */
   minDes = 0;
   maxDes = 10;
   descuentoSlide = 0;
@@ -78,36 +78,49 @@ export class HomeComponent{
     this.changeButton(this.cuotas);      
   }
 
-  descuento(val){    
+  descuento(){    
 
-    this.pDto = Number(val.srcElement.value);
-    this.valorSolicitadoDto = 0;
+    /* this.pDto = Number(val.srcElement.value); */
+    /* dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100)); */
+    /* this.valorFinal = this.valorSolicitado - dto; */    
+    /* this.valorSolicitadoDto = 0; */
     var dto = 0;  
-    dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
-    this.valorFinal = this.valorSolicitado - dto;    
     
-    if(this.pDto !== 0){
+    if(this.descuentoSlide !== 0){
     this.valorSolicitadoDto = this.valorSolicitado;
     var dto = 0;   
-    dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
+    dto = Math.round(this.valorSolicitadoDto * (this.descuentoSlide / 100));
     this.valorSolicitadoDto -= dto;
     
-
     /* Sacando la Cuota Inicial */
-    this.cuotaInicial = this.valorSolicitadoDto * (this.ctainicialSlide / 100);
-
+    this.cuotaInicial = this.valorSolicitadoDto * (Number(this.ctainicialSlide) / 100);
     this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
-    this.vlrDto = this.vlrSolSinCi - dto; 
-    this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
-    this.changeButtonCliente(this.cuotas);    
-    this.changeButton(this.cuotas);    
+    this.vlrDto = this.vlrSolSinCi - dto;
+    debugger;
+    this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / Number(this.cuotas));
+    console.log("this.vlrCuotaCliente --> ", this.vlrCuotaCliente);
+    
+
+    this.changeButtonCliente(this.cuotas);
+    this.changeButton(this.cuotas);
     
 
     }else{
-      this.valorSolicitadoDto = 0;      
+      /* this.valorSolicitadoDto = 0; */
+      this.valorSolicitadoDto = this.valorSolicitado;
+      this.valorFinal = this.valorSolicitado;
+
+      /* Sacando la Cuota Inicial */
+      this.cuotaInicial = this.valorSolicitadoDto * (Number(this.ctainicialSlide) / 100);
+      this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+      this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / Number(this.cuotas));
+      console.log("this.vlrCuotaCliente else --> ", this.vlrCuotaCliente);
+
       this.changeButtonCliente(this.cuotas);
-      this.changeButton(this.cuotas);
+      this.changeButton(this.cuotas);      
     }
+
+
   }
 
   detailsTwo(){
@@ -131,17 +144,17 @@ export class HomeComponent{
       case 6:
           this.tasa = 0;
           this.nmv = 0;
-          this.vlrSolSinCi = 0;
 
           if(this.valorSolicitadoDto === 0){
-            this.cuotaInicial = this.valorSolicitado * 0.10;
-            this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-            }else{
-            this.cuotaInicial = this.valorSolicitadoDto * 0.10;
-            this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
-            this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-            }         
+          this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
+          this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          }else{
+          this.cuotaInicial = this.valorSolicitadoDto * (Number(this.ctainicialSlide) / 100);
+          this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+          this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+          }
+                  
 
           break;
 
