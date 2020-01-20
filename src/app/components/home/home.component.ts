@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent {
 
   cuotas = 0;
-  tasa = 0.0000000000001;
+  tasa = 0.21;
   valorSolicitado = 0;
   valorSolicitadoDto = 0;
   vlrSolSinCi = 0;
@@ -22,7 +22,7 @@ export class HomeComponent {
 
   vlrCuota;
   cuatroMil = 0;
-  nmv = 0;
+  nmv = 1.6;
   costoInterez = 0;
   dtoFinancia = 0;
   inCuatroSeg = 0;
@@ -135,8 +135,6 @@ export class HomeComponent {
 
     switch (cuota) {
       case 6:
-        this.tasa = 0;
-        this.nmv = 0;
 
         if (this.valorSolicitadoDto === 0) {
           this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
@@ -151,9 +149,7 @@ export class HomeComponent {
         break;
 
       case 12:
-        this.tasa = 0;
-        this.nmv = 0;
-
+        
         if (this.valorSolicitadoDto === 0) {
           this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
@@ -167,8 +163,6 @@ export class HomeComponent {
         break;
 
       case 18:
-        this.tasa = 0;
-        this.nmv = 0;
 
         if (this.valorSolicitadoDto === 0) {
           this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
@@ -183,8 +177,6 @@ export class HomeComponent {
         break;
 
       case 24:
-        this.tasa = 0;
-        this.nmv = 0;
 
         if (this.valorSolicitadoDto === 0) {
           this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
@@ -199,56 +191,17 @@ export class HomeComponent {
         break;
 
       case 36:
+  
+          if (this.valorSolicitadoDto === 0) {
+            this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
+            this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+            this.vlrCuotaCliente = Math.round(this.vlrSolSinCi / cuota);
+          } else {
+            this.cuotaInicial = this.valorSolicitadoDto * (Number(this.ctainicialSlide) / 100);
+            this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+            this.vlrCuotaCliente = Math.round(this.vlrSolSinCi / cuota);
+          }
 
-        /* this.vlrDto = 0;
-        this.cuotas = Number(this.cuotas); */
-        /* var nmv;
-        var vlrActual;
-        var vlrCuota;
-        
-        this.tasa = 0.0604;
-        nmv = Math.pow((1 + this.tasa),(1/12))-1;
-        
-        this.descuentoSlide = 0;
-        this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial; */
-
-        /* var seguroTotal = 0.0000000000001; */
-        /* Aplicando Dto */
-
-        /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
-          this.vlrSolSinCi = this.vlrDto;  
-        } */
-
-        /* -- */
-
-        /* var vlrPartuno = vlrActual * nmv;
-        var vlrPartdos = Math.pow((1 + nmv), - cuota)
-        vlrPartdos = 1 - vlrPartdos;
-        vlrCuota = vlrPartuno / vlrPartdos;
-        vlrCuota = Math.round(vlrCuota); */
-
-        /* Valor Cuota sin seguro */
-
-        /* this.vlrCuotaSs = vlrCuota;   */
-
-        /* var vlrPartunoSeg = seguroTotal * nmv;      
-        var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-        vlrPartdosSeg = 1 - vlrPartdosSeg;
-        var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
-        seguroCta = Math.round(seguroCta); */
-
-        /* Seguro de la cuota */
-
-        /* this.seguroCta = seguroCta;
-        this.vlrCuota = Math.round(vlrCuota + seguroCta); */
-        /* this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
-
-        this.nmv = 0.643;
-        this.tasa = 7.99; */
-
-        break;
-
-      default:
         break;
     }
   }
@@ -315,11 +268,11 @@ export class HomeComponent {
         Es la suma entre el costo del interes mas seguro mas 4 * 1000
         */
         this.inCuatroSeg = 0;
-        this.tasa = 0.0000000000001;
         var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
         var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
         var numerador = this.vlrCuotaCliente * potencia;
         var resultado = numerador / nmvUno;
+        
         this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
         this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
         this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
@@ -367,7 +320,6 @@ export class HomeComponent {
           Es la suma entre el costo del interes mas seguro mas 4 * 1000
           */
           this.inCuatroSeg = 0;
-          this.tasa = 0.0000000000001;
           var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
           var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
           var numerador = this.vlrCuotaCliente * potencia;
@@ -420,7 +372,6 @@ export class HomeComponent {
           Es la suma entre el costo del interes mas seguro mas 4 * 1000
           */
           this.inCuatroSeg = 0;
-          this.tasa = 0.0000000000001;
           var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
           var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
           var numerador = this.vlrCuotaCliente * potencia;
@@ -472,7 +423,6 @@ export class HomeComponent {
           Es la suma entre el costo del interes mas seguro mas 4 * 1000
           */
           this.inCuatroSeg = 0;
-          this.tasa = 0.0000000000001;
           var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
           var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
           var numerador = this.vlrCuotaCliente * potencia;
@@ -524,7 +474,6 @@ export class HomeComponent {
           Es la suma entre el costo del interes mas seguro mas 4 * 1000
           */
           this.inCuatroSeg = 0;
-          this.tasa = 0.0000000000001;
           var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
           var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
           var numerador = this.vlrCuotaCliente * potencia;

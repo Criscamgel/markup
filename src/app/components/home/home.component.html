@@ -148,17 +148,18 @@
                                             </div>
                                         </span>
 
-                                        <!-- (click)="changeButton($event.target); changeButtonCliente($event.target)" -->
-                    
-                                        <!-- <span class="radio">
-                                            <input id="cuarentayocho" [(ngModel)]="cuotas" name="cuota"
-                                            (click)="changeButtonCliente($event.target)"                                                 
-                                                type="radio" value="36">
-                                            <div>
-                                                <div class="numBer">36</div>
-                                                <div class="mes">meses</div>
-                                            </div>
-                                        </span> -->
+                                        <span class="radio">
+
+                                                <div *ngIf="diferencia < 36 || showAge < 18" class="disableOption"></div>
+    
+                                                <input id="treintaSeis" [(ngModel)]="cuotas" name="cuotaTreintaSeis"
+                                                    (click)="changeButtonCliente($event.target); changeButton($event.target)" 
+                                                    type="radio" value="24" [disabled]="diferencia < 36 || showAge < 18">
+                                                <div>
+                                                    <div class="numBer">36</div>
+                                                    <div class="mes">meses</div>
+                                                </div>
+                                            </span>
                     
                                     </div>
 
@@ -166,8 +167,8 @@
 
                                     <!-- Slider Descuento -->
 
-                                    <div class="calcPtres">
-                                        <p class="title">Porcentaje de descuento</p>
+                                     <div class="calcPtres">
+                                    <!--    <p class="title">Porcentaje de descuento</p>
                                         <div class="slidecontainer doNotPrint">
                                             <input 
                                                 type="range" 
@@ -197,15 +198,8 @@
                                         <div class="cntAprox">
                                             <p class="grayParrf doNotPrint">Descuento:</p>
                                             <p class="cifraBlack">{{descuentoSlide}}%</p>
-            
-                                            <!-- <div class="tooltip doNotPrint">
-                                                <i class="fa fa-question-circle"></i>
-                                                <span class="tooltiptext">
-                                                    Contenido
-                                                </span>
-                                            </div> -->
                                         </div>
-                                        <hr>
+                                        <hr> -->
 
                                         <!-- Rango de Anticipo -->
 
@@ -305,9 +299,9 @@
                                         <p class="cifraBlack">$ {{valorFinal == 0 ? valorSolicitado : valorFinal | number:'1.0'}}</p>
                                         </div>                                        
 
-                                        <div *ngIf="cuotas !== 36 && showDetailsOne" class="contDetail">
+                                        <div *ngIf="showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Tasa E.A:</p>
-                                            <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
+                                            <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa * 100 }}%</p>
                                         </div>
 
                                         <div *ngIf="cuotas !== 36 && showDetailsOne" class="contDetail">
@@ -364,12 +358,12 @@
 
                                         <div *ngIf="cuotas !== 36 && showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Tasa efectivo anual:</p>
-                                            <p class="cifraBlack">{{cuotas === 36 ? 21 : 0}} %</p>
+                                            <p class="cifraBlack">{{tasa * 100}} %</p>
                                         </div>
 
                                         <div *ngIf="cuotas !== 36 && showDetailsTwo" class="contDetail">
                                             <p class="grayParrf">Tasa nominal mes vencido:</p>
-                                            <p class="cifraBlack">{{cuotas === 36 ? 1.60 : 0}} %</p>
+                                            <p class="cifraBlack">{{nmv}} %</p>
                                         </div>
 
                                         <div *ngIf ="showDetailsTwo" class="contDetail">
