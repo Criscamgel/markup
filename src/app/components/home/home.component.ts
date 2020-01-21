@@ -149,7 +149,7 @@ export class HomeComponent {
         break;
 
       case 12:
-        
+
         if (this.valorSolicitadoDto === 0) {
           this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
@@ -191,16 +191,16 @@ export class HomeComponent {
         break;
 
       case 36:
-  
-          if (this.valorSolicitadoDto === 0) {
-            this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
-            this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
-            this.vlrCuotaCliente = Math.round(this.vlrSolSinCi / cuota);
-          } else {
-            this.cuotaInicial = this.valorSolicitadoDto * (Number(this.ctainicialSlide) / 100);
-            this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
-            this.vlrCuotaCliente = Math.round(this.vlrSolSinCi / cuota);
-          }
+
+        if (this.valorSolicitadoDto === 0) {
+          this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
+          this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+          this.vlrCuotaCliente = Math.round(this.vlrSolSinCi / cuota);
+        } else {
+          this.cuotaInicial = this.valorSolicitadoDto * (Number(this.ctainicialSlide) / 100);
+          this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+          this.vlrCuotaCliente = Math.round(this.vlrSolSinCi / cuota);
+        }
 
         break;
     }
@@ -212,7 +212,7 @@ export class HomeComponent {
     let cuota = 0;
     let nmv = Math.pow((1 + this.tasa), (1 / 12)) - 1;
     let seguro;
-    var valorSolicitado = 0;
+    let valorSolicitado = 0;
 
     if (val.value) {
       cuota = Number(val.value);
@@ -232,37 +232,33 @@ export class HomeComponent {
       case 6:
 
         this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
-        seguro = (1200 / 1000000) * this.vlrSolSinCi;
+        seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
 
-        var vlrCuota;
-        var seguroTotal = Math.round(seguro * cuota);
         /* Seguro Total */
-        this.seguroTotal = seguroTotal;
+        this.seguroTotal = Math.round(seguro * cuota);
 
-
-        var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);
-        var vlrPartuno = vlrActual * nmv;
+        var vlrPartuno = this.vlrSolSinCi * nmv;
         var vlrPartdos = Math.pow((1 + nmv), - cuota)
         vlrPartdos = 1 - vlrPartdos;
-        vlrCuota = vlrPartuno / vlrPartdos;
-        vlrCuota = Math.round(vlrCuota);
-        /* Valor Cuota sin seguro */
-        this.vlrCuotaSs = vlrCuota;
+        this.vlrCuota = vlrPartuno / vlrPartdos;
+        this.vlrCuota = Math.round(this.vlrCuota);
 
-        var vlrPartunoSeg = seguroTotal * nmv;
+        /* Valor Cuota sin seguro */
+        this.vlrCuotaSs = this.vlrCuota;
+        var vlrPartunoSeg = this.seguroTotal * nmv;
         var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
         vlrPartdosSeg = 1 - vlrPartdosSeg;
-        var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-        seguroCta = Math.round(seguroCta);
+
         /* Seguro de la cuota */
-        this.seguroCta = seguroCta;
-        this.vlrCuota = Math.round(vlrCuota + seguroCta);
+        this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+
         /* Monto total */
-        this.montoTotal = Math.round(seguroTotal + vlrActual)
+        this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
 
         /* Cuatro por Mil */
         this.cuatroMil = 0;
-        this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+        this.cuatroMil = Math.round((this.vlrSolSinCi + this.seguroTotal) * 0.004)
 
         /* inCuatroSeg 
         Es la suma entre el costo del interes mas seguro mas 4 * 1000
@@ -272,7 +268,7 @@ export class HomeComponent {
         var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
         var numerador = this.vlrCuotaCliente * potencia;
         var resultado = numerador / nmvUno;
-        
+
         this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
         this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
         this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
@@ -283,206 +279,194 @@ export class HomeComponent {
 
       case 12:
 
-          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
-          seguro = (1200 / 1000000) * this.vlrSolSinCi;
-  
-          var vlrCuota;
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */
-          this.seguroTotal = seguroTotal;
-  
-  
-          var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;
-  
-          var vlrPartunoSeg = seguroTotal * nmv;
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-          /* Monto total */
-          this.montoTotal = Math.round(seguroTotal + vlrActual)
-  
-          /* Cuatro por Mil */
-          this.cuatroMil = 0;
-          this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
-  
-          /* inCuatroSeg 
-          Es la suma entre el costo del interes mas seguro mas 4 * 1000
-          */
-          this.inCuatroSeg = 0;
-          var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
-          var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
-          var numerador = this.vlrCuotaCliente * potencia;
-          var resultado = numerador / nmvUno;
-          this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
-          this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
-          this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
+        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+        seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
+
+        /* Seguro Total */
+        this.seguroTotal = Math.round(seguro * cuota);
+
+        var vlrPartuno = this.vlrSolSinCi * nmv;
+        var vlrPartdos = Math.pow((1 + nmv), - cuota)
+        vlrPartdos = 1 - vlrPartdos;
+        this.vlrCuota = vlrPartuno / vlrPartdos;
+        this.vlrCuota = Math.round(this.vlrCuota);
+
+        /* Valor Cuota sin seguro */
+        this.vlrCuotaSs = this.vlrCuota;
+        var vlrPartunoSeg = this.seguroTotal * nmv;
+        var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+        vlrPartdosSeg = 1 - vlrPartdosSeg;
+
+        /* Seguro de la cuota */
+        this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+
+        /* Monto total */
+        this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
+
+        /* Cuatro por Mil */
+        this.cuatroMil = 0;
+        this.cuatroMil = Math.round((this.vlrSolSinCi + this.seguroTotal) * 0.004)
+
+        /* inCuatroSeg 
+        Es la suma entre el costo del interes mas seguro mas 4 * 1000
+        */
+        this.inCuatroSeg = 0;
+        var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
+        var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+        var numerador = this.vlrCuotaCliente * potencia;
+        var resultado = numerador / nmvUno;
+
+        this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+        this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
+        this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
 
         break;
 
 
       case 18:
 
-          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
-          seguro = (1200 / 1000000) * this.vlrSolSinCi;
-  
-          var vlrCuota;
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */
-          this.seguroTotal = seguroTotal;
-  
-  
-          var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;
-  
-          var vlrPartunoSeg = seguroTotal * nmv;
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-          /* Monto total */
-          this.montoTotal = Math.round(seguroTotal + vlrActual)
-  
-          /* Cuatro por Mil */
-          this.cuatroMil = 0;
-          this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
-  
-          /* inCuatroSeg 
-          Es la suma entre el costo del interes mas seguro mas 4 * 1000
-          */
-          this.inCuatroSeg = 0;
-          var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
-          var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
-          var numerador = this.vlrCuotaCliente * potencia;
-          var resultado = numerador / nmvUno;
-          this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
-          this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
-          this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
+        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+        seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
+
+        /* Seguro Total */
+        this.seguroTotal = Math.round(seguro * cuota);
+
+        var vlrPartuno = this.vlrSolSinCi * nmv;
+        var vlrPartdos = Math.pow((1 + nmv), - cuota)
+        vlrPartdos = 1 - vlrPartdos;
+        this.vlrCuota = vlrPartuno / vlrPartdos;
+        this.vlrCuota = Math.round(this.vlrCuota);
+
+        /* Valor Cuota sin seguro */
+        this.vlrCuotaSs = this.vlrCuota;
+        var vlrPartunoSeg = this.seguroTotal * nmv;
+        var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+        vlrPartdosSeg = 1 - vlrPartdosSeg;
+
+        /* Seguro de la cuota */
+        this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+
+        /* Monto total */
+        this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
+
+        /* Cuatro por Mil */
+        this.cuatroMil = 0;
+        this.cuatroMil = Math.round((this.vlrSolSinCi + this.seguroTotal) * 0.004)
+
+        /* inCuatroSeg 
+        Es la suma entre el costo del interes mas seguro mas 4 * 1000
+        */
+        this.inCuatroSeg = 0;
+        var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
+        var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+        var numerador = this.vlrCuotaCliente * potencia;
+        var resultado = numerador / nmvUno;
+
+        this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+        this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
+        this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
 
         break;
 
       case 24:
 
-          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
-          seguro = (1200 / 1000000) * this.vlrSolSinCi;
-  
-          var vlrCuota;
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */
-          this.seguroTotal = seguroTotal;
-  
-  
-          var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;
-  
-          var vlrPartunoSeg = seguroTotal * nmv;
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-          /* Monto total */
-          this.montoTotal = Math.round(seguroTotal + vlrActual)
-  
-          /* Cuatro por Mil */
-          this.cuatroMil = 0;
-          this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
-  
-          /* inCuatroSeg 
-          Es la suma entre el costo del interes mas seguro mas 4 * 1000
-          */
-          this.inCuatroSeg = 0;
-          var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
-          var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
-          var numerador = this.vlrCuotaCliente * potencia;
-          var resultado = numerador / nmvUno;
-          this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
-          this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
-          this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
+        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+        seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
+
+        /* Seguro Total */
+        this.seguroTotal = Math.round(seguro * cuota);
+
+        var vlrPartuno = this.vlrSolSinCi * nmv;
+        var vlrPartdos = Math.pow((1 + nmv), - cuota)
+        vlrPartdos = 1 - vlrPartdos;
+        this.vlrCuota = vlrPartuno / vlrPartdos;
+        this.vlrCuota = Math.round(this.vlrCuota);
+
+        /* Valor Cuota sin seguro */
+        this.vlrCuotaSs = this.vlrCuota;
+        var vlrPartunoSeg = this.seguroTotal * nmv;
+        var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+        vlrPartdosSeg = 1 - vlrPartdosSeg;
+
+        /* Seguro de la cuota */
+        this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+
+        /* Monto total */
+        this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
+
+        /* Cuatro por Mil */
+        this.cuatroMil = 0;
+        this.cuatroMil = Math.round((this.vlrSolSinCi + this.seguroTotal) * 0.004)
+
+        /* inCuatroSeg 
+        Es la suma entre el costo del interes mas seguro mas 4 * 1000
+        */
+        this.inCuatroSeg = 0;
+        var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
+        var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+        var numerador = this.vlrCuotaCliente * potencia;
+        var resultado = numerador / nmvUno;
+
+        this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+        this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
+        this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
 
         break;
 
       case 36:
 
-          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
-          seguro = (1200 / 1000000) * this.vlrSolSinCi;
-  
-          var vlrCuota;
-          var seguroTotal = Math.round(seguro * cuota);
-          /* Seguro Total */
-          this.seguroTotal = seguroTotal;
-  
-  
-          var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);
-          var vlrPartuno = vlrActual * nmv;
-          var vlrPartdos = Math.pow((1 + nmv), - cuota)
-          vlrPartdos = 1 - vlrPartdos;
-          vlrCuota = vlrPartuno / vlrPartdos;
-          vlrCuota = Math.round(vlrCuota);
-          /* Valor Cuota sin seguro */
-          this.vlrCuotaSs = vlrCuota;
-  
-          var vlrPartunoSeg = seguroTotal * nmv;
-          var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
-          vlrPartdosSeg = 1 - vlrPartdosSeg;
-          var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-          seguroCta = Math.round(seguroCta);
-          /* Seguro de la cuota */
-          this.seguroCta = seguroCta;
-          this.vlrCuota = Math.round(vlrCuota + seguroCta);
-          /* Monto total */
-          this.montoTotal = Math.round(seguroTotal + vlrActual)
-  
-          /* Cuatro por Mil */
-          this.cuatroMil = 0;
-          this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
-  
-          /* inCuatroSeg 
-          Es la suma entre el costo del interes mas seguro mas 4 * 1000
-          */
-          this.inCuatroSeg = 0;
-          var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
-          var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
-          var numerador = this.vlrCuotaCliente * potencia;
-          var resultado = numerador / nmvUno;
-          this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
-          this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
-          this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
-          this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
+        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+        seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
+
+        /* Seguro Total */
+        this.seguroTotal = Math.round(seguro * cuota);
+
+        var vlrPartuno = this.vlrSolSinCi * nmv;
+        var vlrPartdos = Math.pow((1 + nmv), - cuota)
+        vlrPartdos = 1 - vlrPartdos;
+        this.vlrCuota = vlrPartuno / vlrPartdos;
+        this.vlrCuota = Math.round(this.vlrCuota);
+
+        /* Valor Cuota sin seguro */
+        this.vlrCuotaSs = this.vlrCuota;
+        var vlrPartunoSeg = this.seguroTotal * nmv;
+        var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+        vlrPartdosSeg = 1 - vlrPartdosSeg;
+
+        /* Seguro de la cuota */
+        this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+
+        /* Monto total */
+        this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
+
+        /* Cuatro por Mil */
+        this.cuatroMil = 0;
+        this.cuatroMil = Math.round((this.vlrSolSinCi + this.seguroTotal) * 0.004)
+
+        /* inCuatroSeg 
+        Es la suma entre el costo del interes mas seguro mas 4 * 1000
+        */
+        this.inCuatroSeg = 0;
+        var nmvUno = Math.pow((1 + this.tasa), (1 / 12)) - 1;
+        var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+        var numerador = this.vlrCuotaCliente * potencia;
+        var resultado = numerador / nmvUno;
+
+        this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+        this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+        this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
+        this.vlrSolSinCiSinDto = this.valorSolicitado - this.cuotaInicial;
 
         break;
 

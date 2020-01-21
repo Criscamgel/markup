@@ -154,7 +154,7 @@
     
                                                 <input id="treintaSeis" [(ngModel)]="cuotas" name="cuotaTreintaSeis"
                                                     (click)="changeButtonCliente($event.target); changeButton($event.target)" 
-                                                    type="radio" value="24" [disabled]="diferencia < 36 || showAge < 18">
+                                                    type="radio" value="36" [disabled]="diferencia < 36 || showAge < 18">
                                                 <div>
                                                     <div class="numBer">36</div>
                                                     <div class="mes">meses</div>
@@ -254,20 +254,10 @@
                                     <div class="cntAprox">
                                         <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
                                             (incluye seguro de vida)</p>
-                                        <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>                                        
+                                        <p class="cifraBlack">$ {{vlrCuota | number:'1.0'}}</p>                                        
                     
                                         <div class="tooltip doNotPrint">
                                             <i class="fa fa-question-circle" (click)="details()"></i>
-                                            <!-- <span class="tooltiptext">
-                                                <div class="titleTooltip">Monto a financiar:</div><strong>$ {{vlrSolSinCi | number:'1.0'}}</strong><br>
-                                                <div class="titleTooltip">Valor cuota sin seguro:</div><strong>$ {{vlrCuotaSs | number:'1.0'}}</strong><br>
-                                                <div class="titleTooltip">Costo total del seguro:</div><strong>$ {{seguroTotal | number:'1.0'}}</strong><br>
-                                                <div class="titleTooltip">Cuota mensual del seguro:</div><strong>$ {{seguroCta | number:'1.0'}}</strong><br>
-                                                <div class="titleTooltip">Monto total a financiar:</div><strong>$ {{montoTotal | number:'1.0'}}</strong><br>
-                                                <div class="titleTooltip">4*1000:</div><strong>$ {{cuatroMil | number:'1.0'}}</strong><br>                                                
-                                                <div class="titleTooltip">Tasa Aplicada:<strong><br> 21% </strong>E.A</div>
-                                                <div class="titleTooltip"><strong> 1.6 </strong>NMV</div><br>
-                                            </span> -->
                                         </div>
                     
                                     </div>
@@ -276,38 +266,33 @@
 
                                     <div class="cntAprox details" *ngIf="showDetails">
                                         <div class="tooltip">
-                                            <i class="fa fa-question-circle" (click)="detailsTwo()"></i>
+                                            <i class="fa fa-question-circle"></i>
                                         </div>
 
                                         <div *ngIf="showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Monto a financiar:</p>
                                             <p class="cifraBlack">$ {{vlrSolSinCi | number:'1.0'}}</p>
                                         </div>
+                                        
+                                        <div *ngIf="showDetailsOne" class="contDetail">
+                                                <p class="grayParrf">Valor de la cuota sin seguro:</p>
+                                                <p class="cifraBlack">$ {{vlrCuotaSs | number:'1.0'}}</p>
+                                        </div>
 
                                         <div *ngIf="showDetailsOne" class="contDetail">
                                             <p class="grayParrf">Valor del seguro:</p>
-                                            <p class="cifraBlack">Gratis</p>
+                                            <p class="cifraBlack">$ {{seguroTotal | number:'1.0'}}</p>
                                         </div>
 
                                         <div *ngIf="showDetailsOne" class="contDetail">
-                                        <p class="grayParrf">Valor de la cuota:</p>
-                                        <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
+                                            <p class="grayParrf">Cuota mensual del seguro:</p>
+                                            <p class="cifraBlack">$ {{seguroCta | number:'1.0'}}</p>
                                         </div>
 
                                         <div *ngIf="showDetailsOne" class="contDetail">
-                                        <p class="grayParrf">Valor final:</p>
-                                        <p class="cifraBlack">$ {{valorFinal == 0 ? valorSolicitado : valorFinal | number:'1.0'}}</p>
-                                        </div>                                        
-
-                                        <div *ngIf="showDetailsOne" class="contDetail">
-                                            <p class="grayParrf">Tasa E.A:</p>
-                                            <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa * 100 }}%</p>
-                                        </div>
-
-                                        <div *ngIf="cuotas !== 36 && showDetailsOne" class="contDetail">
-                                            <p class="grayParrf">Tasa NMV</p>
-                                            <p class="cifraBlack">{{nmv}}%</p>
-                                        </div>                                        
+                                            <p class="grayParrf">Monto total a financiar:</p>
+                                            <p class="cifraBlack">$ {{montoTotal | number:'1.0'}}</p>
+                                        </div>                            
 
                                         <!-- Detalle Segundo grado -->
 
@@ -404,10 +389,10 @@
                                     
                                 </div>
                                 <div class="cntBotones doNotPrint">
-                                    <button class="imprimir" (click)="onPrint()" [disabled]="showAge < 18 || diferencia < 6">IMPRIMIR</button>
+                                    <button class="imprimir" (click)="onPrint()" [disabled]="showAge < 18 || diferencia < 6 || valorSolicitado == 0 || cuotas == 0">IMPRIMIR</button>
                                 </div>
                                 <div class="cntBotones doNotPrint" (click)="linka()">
-                                    <button [disabled]="showAge < 18 || diferencia < 6">INICIAR SOLICITUD</button>
+                                    <button [disabled]="showAge < 18 || diferencia < 6 || valorSolicitado == 0 || cuotas == 0">INICIAR SOLICITUD</button>
                                 </div>
                                 
                                 
