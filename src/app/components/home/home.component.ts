@@ -20,7 +20,7 @@ export class HomeComponent {
   showAge = 0;
   diferencia = 0;
 
-  vlrCuota;
+  vlrCuota = 0;
   cuatroMil = 0;
   nmv = 1.6;
   costoInterez = 0;
@@ -36,7 +36,7 @@ export class HomeComponent {
   minDes = 0;
   maxDes = 10;
   descuentoSlide = 0;
-  montoTotal;
+  montoTotal = 0;
   cuotaInicial = 0;
 
   /* Cuota inicial Slide */
@@ -251,7 +251,7 @@ export class HomeComponent {
 
         /* Seguro de la cuota */
         this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+        this.vlrCuota = Math.round(this.vlrCuota + this.seguroCta);
 
         /* Monto total */
         this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
@@ -299,7 +299,8 @@ export class HomeComponent {
 
         /* Seguro de la cuota */
         this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+        this.seguroCta = Math.round(this.seguroCta);
+        this.vlrCuota = Math.round(this.vlrCuota + this.seguroCta);
 
         /* Monto total */
         this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
@@ -328,7 +329,7 @@ export class HomeComponent {
 
       case 18:
 
-        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
         seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
 
         /* Seguro Total */
@@ -348,7 +349,8 @@ export class HomeComponent {
 
         /* Seguro de la cuota */
         this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+        this.seguroCta = Math.round(this.seguroCta);
+        this.vlrCuota = Math.round(this.vlrCuota + this.seguroCta);
 
         /* Monto total */
         this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
@@ -376,7 +378,7 @@ export class HomeComponent {
 
       case 24:
 
-        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
         seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
 
         /* Seguro Total */
@@ -396,7 +398,8 @@ export class HomeComponent {
 
         /* Seguro de la cuota */
         this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+        this.seguroCta = Math.round(this.seguroCta);
+        this.vlrCuota = Math.round(this.vlrCuota + this.seguroCta);
 
         /* Monto total */
         this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
@@ -424,7 +427,7 @@ export class HomeComponent {
 
       case 36:
 
-        this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+          this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
         seguro = (1200 / 1000000) * Math.round(this.vlrSolSinCi);
 
         /* Seguro Total */
@@ -444,7 +447,8 @@ export class HomeComponent {
 
         /* Seguro de la cuota */
         this.seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
-        this.vlrCuota = Math.round(this.vlrCuota + Math.round(this.seguroCta));
+        this.seguroCta = Math.round(this.seguroCta);
+        this.vlrCuota = Math.round(this.vlrCuota + this.seguroCta);
 
         /* Monto total */
         this.montoTotal = Math.round(this.seguroTotal + this.vlrSolSinCi)
