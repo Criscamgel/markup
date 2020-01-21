@@ -34,19 +34,19 @@
 
                                               
                             <div id="solicitud" class="contSolicitud">
-                                <!-- <div class="cntCalcAge"> -->
-                                <!-- Calculadora de Edad  -->
-                                <!-- <h3>Fecha de nacimiento del paciente</h3>
+                                <div class="cntCalcAge">
+                                Calculadora de Edad 
+                                <h3>Fecha de nacimiento del paciente</h3>
                                     <div class="cntCalcPaciente">
                                     <input name="agecalc" type="date" [(ngModel)]="ageCalc" (change)="ageCalculator()"/>
                                     <div class="showAge">
                                     {{showAge}} años
-                                    </div> -->
+                                    </div>
                                     <!-- <div>{{diferencia}}</div> -->
-                                <!-- </div>
+                                </div>
                                 </div>
 
-                                <hr> -->
+                                <hr>
 
                                 <!--  -->
 
@@ -98,11 +98,11 @@
 
                                         <span class="radio">
 
-                                            <!-- <div *ngIf="diferencia < 6 || showAge < 18" class="disableOption"></div> -->
+                                            <div *ngIf="diferencia < 6 || showAge < 18" class="disableOption"></div>
 
                                             <input id="seis" [(ngModel)]="cuotas" name="cuota"
                                                 (click)="changeButtonCliente($event.target); changeButton($event.target); " 
-                                                type="radio" value="6">
+                                                type="radio" value="6" [disabled]="diferencia < 6 || showAge < 18">
                                             <div>
                                                 <div class="numBer">06</div>
                                                 <div class="mes">meses</div>
@@ -111,11 +111,11 @@
                     
                                         <span class="radio">
 
-                                            <!-- <div *ngIf="diferencia < 12 || showAge < 18" class="disableOption"></div> -->
+                                            <div *ngIf="diferencia < 12 || showAge < 18" class="disableOption"></div>
 
                                             <input id="doce" [(ngModel)]="cuotas" name="cuotaDoce" 
                                             (click)="changeButtonCliente($event.target); changeButton($event.target)"
-                                                type="radio" value="12">
+                                                type="radio" value="12" [disabled]="diferencia < 12 || showAge < 18">
                                             <div>
                                                 <div class="numBer">12</div>
                                                 <div class="mes">meses</div>
@@ -124,11 +124,11 @@
                     
                                         <span class="radio">
 
-                                            <!-- <div *ngIf="diferencia < 18 || showAge < 18" class="disableOption"></div> -->
+                                            <div *ngIf="diferencia < 18 || showAge < 18" class="disableOption"></div>
 
                                             <input id="diesiocho" [(ngModel)]="cuotas" name="cuotaDiezOcho"
                                                 (click)="changeButtonCliente($event.target); changeButton($event.target)" 
-                                                type="radio" value="18">
+                                                type="radio" value="18" [disabled]="diferencia < 18 || showAge < 18">
                                             <div>
                                                 <div class="numBer">18</div>
                                                 <div class="mes">meses</div>
@@ -137,11 +137,11 @@
                     
                                         <span class="radio">
 
-                                            <!-- <div *ngIf="diferencia < 24 || showAge < 18" class="disableOption"></div> -->
+                                            <div *ngIf="diferencia < 24 || showAge < 18" class="disableOption"></div>
 
                                             <input id="veinticuatro" [(ngModel)]="cuotas" name="cuotaVeinteCuatro"
                                                 (click)="changeButtonCliente($event.target); changeButton($event.target)" 
-                                                type="radio" value="24">
+                                                type="radio" value="24" [disabled]="diferencia < 24 || showAge < 18">
                                             <div>
                                                 <div class="numBer">24</div>
                                                 <div class="mes">meses</div>
@@ -410,10 +410,10 @@
                                     
                                 </div>
                                 <div class="cntBotones doNotPrint">
-                                    <button class="imprimir" (click)="onPrint()" [disabled]="valorSolicitado === 0 || cuotas === 0">IMPRIMIR</button>
+                                    <button class="imprimir" (click)="onPrint()" [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
                                 </div>
                                 <div class="cntBotones doNotPrint" (click)="linka()">
-                                    <button [disabled]="valorSolicitado === 0 || cuotas === 0">INICIAR SOLICITUD</button>
+                                    <button [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR SOLICITUD</button>
                                 </div>
                                 
                                 
