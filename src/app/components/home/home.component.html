@@ -88,17 +88,19 @@
                             </div>
                         </div>
 
-                        <div class="opcion">
-                            <h3>Gama Advance</h3>
-                            <app-edit-input [data]='vlrTres'
-                                (change)="saveMonto($event.target.value); checkTres = true; vlrTres = $event.target.value; valorSolicitado = $event.target.value">
-                            </app-edit-input>
-                            <div class="btnSeleccionar">
-                                <input id="advance" name="gama" (click)="saveMonto($event.target.value)" type="radio"
-                                    value="{{vlrTres}}" [checked]="checkTres">
-                                <div>SELECCIONAR</div>
-                            </div>
-                        </div>
+                                              
+                            <div id="solicitud" class="contSolicitud">
+                                <div class="cntCalcAge">
+                                Calculadora de Edad 
+                                <h3>Fecha de nacimiento del paciente</h3>
+                                    <div class="cntCalcPaciente">
+                                    <input name="agecalc" type="date" [(ngModel)]="ageCalc" (change)="ageCalculator()"/>
+                                    <div class="showAge">
+                                    {{showAge}} años
+                                    </div>
+                                    <!-- <div>{{diferencia}}</div> -->
+                                </div>
+                                </div>
 
                         <div class="opcion">
                             <h3>Gama Premium</h3>
@@ -189,31 +191,39 @@
 
                         <hr>
 
-                        <!-- Slider Descuento -->
-
-                        <div class="calcPtres">
-                            <p class="title">Porcentaje de descuento</p>
-                            <div class="slidecontainer doNotPrint">
-                                <input type="range" min="{{minDes}}" max="{{maxDes}}" step="1" value="0" class="slider"
-                                    [(ngModel)]="descuentoSlide" name="dtoSlide" #DtoSlide="ngModel" id="myRange"
-                                    [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                    (change)="descuento($event)">
-                            </div>
-                            <div class="contMinMax doNotPrint">
-                                <div class="contMin">
-                                    <p class="grayParrf">Mín:</p>
-                                    <p class="cifraGray">{{minDes}}%</p>
-                                </div>
-                                <div class="contMax doNotPrint">
-                                    <p class="grayParrf">Máx:</p>
-                                    <p class="cifraGray">{{maxDes}}%</p>
-                                </div>
-                            </div>
-                            <div class="cntAprox">
-                                <p class="grayParrf doNotPrint">Descuento:</p>
-                                <p class="cifraBlack">{{descuentoSlide}}%</p>
-
-                                <!-- <div class="tooltip doNotPrint">
+                                    <div class="calcPtres">
+                                        <p class="title">Porcentaje de descuento</p>
+                                        <div class="slidecontainer doNotPrint">
+                                            <input 
+                                                type="range" 
+                                                min="{{minDes}}" 
+                                                max="{{maxDes}}" 
+                                                step="1"
+                                                value="0" 
+                                                class="slider"
+                                                [(ngModel)]="descuentoSlide"
+                                                name="dtoSlide"
+                                                #DtoSlide="ngModel"
+                                                id="myRange"
+                                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                                (change)="descuento()"
+                                                >
+                                        </div>
+                                        <div class="contMinMax doNotPrint">
+                                            <div class="contMin">
+                                                <p class="grayParrf">Mín:</p>
+                                                <p class="cifraGray">{{minDes}}%</p>
+                                            </div>
+                                            <div class="contMax doNotPrint">
+                                                <p class="grayParrf">Máx:</p>
+                                                <p class="cifraGray">{{maxDes}}%</p>
+                                            </div>
+                                        </div>
+                                        <div class="cntAprox">
+                                            <p class="grayParrf doNotPrint">Descuento:</p>
+                                            <p class="cifraBlack">{{descuentoSlide}}%</p>
+            
+                                            <!-- <div class="tooltip doNotPrint">
                                                 <i class="fa fa-question-circle"></i>
                                                 <span class="tooltiptext">
                                                     Contenido
@@ -224,32 +234,42 @@
 
                             <!-- Rango de Anticipo -->
 
-                            <p class="title">Porcentaje de cuota inicial</p>
-                            <div class="slidecontainer doNotPrint">
-                                <input type="range" min="{{ctaminDes}}" max="{{ctamaxDes}}" step="10" value="0"
-                                    class="slider" [(ngModel)]="ctainicialSlide" name="ctaSlide" #DtoSlide="ngModel"
-                                    id="myRange" [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                    (change)="descuento($event)">
-                            </div>
-                            <div class="contMinMax doNotPrint">
-                                <div class="contMin">
-                                    <p class="grayParrf">Mín:</p>
-                                    <p class="cifraGray">{{ctaminDes}}%</p>
-                                </div>
-                                <div class="contMax doNotPrint">
-                                    <p class="grayParrf">Máx:</p>
-                                    <p class="cifraGray">{{ctamaxDes}}%</p>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-
-                        <div id="cuotaInicial" class="cntAprox">
-                            <p class="grayParrf">Cuota inicial ({{ctainicialSlide}}%):</p>
-                            <p class="cifraBlack cuotaInicial">$ {{cuotaInicial | number:'1.0'}}</p>
-
-                            <div class="tooltip">
-                                <!-- <i class="fa fa-question-circle"></i>
+                                        <p class="title">Porcentaje de cuota inicial</p>
+                                        <div class="slidecontainer doNotPrint">
+                                            <input 
+                                                type="range" 
+                                                min="{{ctaminDes}}" 
+                                                max="{{ctamaxDes}}" 
+                                                step="10"
+                                                value="0" 
+                                                class="slider"
+                                                [(ngModel)]="ctainicialSlide"
+                                                name="ctaSlide"
+                                                #DtoSlide="ngModel"
+                                                id="myRange"
+                                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                                (change)="descuento()"
+                                                >
+                                        </div>
+                                        <div class="contMinMax doNotPrint">
+                                            <div class="contMin">
+                                                <p class="grayParrf">Mín:</p>
+                                                <p class="cifraGray">{{ctaminDes}}%</p>
+                                            </div>
+                                            <div class="contMax doNotPrint">
+                                                <p class="grayParrf">Máx:</p>
+                                                <p class="cifraGray">{{ctamaxDes}}%</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>  
+                    
+                                    <div id="cuotaInicial" class="cntAprox">
+                                        <p class="grayParrf">Cuota inicial ({{ctainicialSlide}}%):</p>
+                                        <p class="cifraBlack cuotaInicial">$ {{cuotaInicial | number:'1.0'}}</p>
+                    
+                                        <div class="tooltip">
+                                            <!-- <i class="fa fa-question-circle"></i>
                                             <span class="tooltiptext">
                                                 <div class="titleTooltip">Valor cuota sin seguro:</div><strong>$ {{vlrCuotaSs | number:'1.0'}}</strong><br>
                                                 <div class="titleTooltip">Costo total del seguro:</div><strong>$ {{seguroTotal | number:'1.0'}}</strong><br>
@@ -333,10 +353,15 @@
                                                 <p class="cifraBlack">{{tasa === 0.0000000000001 ? 0 : tasa}}%</p>
                                         </div> -->
 
-                            <div *ngIf="showDetailsTwo" class="contDetail">
-                                <p class="grayParrf">Valor audífono con cuota inicial:</p>
-                                <p class="cifraBlack">$ {{vlrSolSinCiSinDto | number:'1.0'}}</p>
-                            </div>
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                                <p class="grayParrf">Valor audífono con cuota inicial:</p>
+                                                <p class="cifraBlack">$ {{vlrSolConCiSinDto | number:'1.0'}}</p>
+                                        </div>
+    
+                                        <div *ngIf ="showDetailsTwo" class="contDetail">
+                                            <p class="grayParrf">Descuento Gaes:</p>
+                                            <p class="cifraBlack">{{descuentoSlide}} %</p>
+                                        </div>
 
                             <div *ngIf="showDetailsTwo" class="contDetail">
                                 <p class="grayParrf">Descuento Gaes:</p>
@@ -399,7 +424,36 @@
                             </div>
 
 
-                        </div>
+                                    <!-- Detalles -->
+                                                 
+                                    <span class="tooltipPrint doNotPrint">
+                                        <hr>
+                                        <div class="titleTooltip">Monto a financiar:</div><strong>$ {{vlrSolSinCi | number:'1.0'}}</strong><br>
+                                        <div class="titleTooltip">Valor cuota sin seguro:</div><strong>$ {{vlrCuotaSs | number:'1.0'}}</strong><br>
+                                        <div class="titleTooltip">Costo total del seguro:</div><strong>$ {{seguroTotal | number:'1.0'}}</strong><br>
+                                        <div class="titleTooltip">Cuota mensual del seguro:</div><strong>$ {{seguroCta | number:'1.0'}}</strong><br>
+                                        <div class="titleTooltip">Monto total a financiar:</div><strong>$ {{montoTotal | number:'1.0'}}</strong><br>
+                                        <div class="titleTooltip">Tasa Aplicada:<strong><br> 21% </strong>E.A</div>
+                                        <div class="titleTooltip"><strong> 1.6 </strong>NMV</div><br>
+                                    </span>
+                                    
+                                </div>
+                                <div class="cntBotones doNotPrint">
+                                    <button class="imprimir" (click)="onPrint()" [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
+                                </div>
+                                <div class="cntBotones doNotPrint" (click)="linka()">
+                                    <button [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR SOLICITUD</button>
+                                </div>
+                                
+                                
+                                <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
+                                    <button class="buttonAyuda">
+                                        <div class="itemButton">
+                                            <i class="fa fa-question-circle"></i>
+                                            <p class="bigTitle">AYUDA</p>
+                                        </div>
+                                    </button>
+                                </a>
 
                         <!-- Detalles -->
 
