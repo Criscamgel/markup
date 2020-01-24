@@ -9,78 +9,101 @@
   font-family: 'montserrat', 'montserratBold';
 }
 
-.contenido .contenidoFluido {
+.contenedor {
   width: 100%;
+  display: grid;
+  grid-template-columns: 20px auto 20px;
+  grid-auto-rows: auto;
   margin: 0 auto;
   /* Media Querys */
 }
 
-@media only screen and (max-width: 575.98px) {
-  .contenido .contenidoFluido {
-    margin-left: auto;
-    margin-right: auto;
-  }
+.contenedor .contenido {
+  grid-column: 2;
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .contenido .contenidoFluido {
+  .contenedor {
     max-width: 540px;
   }
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
-  .contenido .contenidoFluido {
+  .contenedor {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .contenido .contenidoFluido {
+  .contenedor {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .contenido .contenidoFluido {
+  .contenedor {
     max-width: 1140px;
   }
 }
 
-.pPal {
+.fondoFondo {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.fondoImagen {
+  background-image: url(../assets/img/fondo.png);
+}
+
+.fondoBlanco {
+  background-color: white;
+}
+
+.logos {
+  grid-column: 2;
   display: grid;
+  grid-template-columns: repeat(1fr, 6);
 }
 
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .pPal {
-    grid-auto-rows: auto;
-    background: url(../assets/img/fondo.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    display: grid;
-    background-size: 100%;
-  }
+.fondoLogo {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80% auto;
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .pPal {
-    grid-auto-rows: auto;
-    background: url(../assets/img/fondo.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    display: grid;
-    background-size: 100%;
-  }
+.logoSantander {
+  background-image: url(../assets/img/logoSantander.png);
 }
 
-@media (min-width: 1200px) {
-  .pPal {
-    grid-auto-rows: auto;
-    background: url(../assets/img/fondo.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    display: grid;
-    background-size: 100%;
-  }
+.logoGaes {
+  background-image: url(../assets/img/LogoGaes.png);
+}
+
+.dosColumnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dosColumnas .columnaUno {
+  grid-column: 1;
+}
+
+.dosColumnas .columnaDos {
+  grid-column: 2;
+}
+
+.tresColumnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tresColumnas .columnaUno {
+  grid-column: 1;
+}
+
+.tresColumnas .columnaDos {
+  grid-column: 2;
 }
 
 .sEncabezado {
@@ -92,8 +115,6 @@
     display: block;
     color: white;
     font-size: 10px;
-    margin: 0px 8%;
-    padding: 1% 0px;
   }
 }
 
@@ -102,8 +123,6 @@
     display: block;
     color: white;
     font-size: 10px;
-    margin: 0px 8%;
-    padding: 1% 4%;
   }
 }
 
@@ -112,8 +131,6 @@
     display: block;
     color: white;
     font-size: 10px;
-    margin: 0px 8%;
-    padding: 1% 4%;
   }
 }
 
@@ -148,16 +165,6 @@
     margin: 5% 0px 15% 10%;
     color: white;
     grid-gap: 0px 80px;
-  }
-}
-
-.encabezadoText .vivamus {
-  display: none;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .encabezadoText .vivamus {
-    display: block;
   }
 }
 
@@ -211,8 +218,24 @@ h1 {
   margin: 20px 0px;
 }
 
-h3 {
-  font-size: 11px;
+@media (min-width: 767.98px) and (max-width: 991.98px) {
+  h3 {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
 }
 
 hr {
@@ -241,174 +264,26 @@ button {
   font-family: montserrat;
 }
 
-.encabezado {
-  background-color: #4CB2DD;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .encabezado {
-    grid-template-columns: repeat(6, 1fr);
-    background-color: white;
-    padding: 0px 8%;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .encabezado {
-    grid-template-columns: repeat(6, 1fr);
-    background-color: white;
-    padding: 0px 10%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .encabezado {
-    grid-template-columns: repeat(6, 1fr);
-    background-color: white;
-    padding: 0px 10%;
-  }
-}
-
-.encabezado .gaesLogoM {
-  grid-column: 1;
-  justify-self: center;
-  align-self: center;
-  width: 50%;
-  padding: 3%;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .encabezado .gaesLogoM {
-    display: none;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .encabezado .gaesLogoM {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  .encabezado .gaesLogoM {
-    display: none;
-  }
-}
-
-.encabezado .santanderLogoM {
-  grid-column: 2;
-  align-self: center;
-  justify-self: center;
-  width: 75%;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .encabezado .santanderLogoM {
-    display: none;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .encabezado .santanderLogoM {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  .encabezado .santanderLogoM {
-    display: none;
-  }
-}
-
-.encabezado .gaesLogo {
-  display: none;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .encabezado .gaesLogo {
-    display: block;
-    align-self: center;
-    justify-self: center;
-    width: 80%;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .encabezado .gaesLogo {
-    display: block;
-    align-self: center;
-    justify-self: center;
-    width: 80%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .encabezado .gaesLogo {
-    display: block;
-    align-self: center;
-    justify-self: center;
-    width: 80%;
-  }
-}
-
-.encabezado .santanderLogo {
-  display: none;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .encabezado .santanderLogo {
-    display: block;
-    align-self: center;
-    justify-self: center;
-    width: 100%;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .encabezado .santanderLogo {
-    display: block;
-    align-self: center;
-    justify-self: center;
-    width: 100%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .encabezado .santanderLogo {
-    display: block;
-    align-self: center;
-    justify-self: center;
-    width: 100%;
-  }
-}
-
 /* Opciones */
 .contSolicitud {
   border-radius: 5px;
   box-shadow: 0 0 6px #c8c8c8;
-  margin: 0px 6% 6%;
-  padding: 5%;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
   .contSolicitud {
-    margin: -4% 6% 0;
     box-shadow: none;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .contSolicitud {
-    margin: 0% 6% 0;
     box-shadow: none;
   }
 }
 
 @media (min-width: 1200px) {
   .contSolicitud {
-    margin: 0% 6% 0;
     box-shadow: none;
   }
 }
@@ -417,7 +292,7 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
-  grid-gap: 10px;
+  grid-gap: 50px;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
@@ -454,77 +329,55 @@ button {
   }
 }
 
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .cntOpciones .opcion h3 {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .cntOpciones .opcion h3 {
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .cntOpciones .opcion h3 {
-    font-size: 18px;
-  }
-}
-
-.cntOpciones .opcion .precio {
+.cntOpciones .precio {
   color: #4CB2DD;
   font-size: 11px;
   font-family: montserratBold;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
-  .cntOpciones .opcion .precio {
+  .cntOpciones .precio {
     font-size: 15px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .cntOpciones .opcion .precio {
+  .cntOpciones .precio {
     font-size: 22px;
   }
 }
 
 @media (min-width: 1200px) {
-  .cntOpciones .opcion .precio {
+  .cntOpciones .precio {
     font-size: 22px;
   }
 }
 
-.cntOpciones .opcion .btnSeleccionar button {
+.cntOpciones .btnSeleccionar button {
   background-color: #4CB2DD;
   border: none;
   border-radius: 6px;
   color: white;
   font-size: 9px;
-  padding: 5% 15% 5% 15%;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
-  .cntOpciones .opcion .btnSeleccionar button {
+  .cntOpciones .btnSeleccionar button {
     width: 100%;
-    padding: 3% 15% 3% 15%;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .cntOpciones .opcion .btnSeleccionar button {
+  .cntOpciones .btnSeleccionar button {
     font-size: 15px;
     border-radius: 10px;
-    padding: 3% 15% 3% 15%;
   }
 }
 
 @media (min-width: 1200px) {
-  .cntOpciones .opcion .btnSeleccionar button {
+  .cntOpciones .btnSeleccionar button {
     font-size: 15px;
     border-radius: 10px;
-    padding: 3% 15% 3% 15%;
   }
 }
 
@@ -532,7 +385,6 @@ button {
   display: grid;
   grid-auto-columns: auto;
   grid-template-rows: auto;
-  margin: 10px 0px 10px 0px;
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -697,62 +549,6 @@ input[type=radio]:checked + div {
   }
 }
 
-/* End Radio Buttons */
-/* tooltip */
-/* .tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 170px;
-    background-color: #000000c9;
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 110;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -160px;
-    opacity: 0;
-    transition: opacity 1s;
-    font-size: 12px;
-    padding: 80%;
-}
-
-.tooltip:after {
-    position: absolute;
-    bottom: 80%;
-    left: 50%;
-    margin-left: -5px;
-    width: 0;
-    border-top: 5px solid #000;
-    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    content: " ";
-    font-size: 0;
-    line-height: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-
-.tooltip:hover:after {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-} */
-/* Fin tooltip */
 .cntPie {
   display: grid;
   grid-template-rows: 60px;
@@ -913,7 +709,7 @@ input[type=radio]:checked + div {
   display: none;
   grid-column: 6;
   align-self: center;
-  justify-self: center;
+  justify-self: right;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
@@ -1002,26 +798,6 @@ input[type=radio]:checked + div {
 .buttonHelp button i {
   color: white;
   font-size: 20px;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .calcPdos h3 {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .calcPdos h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .calcPdos h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -1188,23 +964,6 @@ input[type=radio]:checked + div {
 @media (min-width: 1200px) {
   .titleManSol {
     margin: 50px 0px 50px 0px;
-  }
-}
-
-.titleManSol h1 {
-  font-family: montserratBold;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .titleManSol h1 {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .titleManSol h1 {
-    font-size: 30px;
-    font-family: montserratBold;
   }
 }
 
@@ -1448,15 +1207,6 @@ input[type=radio]:checked + div {
   position: absolute;
   grid-column: 1;
   grid-row: 1;
-  width: 35%;
-  height: 4%;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .btnSeleccionar input[type=radio] {
-    width: 17%;
-    height: 7%;
-  }
 }
 
 .btnSeleccionar input[type=radio] + div {
@@ -1679,44 +1429,13 @@ input {
 }
 
 /* Calculadora Edad */
-.cntCalcAge {
-  margin: 10px 0px;
-}
-
-.cntCalcAge h3 {
-  margin-bottom: 7px;
-}
-
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .cntCalcAge h3 {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .cntCalcAge h3 {
-    font-size: 18px !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .cntCalcAge h3 {
-    font-size: 18px !important;
-  }
-}
-
-.cntCalcAge .cntCalcPaciente {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.cntCalcAge .cntCalcPaciente input {
+.cntCalcAge input {
   border: 1px dotted #939393;
   border-radius: 5px;
   height: 35px;
 }
 
-.cntCalcAge .cntCalcPaciente input:focus {
+.cntCalcAge input:focus {
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1724,7 +1443,7 @@ input {
   outline: none;
 }
 
-.cntCalcAge .cntCalcPaciente .showAge {
+.cntCalcAge .showAge {
   font-size: 15px;
   font-weight: 700;
   justify-self: center;

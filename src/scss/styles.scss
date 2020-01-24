@@ -9,64 +9,93 @@
   font-family: 'montserrat', 'montserratBold';
 }
 
-.contenido {
-  .contenidoFluido {
+.contenedor{
     width: 100%;
+    display: grid;
+    grid-template-columns: 20px auto 20px;
+    grid-auto-rows: auto;
     margin: 0 auto;
 
-    /* Media Querys */
-
-    @include Asmall() {
-      margin-left: auto;
-      margin-right: auto;
+    .contenido{
+        grid-column: 2;
     }
-
+   
+    /* Media Querys */
+    
+    @include Asmall() {
+    }
+    
     @include smallTablet() {
       max-width: $mWtablet;
     }
-
+    
     @include tabletLaptop() {
       max-width: $mWlaptop;
     }
-
+    
     @include laptopDesktop() {
       max-width: $mWdesktop;
     }
-
+    
     @include desktopFull() {
       max-width: $mWfull;
     }
   }
-}
+  
+  .fondoFondo{    
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
+  }
 
-.pPal {
-  display: grid;
+  .fondoImagen{
+    background-image: url(../assets/img/fondo.png);
+  }
 
-  @include tabletLaptop() {
-      grid-auto-rows: auto;
-      background: url(../assets/img/fondo.png);
-      background-repeat: no-repeat;
-      background-position: center top;
-      display: grid;
-      background-size: 100%;
+  .fondoBlanco{
+      background-color: white;
   }
-  @include laptopDesktop() {
-      grid-auto-rows: auto;
-      background: url(../assets/img/fondo.png);
-      background-repeat: no-repeat;
-      background-position: center top;
+  .logos{
+      grid-column: 2;
       display: grid;
-      background-size: 100%;
+      grid-template-columns: repeat(1fr, 6);
   }
-  @include desktopFull() {
-      grid-auto-rows: auto;
-      background: url(../assets/img/fondo.png);
-      background-repeat: no-repeat;
-      background-position: center top;
-      display: grid;
-      background-size: 100%;
+
+  .fondoLogo{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80% auto;
   }
-}
+
+  .logoSantander{
+    background-image: url(../assets/img/logoSantander.png);  
+  }
+
+  .logoGaes{
+    background-image: url(../assets/img/LogoGaes.png);
+  }
+
+  .dosColumnas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+      .columnaUno{
+        grid-column: 1;
+      }
+      .columnaDos{
+        grid-column: 2;
+      }  
+  }
+
+  .tresColumnas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+      .columnaUno{
+        grid-column: 1;
+      }
+      .columnaDos{
+        grid-column: 2;
+      }  
+  } 
 
 
 .sEncabezado {
@@ -76,24 +105,18 @@
         display: block;
         color: white;
         font-size: 10px;
-        margin: 0px 8%;
-        padding: 1% 0px;
     }
 
     @include laptopDesktop() {
         display: block;
         color: white;
         font-size: 10px;
-        margin: 0px 8%;
-        padding: 1% 4%;
     }
 
     @include desktopFull() {
         display: block;
         color: white;
         font-size: 10px;
-        margin: 0px 8%;
-        padding: 1% 4%;
     }
 }
 
@@ -122,14 +145,6 @@
         margin: 5% 0px 15% 10%;
         color: white;
         grid-gap: 0px 80px;
-    }
-
-    .vivamus {
-        display: none;
-
-        @include tabletLaptop() {
-            display: block;
-        }
     }
 
     h1 {
@@ -174,7 +189,19 @@ h1 {
 }
 
 h3 {
-    font-size: 11px;
+    @include tabletLaptop() {
+        font-size: 15px;
+    }
+
+    @include laptopDesktop() {
+        font-size: 18px;
+        margin-bottom: $topMargin;
+    }
+
+    @include desktopFull(){
+        font-size: 18px;
+        margin-bottom: $topMargin;
+    }
 }
 
 hr {
@@ -201,139 +228,21 @@ button {
     font-family: montserrat;
 }
 
-.encabezado {
-    background-color: $blueGaes;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-
-    @include tabletLaptop() {
-        grid-template-columns: repeat(6, 1fr);
-        background-color: white;
-        padding: 0px 8%;
-    }    
-
-    @include laptopDesktop() {
-        grid-template-columns: repeat(6, 1fr);
-        background-color: white;
-        padding: 0px 10%;
-    }
-
-    @include desktopFull() {
-        grid-template-columns: repeat(6, 1fr);
-        background-color: white;
-        padding: 0px 10%;
-    }
-
-    .gaesLogoM {
-        grid-column: 1;
-        justify-self: center;
-        align-self: center;
-        width: 50%;
-        padding: 3%;
-
-        @include tabletLaptop() {
-            display: none;
-        }
-
-        @include laptopDesktop() {
-            display: none;
-        }
-
-        @include desktopFull(){
-            display: none;
-        }
-    }
-
-    .santanderLogoM {
-        grid-column: 2;
-        align-self: center;
-        justify-self: center;
-        width: 75%;
-
-        @include tabletLaptop() {
-            display: none;
-        }
-
-        @include laptopDesktop() {
-            display: none;
-        }
-
-        @include desktopFull(){
-            display: none;
-        }
-    }
-
-    .gaesLogo {
-        display: none;
-
-        @include tabletLaptop() {
-            display: block;
-            align-self: center;
-            justify-self: center;
-            width: 80%;
-        }
-
-        @include laptopDesktop() {
-            display: block;
-            align-self: center;
-            justify-self: center;
-            width: 80%;
-        }
-
-        @include desktopFull(){
-            display: block;
-            align-self: center;
-            justify-self: center;
-            width: 80%;
-        }
-    }
-
-    .santanderLogo {
-        display: none;
-
-        @include tabletLaptop() {
-            display: block;
-            align-self: center;
-            justify-self: center;
-            width: 100%;
-        }
-
-        @include laptopDesktop() {
-            display: block;
-            align-self: center;
-            justify-self: center;
-            width: 100%;
-        }
-
-        @include desktopFull() {
-            display: block;
-            align-self: center;
-            justify-self: center;
-            width: 100%;
-        }
-    }
-}
-
 /* Opciones */
 
 .contSolicitud {
     border-radius: 5px;
     box-shadow: 0 0 6px #c8c8c8;
-    margin: 0px 6% 6%;
-    padding: 5%;
 
     @include tabletLaptop() {
-        margin: -4% 6% 0;
         box-shadow: none;
     }
 
     @include laptopDesktop() {
-        margin: 0% 6% 0;
         box-shadow: none;
     }
 
     @include desktopFull(){
-        margin: 0% 6% 0;
         box-shadow: none;
     }
 }
@@ -342,7 +251,7 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
-    grid-gap: 10px;
+    grid-gap: 50px;
 
     @include tabletLaptop() {
         grid-template-columns: repeat(4, 1fr);
@@ -365,23 +274,8 @@ button {
 
         @include laptopDesktop() {
             line-height: 50px;
-        }
-
-        h3 {
-            @include tabletLaptop() {
-                font-size: 15px;
-            }
-
-            @include laptopDesktop() {
-                font-size: 18px;
-            }
-
-            @include desktopFull(){
-                font-size: 18px;
-            }
-
-            
-        }
+        }            
+    }
 
         .precio {
             color: $blueGaes;
@@ -408,34 +302,29 @@ button {
                 border-radius: 6px;
                 color: white;
                 font-size: 9px;
-                padding: 5% 15% 5% 15%;
 
                 @include tabletLaptop() {
                     width: 100%;
-                    padding: 3% 15% 3% 15%;
                 }
 
                 @include laptopDesktop() {
                     font-size: 15px;
                     border-radius: 10px;
-                    padding: 3% 15% 3% 15%;
                 }
 
                 @include desktopFull(){
                     font-size: 15px;
                     border-radius: 10px;
-                    padding: 3% 15% 3% 15%;
                 }
             }
         }
     }
-}
+
 
 .contPeriodo {
     display: grid;
     grid-auto-columns: auto;
     grid-template-rows: auto;
-    margin: 10px 0px 10px 0px;
 
     @include smallTablet(){
         grid-auto-columns: 20%;
@@ -580,65 +469,6 @@ input[type=radio]:checked+div {
     }
 }
 
-/* End Radio Buttons */
-
-/* tooltip */
-
-/* .tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 170px;
-    background-color: #000000c9;
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 110;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -160px;
-    opacity: 0;
-    transition: opacity 1s;
-    font-size: 12px;
-    padding: 80%;
-}
-
-.tooltip:after {
-    position: absolute;
-    bottom: 80%;
-    left: 50%;
-    margin-left: -5px;
-    width: 0;
-    border-top: 5px solid #000;
-    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    content: " ";
-    font-size: 0;
-    line-height: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-
-.tooltip:hover:after {
-    visibility: visible;
-    opacity: 1;
-}
-
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-} */
-
-/* Fin tooltip */
 
 .cntPie {
     display: grid;
@@ -776,7 +606,7 @@ input[type=radio]:checked+div {
     display: none;
     grid-column: 6;
     align-self: center;
-    justify-self: center;
+    justify-self: right;
 
     @include tabletLaptop() {
         display: block;
@@ -849,22 +679,7 @@ input[type=radio]:checked+div {
     }
 }
 
-.calcPdos {
-    h3 {
-        @include tabletLaptop() {
-            font-size: 15px;
-        }
-
-        @include laptopDesktop() {
-            font-size: 18px;
-            margin-bottom: $topMargin;
-        }
-
-        @include desktopFull(){
-            font-size: 18px;
-            margin-bottom: $topMargin;
-        }
-    }
+.calcPdos {    
 
     .contPeriodo {
         @include laptopDesktop() {
@@ -1013,22 +828,7 @@ input[type=radio]:checked+div {
     }
     @include desktopFull() {
         margin: 50px 0px 50px 0px;
-    }
-
-    h1 {
-        font-family: montserratBold;
-
-        @include tabletLaptop() {
-            font-size: 20px;
-        }
-
-        @include laptopDesktop() {
-            font-size: 30px;
-            font-family: montserratBold;
-        }
-
-
-    }
+    }    
 
     .title {
         font-family: montserratBold;
@@ -1245,12 +1045,8 @@ input[type=radio]:checked+div {
         position: absolute;
         grid-column: 1;
         grid-row: 1;
-        width: 35%;
-        height: 4%;
 
         @include tabletLaptop() {
-            width: 17%;
-            height: 7%;
 
         }
         
@@ -1452,45 +1248,30 @@ input[type=radio]:checked+div {
 
 /* Calculadora Edad */
 
+    
+
 .cntCalcAge{
-        margin: 10px 0px; 
-        h3{
-            margin-bottom: 7px;
-            @include tabletLaptop() {
-                font-size: 15px;
-            }
 
-            @include laptopDesktop() {
-                font-size: 18px !important;
-            }
-            @include desktopFull() {
-                font-size: 18px !important;
-            }
-        }
-        .cntCalcPaciente{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
 
-            input{
-                border: 1px dotted $grissOscuro;
-                border-radius: 5px;
-                height: 35px;                               
-            }
+    input{
+        border: 1px dotted $grissOscuro;
+        border-radius: 5px;
+        height: 35px;                               
+    }
 
-            input:focus{
-                cursor: pointer;
-                -webkit-appearance: none;
-                appearance: none;
-                outline: none;
-            }
+    input:focus{
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        outline: none;
+    }
 
-            .showAge{
-                font-size: 15px;
-                font-weight: 700;
-                justify-self: center;
-                align-self: center; 
-            }
-        }
+    .showAge{
+        font-size: 15px;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center; 
+    }
 }
 
 
