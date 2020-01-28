@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   transition: all 1s;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .contenedor{
@@ -221,7 +221,7 @@ button {
     border-radius: 6px;
     color: white;
     font-size: 9px;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     height: 60px;
     width: 100%;
 
@@ -238,7 +238,7 @@ button {
 
 .parrafo {
     font-size: 12px;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     @include Asmall(){
         font-size: 10px;
     }
@@ -319,7 +319,7 @@ button {
         .precio {
             color: $blueGaes;
             font-size: 11px;
-            font-family: Montserrat;
+            font-family: 'Montserrat', sans-serif;
 
             @include tabletLaptop() {
                 font-size: 15px;
@@ -459,7 +459,7 @@ input[type=radio]+div {
 
         .numBer {
             grid-row: 1;
-            font-family: Montserrat;
+            font-family: 'Montserrat', sans-serif;
             color: $grissOscuro;
             font-size: 20px;
             align-self: end;
@@ -467,19 +467,19 @@ input[type=radio]+div {
             @include tabletLaptop() {
                 font-size: 55px;
                 font-weight: 600;
-                font-family: Montserrat;
+                font-family: 'Montserrat', sans-serif;
             }
 
             @include laptopDesktop(){
                 font-size: 55px;
                 font-weight: 600;
-                font-family: Montserrat;
+                font-family: 'Montserrat', sans-serif;
             }
 
             @include desktopFull(){
                 font-size: 55px;
                 font-weight: 600;
-                font-family: montserrat;
+                font-family: 'Montserrat', sans-serif;
             }
             
         }
@@ -515,7 +515,7 @@ input[type=radio]+div {
     background-color: $blueGaes;
 
     .small {
-        font-family: Montserrat;
+        font-family: 'Montserrat', sans-serif;
         color: white;
         font-size: 8px;
         grid-row: 1;
@@ -607,7 +607,7 @@ input[type=radio]+div {
     
     button {
         font-size: 13px;
-        font-family: Montserrat;
+        font-family: 'Montserrat', sans-serif;
 
         @include laptopDesktop() {
             font-size: 13px;
@@ -761,7 +761,7 @@ p.title{
             font-size: 15px;
 
             .bigTitle {                
-                font-family: Montserrat;
+                font-family: 'Montserrat', sans-serif;
                 font-size: 16px;
             }
         }
@@ -796,7 +796,7 @@ p.title{
 
             .bigTitle {
                 text-align: center;
-                font-family: Montserrat;
+                font-family: 'Montserrat', sans-serif;
                 font-size: 16px;
             }
         }
@@ -851,7 +851,7 @@ p.title{
 .titleManSol {
     
     .title {
-        font-family: Montserrat;
+        font-family: 'Montserrat', sans-serif;
         font-size: 12px;
     }
 }
