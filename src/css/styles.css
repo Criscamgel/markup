@@ -86,6 +86,10 @@
   }
 }
 
+.logos img {
+  display: none;
+}
+
 .fondoLogo {
   background-repeat: no-repeat;
   background-position: left center;
@@ -1251,9 +1255,15 @@ hr {
   height: 4%;
 }
 
+@media only screen and (max-width: 575.98px) {
+  .btnSeleccionar input[type=radio] {
+    width: 35%;
+  }
+}
+
 @media (min-width: 767.98px) and (max-width: 991.98px) {
   .btnSeleccionar input[type=radio] {
-    width: 16%;
+    width: 30%;
     height: 8%;
   }
 }
@@ -1437,7 +1447,7 @@ input {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
-  grid-column: 2/4;
+  grid-column: 1/4;
 }
 
 .cntAprox.details .contDetail .grayParrf {
@@ -1456,7 +1466,7 @@ input {
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
   .cntAprox.details .contDetail .grayParrf {
-    font-size: 18px;
+    font-size: 9px;
   }
 }
 
@@ -1587,17 +1597,19 @@ input {
   .btnSeleccionar input[type=radio]:checked + div, .btnSeleccionar .opcion {
     border: 5px solid red !important;
   }
-  .encabezado {
-    text-align: center;
-  }
-  .encabezado img#gaesLogo, .encabezado img#santanderLogo {
+  .logos img {
+    width: 100%;
     display: inline-block;
-    padding: 10px;
+    page-break-after: avoid;
+    page-break-inside: avoid;
   }
   .cntAprox .grayParrf {
     font-size: 15px;
   }
   .cntPie {
     text-align: center;
+  }
+  hr {
+    margin: 15px 0px;
   }
 }
