@@ -72,6 +72,9 @@
       @include Asmall(){
         grid-template-columns: repeat(2, 1fr);
       }
+      img{
+          display: none;
+      }
   }
 
   .fondoLogo{
@@ -1078,8 +1081,12 @@ hr{
         width: 14%;
         height: 4%;
 
+        @include Asmall(){
+            width: 35%;
+        }
+
         @include tabletLaptop(){
-            width: 16%;
+            width: 30%;
             height: 8%;    
         }
         
@@ -1244,7 +1251,8 @@ hr{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: 1fr;
-            grid-column: 2/4;
+            grid-column: 1/4;
+
             .grayParrf{
                 grid-column: 1;
                 justify-self: left;
@@ -1257,7 +1265,7 @@ hr{
                 }
 
                 @include tabletLaptop(){
-                    font-size: 18px;
+                    font-size: 9px;
                 }
                 @include laptopDesktop(){
                     font-size: 18px;
@@ -1385,12 +1393,12 @@ hr{
         }
     }       
     
-    .encabezado{
-        text-align: center;
-        img#gaesLogo, img#santanderLogo{
-            display:inline-block;
-            padding: 10px;            
-            
+    .logos{
+        img{
+            width: 100%;
+            display: inline-block;
+            page-break-after: avoid;
+            page-break-inside: avoid;
         }
     }    
 
@@ -1402,6 +1410,10 @@ hr{
 
     .cntPie{
         text-align: center;
+    }
+
+    hr{
+        margin: 15px 0px;
     }
     
 
