@@ -1,16 +1,21 @@
-@font-face {
+/* @font-face {
     font-family: montserrat;
     src: url(../assets/fonts/Montserrat-Regular.ttf) format("opentype");
-  }
-@font-face {
+  } */
+/* @font-face {
     font-family: montserratBold;
     src: url(../assets/fonts/Montserrat-Bold.ttf) format("opentype");
   }
-@font-face {
+
+  
+  @font-face {
     font-family: raleway;
     src: url(../assets/fonts/Raleway-Regular.ttf) format("opentype");
   }
-@font-face {
+  @font-face {
     font-family: ralewayBold;
     src: url(../assets/fonts/Raleway-Bold.ttf) format("opentype");
-  }
+  }*/
+  
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700,900&display=swap');

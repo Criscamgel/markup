@@ -1,15 +1,15 @@
 <form #gaesForm="ngForm">
 <div class="superContenedor animated fadeIn fast">
 
-        <section id="hero" class="seccionFluida fondoFondo fondoImagen">
+        <section id="hero" class="seccionFluida fondoImagen">
 
-            <div class="contenedor">
-                <div class="contenido sEncabezado doNotPrint">FINANCIA EL DISPOSITIVOS CON GAES Y EL BANCO SANTANDER
+            <div class="contenedor contenedorsEncabezado doNotPrint">
+                <div class="contenido sEncabezado">FINANCIA EL DISPOSITIVOS CON GAES Y EL BANCO SANTANDER
                 </div>
             </div>
 
             <div class="seccionFluida fondoBlanco printOk">
-                <div class="contenedor">
+                <div class="contenedor contenedorfondoBlanco">
                     <div class="contenido logos">
 
                         <div class="logoGaes fondoLogo"></div>
@@ -29,8 +29,8 @@
             </div>
 
 
-            <div class="contenedor doNotPrint">
-                <div class="contenido tresColumnas">
+            <div class="contenedor textoHero doNotPrint">
+                <div class="contenido cuatroColumnas">
 
                     <div class="columnaUno">
                         <h1>FINANCIA EL DISPOSITIVO<br class="noDesk"> DE TU PACIENTE</h1>
@@ -212,7 +212,7 @@
                         </div>
                         <div class="cntAprox">
                             <p class="grayParrf doNotPrint">Descuento:</p>
-                            <p class="cifraBlack">{{descuentoSlide}}%</p>
+                            <h3>{{descuentoSlide}}%</h3>
 
                             <!-- <div class="tooltip doNotPrint">
                                                         <i class="fa fa-question-circle"></i>
@@ -247,7 +247,7 @@
 
                     <div id="cuotaInicial" class="cntAprox">
                         <p class="grayParrf">Cuota inicial ({{ctainicialSlide}}%):</p>
-                        <p class="cifraBlack cuotaInicial">$ {{cuotaInicial | number:'1.0'}}</p>
+                        <h3>$ {{cuotaInicial | number:'1.0'}}</h3>
 
                         <div class="tooltip">
                             <!-- <i class="fa fa-question-circle"></i>
@@ -266,7 +266,7 @@
                     <div class="cntAprox">
                         <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
                             (incluye seguro de vida)</p>
-                        <p class="cifraBlack">$ {{vlrCuotaCliente | number:'1.0'}}</p>
+                        <h3>$ {{vlrCuotaCliente | number:'1.0'}}</h3>
 
                         <div class="tooltip doNotPrint">
                             <i class="fa fa-question-circle" (click)="details()"></i>
@@ -424,6 +424,9 @@
                         </span>
 
                     </div>
+
+                    <hr class="doNotPrint">
+
                     <div class="cntBotones doNotPrint">
                         <button class="imprimir" (click)="onPrint()"
                             [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
@@ -435,14 +438,14 @@
                     </div>
 
 
-                    <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
+                    <!-- <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
                         <button class="buttonAyuda">
                             <div class="itemButton">
                                 <i class="fa fa-question-circle"></i>
                                 <p class="bigTitle">AYUDA</p>
                             </div>
                         </button>
-                    </a>
+                    </a> -->
 
                     <!-- Detalles -->
 
@@ -463,15 +466,16 @@
                     </span>
 
                 </div>
-                <div class="cntBotones doNotPrint">
+                <!-- <div class="cntBotones doNotPrint">
                     <button class="imprimir" (click)="onPrint()"
                         [disabled]="showAge < 18 || diferencia < 6">IMPRIMIR</button>
                 </div>
                 <div class="cntBotones doNotPrint" (click)="linka()">
                     <button [disabled]="showAge < 18 || diferencia < 6">INICIAR SOLICITUD</button>
-                </div>
+                </div> -->
 
 
+                <div class="cntBotones doNotPrint">
                 <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
                     <button class="buttonAyuda">
                         <div class="itemButton">
@@ -480,6 +484,7 @@
                         </div>
                     </button>
                 </a>
+                </div>
 
                 <hr class="doNotPrint">
 
