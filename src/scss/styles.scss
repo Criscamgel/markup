@@ -81,7 +81,7 @@
 
   .logoGaes{
     background-image: url(../assets/img/LogoGaes.png);
-    background-size: 65% auto;
+    background-size: 40% auto;
     @include Asmall(){
         background-image: url(../assets/img/gaesBlanco.png);
         background-size: 50% auto;
@@ -169,7 +169,11 @@
     }
     .contenido{
     justify-self: initial;
-    align-self: center;  
+    align-self: center; 
+    height: 300px;
+    @include Asmall(){
+        height: auto;
+    } 
     }
     h1{
         font-size: 22px;
@@ -208,7 +212,7 @@ h3 {
 
 hr {
     margin: 15px 0;
-    border: solid 1px $grisTenue;
+    border: solid 1px $grisTenue;    
 }
 
 button {
@@ -261,7 +265,6 @@ button {
     }
 
     h3{
-        margin: 10px 0;
         @include Asmall(){
             font-size: 10px;
             font-weight: 400;
@@ -709,7 +712,7 @@ input[type=radio]+div {
 }
 
 .calcPtres {
-    .title, .contMinMax{
+    .contMinMax{
             font-size: 12px;
             @include tabletLaptop(){
                 font-size: 18px; 
@@ -720,6 +723,20 @@ input[type=radio]+div {
             @include desktopFull(){
                 font-size: 18px; 
             }
+    }    
+}
+
+p.title{
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.contCondiciones{
+    p.title{
+        font-size: 15px;
+        font-weight: 600;
+        margin: 15px 0px;
     }
 }
 
@@ -787,6 +804,7 @@ input[type=radio]+div {
 
 }
 
+
 /* Ayuda Ventas */
 
 .manSolicitud {
@@ -795,7 +813,7 @@ input[type=radio]+div {
     .pasos {
         display: grid;
         grid-auto-rows: auto;
-        grid-gap: 50px;
+        grid-gap: 10px;
 
         .paso {
             .parrafo {
@@ -831,18 +849,10 @@ input[type=radio]+div {
 }
 
 .titleManSol {
-    @include tabletLaptop() {
-        margin: 50px 0px 50px 0px;
-    }
-    @include laptopDesktop() {
-        margin: 50px 0px 50px 0px;
-    }
-    @include desktopFull() {
-        margin: 50px 0px 50px 0px;
-    }    
-
+    
     .title {
         font-family: Montserrat;
+        font-size: 12px;
     }
 }
 
@@ -861,31 +871,16 @@ input[type=radio]+div {
     }
 
     .paso {
-        @include tabletLaptop() {
-            display: grid;
-            grid-template-columns: repeat(2, 50%);
-            grid-gap: 50px;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-gap: 20px;
 
             img {
                 max-width: 70%;
-            }
-        }
-        @include laptopDesktop() {
-            display: grid;
-            grid-template-columns: repeat(2, 50%);
-            grid-gap: 50px;
+                @include Asmall(){
+                    max-width: 80%;
+                }
 
-            img {
-                max-width: 70%;
-            }
-        }
-        @include desktopFull() {
-            display: grid;
-            grid-template-columns: repeat(2, 50%);
-            grid-gap: 50px;
-
-            img {
-                max-width: 70%;
             }
         }
 
@@ -894,7 +889,7 @@ input[type=radio]+div {
         }
 
         .textParrafo {
-            text-align: right;
+            text-align: left;
             padding-top: 30px;
 
             @include Asmall() {
@@ -902,19 +897,35 @@ input[type=radio]+div {
             }
         }
     }
+
+
+.tipsVentas{
+    background-color: $grisTenue;
+    margin: 10px 0;
+    @include Asmall(){
+        display: none;
+    }
+    .contenido{
+        margin: 30px 0px;
+    }
 }
 
-.pasoFinal {
-    font-size: 12px;
+.margenInferior{
+    margin-bottom: 50px;
 }
+
+hr{
+    margin: 50px 0px;
+    @include Asmall(){
+        margin: 30px 0px 20px 0px;
+    }
+}
+
 
 .contDosBig {
-    display: none;
-
-    @include tabletLaptop() {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        padding: 5%;
+    
+    display: grid;
+    grid-template-columns: repeat(3, auto);
 
         .item {
             justify-self: center;
@@ -946,7 +957,10 @@ input[type=radio]+div {
                 line-height: 18px;
             }
         }
-    }
+        @include Asmall(){
+            display: none;
+        }
+    
 
 }
 
@@ -1000,6 +1014,11 @@ input[type=radio]+div {
             grid-column: 6;
         }
     }
+}
+
+.contenidoContacto{
+    font-size: 12px;
+    margin-bottom: 30px;
 }
 
 /* Animaciones */

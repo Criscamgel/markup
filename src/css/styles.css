@@ -93,7 +93,7 @@
 
 .logoGaes {
   background-image: url(../assets/img/LogoGaes.png);
-  background-size: 65% auto;
+  background-size: 40% auto;
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -200,6 +200,13 @@
 .textoHero .contenido {
   justify-self: initial;
   align-self: center;
+  height: 300px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .textoHero .contenido {
+    height: auto;
+  }
 }
 
 .textoHero h1 {
@@ -315,10 +322,6 @@ button {
   .contSolicitud {
     box-shadow: none;
   }
-}
-
-.contSolicitud h3 {
-  margin: 10px 0;
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -839,26 +842,38 @@ input[type=radio] + div {
   }
 }
 
-.calcPtres .title, .calcPtres .contMinMax {
+.calcPtres .contMinMax {
   font-size: 12px;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
-  .calcPtres .title, .calcPtres .contMinMax {
+  .calcPtres .contMinMax {
     font-size: 18px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .calcPtres .title, .calcPtres .contMinMax {
+  .calcPtres .contMinMax {
     font-size: 18px;
   }
 }
 
 @media (min-width: 1200px) {
-  .calcPtres .title, .calcPtres .contMinMax {
+  .calcPtres .contMinMax {
     font-size: 18px;
   }
+}
+
+p.title {
+  margin-bottom: 30px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contCondiciones p.title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 15px 0px;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
@@ -945,7 +960,7 @@ input[type=radio] + div {
 .manSolicitud .pasos {
   display: grid;
   grid-auto-rows: auto;
-  grid-gap: 50px;
+  grid-gap: 10px;
 }
 
 .manSolicitud .pasos .paso .parrafo {
@@ -973,26 +988,9 @@ input[type=radio] + div {
   }
 }
 
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .titleManSol {
-    margin: 50px 0px 50px 0px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .titleManSol {
-    margin: 50px 0px 50px 0px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .titleManSol {
-    margin: 50px 0px 50px 0px;
-  }
-}
-
 .titleManSol .title {
   font-family: Montserrat;
+  font-size: 12px;
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
@@ -1016,92 +1014,105 @@ input[type=radio] + div {
   }
 }
 
-@media (min-width: 767.98px) and (max-width: 991.98px) {
-  .pasos .paso {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-gap: 50px;
-  }
+.pasos .paso {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 20px;
+}
+
+.pasos .paso img {
+  max-width: 70%;
+}
+
+@media only screen and (max-width: 575.98px) {
   .pasos .paso img {
-    max-width: 70%;
+    max-width: 80%;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .pasos .paso {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-gap: 50px;
-  }
-  .pasos .paso img {
-    max-width: 70%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .pasos .paso {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-gap: 50px;
-  }
-  .pasos .paso img {
-    max-width: 70%;
-  }
-}
-
-.pasos .paso .textParrafo:first-letter {
+.pasos .textParrafo:first-letter {
   font-weight: 600;
 }
 
-.pasos .paso .textParrafo {
-  text-align: right;
+.pasos .textParrafo {
+  text-align: left;
   padding-top: 30px;
 }
 
 @media only screen and (max-width: 575.98px) {
-  .pasos .paso .textParrafo {
+  .pasos .textParrafo {
     text-align: left;
   }
 }
 
-.pasoFinal {
-  font-size: 12px;
+.tipsVentas {
+  background-color: #F0F0F0;
+  margin: 10px 0;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .tipsVentas {
+    display: none;
+  }
+}
+
+.tipsVentas .contenido {
+  margin: 30px 0px;
+}
+
+.margenInferior {
+  margin-bottom: 50px;
+}
+
+hr {
+  margin: 50px 0px;
+}
+
+@media only screen and (max-width: 575.98px) {
+  hr {
+    margin: 30px 0px 20px 0px;
+  }
 }
 
 .contDosBig {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
 }
 
-@media (min-width: 767.98px) and (max-width: 991.98px) {
+.contDosBig .item {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.contDosBig .item embed.reloj {
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+.contDosBig .item embed.personal {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.contDosBig .item embed.martillo {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.contDosBig .item .title {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.contDosBig .item .textContent {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@media only screen and (max-width: 575.98px) {
   .contDosBig {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    padding: 5%;
-  }
-  .contDosBig .item {
-    justify-self: center;
-    align-self: center;
-    text-align: center;
-  }
-  .contDosBig .item embed.reloj {
-    width: 25%;
-    margin-bottom: 20px;
-  }
-  .contDosBig .item embed.personal {
-    width: 30%;
-    margin-bottom: 20px;
-  }
-  .contDosBig .item embed.martillo {
-    width: 30%;
-    margin-bottom: 20px;
-  }
-  .contDosBig .item .title {
-    font-size: 15px;
-    margin-bottom: 20px;
-  }
-  .contDosBig .item .textContent {
-    font-size: 12px;
-    line-height: 18px;
+    display: none;
   }
 }
 
@@ -1162,6 +1173,11 @@ input[type=radio] + div {
 
 .buttonVolver .buttonAyuda .itemButton {
   grid-column: 6;
+}
+
+.contenidoContacto {
+  font-size: 12px;
+  margin-bottom: 30px;
 }
 
 /* Animaciones */

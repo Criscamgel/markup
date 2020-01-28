@@ -1,27 +1,35 @@
 <div class="superContenedor animated fadeIn fast">
 
-    <section class="seccionFluida">
-        <div class="contenedor">
-            <div class="contenido">
-                <div class="sEncabezado">FINANCIA EL DISPOSITIVOS CON GAES Y EL BANCO SANTANDER</div>
+    <section id="hero" class="seccionFluida fondoImagen">
 
-                <div class="encabezado">
-                    <img class="gaesLogoM" src="../../../assets/img/gaesBlanco.png" alt="">
-                    <img class="santanderLogoM" src="../../../assets/img/logoSantanderBlanco.png" alt="">
-                    <img class="gaesLogo" src="../../../assets/img/LogoGaes.png" alt="">
-                    <img class="santanderLogo" src="../../../assets/img/logoSantander.png" alt="">
+        <div class="contenedor contenedorsEncabezado">
+            <div class="contenido sEncabezado">FINANCIA EL DISPOSITIVOS CON GAES Y EL BANCO SANTANDER</div>
+        </div>
 
-                    <a class="buttonVolver" [routerLink]="['/home']">
+        <div class="seccionFluida fondoBlanco">
+            <div class="contenedor contenedorfondoBlanco">
+                <div class="contenido logos">
+
+                    <div class="logoGaes fondoLogo"></div>
+                    <div class="logoSantander fondoLogo"></div>
+
+                    <a class="buttonHelp doNotPrint" [routerLink]="['/home']">
                         <button class="buttonAyuda">
                             <div class="itemButton">
-                                <p class="bigTitle">VOLVER</p>
+                                <p class="bigTitle">Volver</p>
                             </div>
                         </button>
                     </a>
                 </div>
 
-                <div class="encabezadoText">
-                    <h1>FINANCIA EL DISPOSITIVO DE TU PACIENTE</h1>
+            </div>
+        </div>
+
+        <div class="contenedor textoHero">
+            <div class="contenido cuatroColumnas">
+
+                <div class="columnaUno">
+                    <h1>FINANCIA EL DISPOSITIVO<br class="noDesk"> DE TU PACIENTE</h1>
                     <p class="parrafo">
                         GAES es una compañía multinacional líder en el sector de la corrección auditiva, lleva 70 años
                         diseñando
@@ -34,6 +42,7 @@
         </div>
     </section>
 
+
     <section class="contenedor">
         <div class="contenido">
             <div class="titleManSol">
@@ -42,6 +51,8 @@
                     Si tu paciente decide financiar el tratamiento con Santander, sigue los siguientes pasos:
                 </p>
             </div>
+            <hr>
+
             <div class="pasos">
 
                 <div class="paso">
@@ -57,7 +68,7 @@
                         <img src="../../../assets/img/formEntrevista.jpg" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -69,7 +80,7 @@
                         <img src="../../../assets/img/sanitastres.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -80,7 +91,7 @@
                         <img src="../../../assets/img/sanitasocho.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -91,7 +102,7 @@
                         <img src="../../../assets/img/sanitassiete.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -104,7 +115,7 @@
                         <img src="../../../assets/img/sanitasseis.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -115,7 +126,7 @@
                         <img src="../../../assets/img/sanitascinco.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -126,7 +137,7 @@
                         <img src="../../../assets/img/sanitasdos.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -137,7 +148,7 @@
                         <img src="../../../assets/img/sanitasuno.png" alt="">
                     </div>
                 </div>
-
+                <hr>
                 <div class="paso">
                     <div class="parrafo">
                         <p class="textParrafo">
@@ -148,8 +159,8 @@
                         <img src="../../../assets/img/sanitascuatro.png" alt="">
                     </div>
                 </div>
-
-                <div class="pasoFinal">
+                <hr>
+                <div class="parrafo margenInferior">
 
                     <p class="textParrafo">
                         <strong>9.</strong> De acuerdo con la respuesta que el sistema le dé a tu cliente,<br> debes
@@ -218,79 +229,77 @@
 
             </div>
         </div>
-</section>
+    </section>
 
-<!-- Part Icons -->
-<section class="seccionFluida">
-    <div class="contenedor">
-        <div class="contenido">
-            <h1>Tips de ventas:</h1>
-            <div class="partDosBig">
-                <div class="contDosBig">
-                    <div class="item">
-                        <embed class="reloj" src="../../../assets/img/reloj.svg">
-                        <div class="text">
-                            <p class="title">
-                                Sencillo
-                            </p>
-                            <p class="textContent">
-                                Aprobación inmediata.<br>Obtén una decisión crediticia en instantes,<br>sin papeleo.
-                            </p>
+    <!-- Part Icons -->
+    <section class="seccionFluida tipsVentas">
+        <div class="contenedor">
+            <div class="contenido">
+                <h1>Tips de ventas:</h1>
+                <div class="partDosBig">
+                    <div class="contDosBig">
+                        <div class="item">
+                            <embed class="reloj" src="../../../assets/img/reloj.svg">
+                            <div class="text">
+                                <p class="title">
+                                    Sencillo
+                                </p>
+                                <p class="textContent">
+                                    Aprobación inmediata.<br>Obtén una decisión crediticia en instantes,<br>sin papeleo.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <embed class="personal" src="../../../assets/img/personas.svg">
-                        <div class="text">
-                            <p class="title">
-                                Personal
-                            </p>
-                            <p class="textContent">
-                                Plazos convenientes y amplia<br>financiación de acuerdo a<br>las necesidades de tu
-                                cliente.
-                            </p>
+                        <div class="item">
+                            <embed class="personal" src="../../../assets/img/personas.svg">
+                            <div class="text">
+                                <p class="title">
+                                    Personal
+                                </p>
+                                <p class="textContent">
+                                    Plazos convenientes y amplia<br>financiación de acuerdo a<br>las necesidades de tu
+                                    cliente.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <embed class="martillo" src="../../../assets/img/martillo.svg">
-                        <div class="text">
-                            <p class="title">
-                                Justo
-                            </p>
-                            <p class="textContent">
-                                Baja tasa de interés a término fijo,<br>contamos con una amplia red de<br>puntos de
-                                pago.
-                            </p>
+                        <div class="item">
+                            <embed class="martillo" src="../../../assets/img/martillo.svg">
+                            <div class="text">
+                                <p class="title">
+                                    Justo
+                                </p>
+                                <p class="textContent">
+                                    Baja tasa de interés a término fijo,<br>contamos con una amplia red de<br>puntos de
+                                    pago.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Finish Part Icons -->
+    <!-- Finish Part Icons -->
 
+    <section class="contenedor">
+        <div class="contenido contenidoContacto">
+            <h1>Contacto:</h1><br>
+            <p>• Si tienes alguna inquietud puedes comunicarte al teléfono celular:<br><br>
+                <br>
+                <strong>Teléfono: </strong>322 367 0556<br>
+                <strong>Celular: </strong>031 742 1502<br>
 
-<section class="contenedor">
-    <div class="contenido">
-        <h1>Contacto:</h1><br>
-        <p>• Si tienes alguna inquietud puedes comunicarte al teléfono celular:<br><br>
-            <br>
-            <strong>Teléfono: </strong>322 367 0556<br>
-            <strong>Celular: </strong>031 742 1502<br>
-
-            <strong>Correo: </strong>consumo@santanderconsumer.co<br><br>
-            <small><strong>Santander Consumer Finance</strong></small>
-        </p>
-    </div>
-</section>
-
-<section class="seccionFluida">
-    <div class="contenedor">
-        <div class="contenido">
-            <p class="small">Copyright © 2019, Banco Santander</p>
+                <strong>Correo: </strong>consumo@santanderconsumer.co<br><br>
+                <small><strong>Santander Consumer Finance</strong></small>
+            </p>
         </div>
-    </div>
-</section>
+    </section>
 
+    <section class="seccionFluida">
+        <div class="contenido">
+            <div class="cntPie printOk">
+                <p class="small printOk">Copyright © 2019, Banco Santander</p>
+            </div>
+        </div>
+    </section>
 </div>
