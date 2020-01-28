@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   transition: all 1s;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
 }
 
 .contenedor {
@@ -264,7 +264,7 @@ button {
   border-radius: 6px;
   color: white;
   font-size: 9px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   height: 60px;
   width: 100%;
 }
@@ -289,7 +289,7 @@ button {
 
 .parrafo {
   font-size: 12px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -394,7 +394,7 @@ button {
 .cntOpciones .precio {
   color: #4CB2DD;
   font-size: 11px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
 }
 
 @media (min-width: 767.98px) and (max-width: 991.98px) {
@@ -552,7 +552,7 @@ input[type=radio] + div {
 
 .radio div .numBer {
   grid-row: 1;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   color: #939393;
   font-size: 20px;
   align-self: end;
@@ -562,7 +562,7 @@ input[type=radio] + div {
   .radio div .numBer {
     font-size: 55px;
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat';
   }
 }
 
@@ -570,7 +570,7 @@ input[type=radio] + div {
   .radio div .numBer {
     font-size: 55px;
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat';
   }
 }
 
@@ -578,7 +578,7 @@ input[type=radio] + div {
   .radio div .numBer {
     font-size: 55px;
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat';
   }
 }
 
@@ -617,7 +617,7 @@ input[type=radio] + div {
 }
 
 .cntPie .small {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   color: white;
   font-size: 8px;
   grid-row: 1;
@@ -721,7 +721,7 @@ input[type=radio] + div {
 
 .cntBotones button {
   font-size: 13px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -906,7 +906,7 @@ p.title {
 }
 
 .ayudaM button .itemButton .bigTitle {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   font-size: 16px;
 }
 
@@ -948,7 +948,7 @@ p.title {
 
 .volverM button .itemButton .bigTitle {
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   font-size: 16px;
 }
 
@@ -989,7 +989,7 @@ p.title {
 }
 
 .titleManSol .title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat';
   font-size: 12px;
 }
 
