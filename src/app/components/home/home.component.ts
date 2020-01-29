@@ -17,7 +17,7 @@ export class HomeComponent {
 
   /* Calculadora de Edad */
   ageCalc;
-  showAge = 0;
+  showAge;
   diferencia = 0;
 
   vlrCuota;
