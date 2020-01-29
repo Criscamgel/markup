@@ -718,6 +718,11 @@ input[type=radio] + div {
   }
 }
 
+.cntAprox h3 {
+  align-self: center;
+  /* justify-self: right; */
+}
+
 .cntBotones {
   margin-top: 15px;
   text-align: center;
@@ -1374,16 +1379,6 @@ hr {
 
 .tooltipPrint {
   display: none;
-}
-
-#cuotaInicial {
-  grid-template-columns: repeat(6, 1fr);
-}
-
-#cuotaInicial .cuotaInicial {
-  justify-self: initial;
-  align-self: center;
-  grid-column: 5/8;
 }
 
 /* Container Slide */
