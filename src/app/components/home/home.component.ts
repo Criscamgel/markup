@@ -16,8 +16,8 @@ export class HomeComponent {
   valorFinal = 0;
 
   /* Calculadora de Edad */
-  ageCalc;
-  showAge;
+  ageCalc = '0000-00-00';
+  showAge = 0;
   diferencia = 0;
 
   vlrCuota;
@@ -564,6 +564,7 @@ export class HomeComponent {
 
   ageCalculator() {
     if (this.ageCalc) {
+      
       var showAge;
 
       const convertAge = new Date(this.ageCalc);
