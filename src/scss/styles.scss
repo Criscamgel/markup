@@ -9,208 +9,213 @@
   font-family: Montserrat;
 }
 
-.contenedor {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 10% 80% 10%;
-  grid-auto-rows: auto;
-  margin: 0 auto;
-
-  .contenido {
-    grid-column: 2;
-  }
-
-  /* Media Querys */
-
-  @include Asmall() {
-  }
-
-  @include smallTablet() {
-    max-width: $mWtablet;
-  }
-
-  @include tabletLaptop() {
-    max-width: $mWlaptop;
-  }
-
-  @include laptopDesktop() {
-    max-width: $mWdesktop;
-  }
-
-  @include desktopFull() {
-    max-width: $mWfull;
-  }
-}
-
-.fondoImagen {
-  background-image: url(../assets/img/fondo.png);
-  min-height: 550px;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  background-size: cover;
-
-  @include Asmall() {
-    background-image: none;
-    min-height: auto;
-  }
-}
-
-.fondoBlanco {
-  background-color: white;
-  @include Asmall() {
-    background-color: $blueGaes;
-  }
-}
-
-.contenedorfondoBlanco {
-  height: 70px;
-}
-
-.logos {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  @include Asmall() {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  img {
-    display: none;
-  }
-}
-
-.fondoLogo {
-  background-repeat: no-repeat;
-  background-position: left center;
-}
-
-.logoGaes {
-  background-image: url(../assets/img/LogoGaes.png);
-  background-size: 40% auto;
-  @include Asmall() {
-    background-image: url(../assets/img/gaesBlanco.png);
-    background-size: 50% auto;
-  }
-}
-.logoSantander {
-  background-image: url(../assets/img/logoSantander.png);
-  background-size: 100% auto;
-  @include Asmall() {
-    background-image: url(../assets/img/logoSantanderBlanco.png);
-  }
-}
-
-.dosColumnas {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  .columnaUno {
-    grid-column: 1;
+.contenedor{
+    width: 100%;
     display: grid;
-  }
-  .columnaDos {
-    grid-column: 2;
-    display: grid;
-    justify-content: center;
-  }
-}
+    grid-template-columns: 10% 80% 10%;
+    grid-auto-rows: auto;
+    margin: 0 auto;
 
-.cuatroColumnas {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  .columnaUno {
-    grid-column: 1/3;
-  }
-  /* .columnaDos{
-        grid-column: 4;
-      }  */
-}
-
-.textoHero {
-  .cuatroColumnas {
+    .contenido{
+        grid-column: 2;
+    }
+   
+    /* Media Querys */
+    
     @include Asmall() {
-      grid-template-columns: repeat(1, 1fr);
-      color: black;
+    }
+    
+    @include smallTablet() {
+      max-width: $mWtablet;
+    }
+    
+    @include tabletLaptop() {
+      max-width: $mWlaptop;
+    }
+    
+    @include laptopDesktop() {
+      max-width: $mWdesktop;
+    }
+    
+    @include desktopFull() {
+      max-width: $mWfull;
     }
   }
+
+  .fondoImagen{
+    background-image: url(../assets/img/fondo.png);
+    min-height: 550px;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    
+    @include Asmall(){
+        background-image: none;
+        min-height: auto;
+    }
+  }
+
+  .fondoBlanco{
+      background-color: white;
+      @include Asmall(){
+          background-color: $blueGaes;
+      }
+  }
+
+  .contenedorfondoBlanco{
+    height: 70px;    
+  }
+
+  .logos{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      @include Asmall(){
+        grid-template-columns: repeat(2, 1fr);
+      }
+      img{
+          display: none;
+      }
+  }
+
+  .fondoLogo{
+    background-repeat: no-repeat;
+    background-position: left center;    
+  }
+
+  .logoGaes{
+    background-image: url(../assets/img/LogoGaes.png);
+    background-size: 40% auto;
+    @include Asmall(){
+        background-image: url(../assets/img/gaesBlanco.png);
+        background-size: 50% auto;
+    }
+
+  }
+  .logoSantander{
+    background-image: url(../assets/img/logoSantander.png);
+    background-size: 100% auto;
+    @include Asmall(){
+        background-image: url(../assets/img/logoSantanderBlanco.png);
+    }  
+  }
+
+
+  .dosColumnas{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+      .columnaUno{
+        grid-column: 1;
+        display: grid;
+      }
+      .columnaDos{
+        grid-column: 2;
+        display: grid;
+        justify-content: center;
+      }  
+  }
+
+  .cuatroColumnas{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+      .columnaUno{
+        grid-column: 1/3;
+      }
+      /* .columnaDos{
+        grid-column: 4;
+      }  */ 
+  }
+
+  .textoHero{
+      .cuatroColumnas{
+          @include Asmall(){
+            grid-template-columns: repeat(1, 1fr);
+            color: black;
+          }
+      }
+  }
+  
+.contenedorsEncabezado{    
+    height: 25px;
+    @include Asmall{
+        display: none;
+    }
 }
 
-.contenedorsEncabezado {
-  height: 25px;
-  @include Asmall {
-    display: none;
-  }
-}
 
 .sEncabezado {
-  display: none;
-  color: white;
-  justify-self: initial;
-  align-self: center;
-  font-size: 8px;
-  letter-spacing: 0.5px;
-
-  @include tabletLaptop() {
-    display: block;
-  }
-
-  @include laptopDesktop() {
-    display: block;
-  }
-
-  @include desktopFull() {
-    display: block;
-  }
-}
-
-.textoHero {
-  min-height: 550px;
-  color: white;
-  @include Asmall() {
-    min-height: auto;
-  }
-  .contenido {
+    display: none;
+    color: white;
     justify-self: initial;
     align-self: center;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+
+    @include tabletLaptop() {
+        display: block;
+    }
+
+    @include laptopDesktop() {
+        display: block;
+                
+    }
+
+    @include desktopFull() {
+        display: block;
+    }    
+}
+
+.textoHero{
+    min-height: 550px;
+    color: white;
+    @include Asmall(){        
+        min-height: auto;
+    }
+    .contenido{
+    justify-self: initial;
+    align-self: center; 
     height: 300px;
-    @include Asmall() {
-      height: auto;
+    @include Asmall(){
+        height: auto;
+    } 
     }
-  }
-  h1 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    @include Asmall() {
-      font-size: 15px;
+    h1{
+        font-size: 22px;
+        margin-bottom: 15px;
+        @include Asmall(){
+            font-size: 15px;
+        }
     }
-  }
-  p {
-    font-weight: 300;
-  }
+    p{
+        font-weight: 300;
+    }
 }
 
 h1 {
-  font-size: 16px;
-  margin: $topMargin 0px;
+    font-size: 16px;
+    margin: $topMargin 0px;
+
 }
 
 h3 {
-  font-weight: 600;
-  @include tabletLaptop() {
-    font-size: 15px;
-  }
+    font-weight: 600;    
+    @include tabletLaptop() {
+        font-size: 15px;
+    }
 
-  @include laptopDesktop() {
-    font-size: 25px;
-    margin-bottom: $topMargin;
-  }
+    @include laptopDesktop() {
+        font-size: 25px;
+        margin-bottom: $topMargin;
+    }
 
-  @include desktopFull() {
-    font-size: 25px;
-    margin-bottom: $topMargin;
-  }
+    @include desktopFull(){
+        font-size: 25px;
+        margin-bottom: $topMargin;
+    }
 }
 
 hr {
-  margin: 15px 0;
-  border: solid 1px $grisTenue;
+    margin: 15px 0;
+    border: solid 1px $grisTenue;    
 }
 
 button {
@@ -223,20 +228,20 @@ button {
     height: 60px;
     width: 100%;
 
-  @include Asmall() {
-    height: 40px;
-  }
-  @include laptopDesktop() {
-    font-size: 22px;
-  }
-  @include desktopFull() {
-    font-size: 22px;
-  }
+    @include Asmall(){
+        height: 40px;
+    }
+    @include laptopDesktop() {
+        font-size: 22px;
+    }
+    @include desktopFull() {
+        font-size: 22px;
+    }
 }
 
 .parrafo {
     font-size: 12px;
-    font-family: Montserrat;
+    font-family: 'Montserrat';
     @include Asmall(){
         font-size: 10px;
     }
@@ -245,213 +250,219 @@ button {
 /* Opciones */
 
 .contSolicitud {
-  border-radius: 5px;
-  box-shadow: 0 0 6px #c8c8c8;
-  padding: 15px;
-  margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 6px #c8c8c8;
+    padding: 15px;
+    margin: 15px 0;
 
-  @include tabletLaptop() {
-    box-shadow: none;
-  }
-
-  @include laptopDesktop() {
-    box-shadow: none;
-  }
-
-  @include desktopFull() {
-    box-shadow: none;
-  }
-
-  h3 {
-    @include Asmall() {
-      font-size: 10px;
-      font-weight: 400;
-      justify-content: center;
-      align-self: center;
+    @include tabletLaptop() {
+        box-shadow: none;
     }
-  }
+
+    @include laptopDesktop() {
+        box-shadow: none;
+    }
+
+    @include desktopFull(){
+        box-shadow: none;
+    }
+
+    h3{
+        @include Asmall(){
+            font-size: 10px;
+            font-weight: 400;
+            justify-content: center;
+            align-self: center;
+        }
+    }
 }
 
 .cntOpciones {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-
-  @include tabletLaptop() {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  @include laptopDesktop() {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  @include desktopFull() {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .opcion {
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
 
     @include tabletLaptop() {
-      line-height: 30px;
+        grid-template-columns: repeat(4, 1fr);
     }
 
     @include laptopDesktop() {
-      line-height: 30px;
+        grid-template-columns: repeat(4, 1fr);
     }
 
-    h3 {
-      margin-bottom: 0px;
-      font-weight: 600;
-      font-size: 17px;
-
-      @include Asmall() {
-        font-size: 10px;
-      }
-      @include tabletLaptop() {
-        font-size: 14px;
-      }
-    }
-  }
-
-  .precio {
-    color: $blueGaes;
-    font-size: 11px;
-    font-family: Montserrat;
-
-    @include tabletLaptop() {
-      font-size: 15px;
+    @include desktopFull(){
+        grid-template-columns: repeat(4, 1fr);
     }
 
-    @include laptopDesktop() {
-      font-size: 22px;
+    .opcion {
+        text-align: center;
+
+        @include tabletLaptop() {
+            line-height: 30px;
+        }
+
+        @include laptopDesktop() {
+            line-height: 30px;
+        }
+        
+        h3{
+           margin-bottom: 0px;
+           font-weight: 600;
+           font-size: 17px;
+           
+           @include Asmall(){
+               font-size: 10px;
+           }
+           @include tabletLaptop(){
+               font-size: 14px;
+           }
+        }
     }
 
         .precio {
             color: $blueGaes;
             font-size: 11px;
-            font-family: Montserrat;
+            font-family: 'Montserrat';
 
-  .btnSeleccionar {
-    button {
-      background-color: $blueGaes;
-      border: none;
-      border-radius: 6px;
-      color: white;
-      font-size: 9px;
+            @include tabletLaptop() {
+                font-size: 15px;
+            }
 
-      @include tabletLaptop() {
-        width: 100%;
-      }
+            @include laptopDesktop() {
+                font-size: 22px;
+            }
 
-      @include laptopDesktop() {
-        font-size: 15px;
-        border-radius: 10px;
-      }
+            @include desktopFull(){
+                font-size: 22px;
+            }
+        }
 
-      @include desktopFull() {
-        font-size: 15px;
-        border-radius: 10px;
-      }
+        .btnSeleccionar {
+            button {
+                background-color: $blueGaes;
+                border: none;
+                border-radius: 6px;
+                color: white;
+                font-size: 9px;
+
+                @include tabletLaptop() {
+                    width: 100%;
+                }
+
+                @include laptopDesktop() {
+                    font-size: 15px;
+                    border-radius: 10px;
+                }
+
+                @include desktopFull(){
+                    font-size: 15px;
+                    border-radius: 10px;
+                }
+            }
+        }
     }
-  }
-}
+
 
 .contPeriodo {
-  display: grid;
-  grid-auto-columns: auto;
-  grid-template-rows: auto;
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
 
-  @include smallTablet() {
-    grid-auto-columns: 20%;
-  }
+    @include smallTablet(){
+        grid-auto-columns: 20%;
+    }
 
-  span {
-    grid-row: 1;
-  }
+    span {
+        grid-row: 1;
+    }
 }
 
 /* Radio Buttons */
 
 /* style your lables/button */
-input[type="radio"] + div {
-  /* keep pointer so that you get the little hand showing when you are on a button */
-  cursor: pointer;
-  /* the following are the styles */
-  border-radius: 5px;
-  padding: 5px 5px;
-  background-color: $grisTenue;
-  width: 95%;
-  height: 95%;
-  border: none;
-
-  @include tabletLaptop() {
-    border-radius: 15px;
-  }
-
-  @include laptopDesktop() {
-    border-radius: 15px;
-  }
-
-  @include desktopFull() {
-    border-radius: 15px;
-  }
-}
-
-.radio {
-  input[type="radio"]:checked + div {
-    /* style for the checked/selected state */
+input[type=radio]+div {
+    /* keep pointer so that you get the little hand showing when you are on a button */
+    cursor: pointer;
+    /* the following are the styles */
     border-radius: 5px;
-    box-shadow: 0px 1px 7px 0px $grisOscuro;
-    background-color: white;
+    padding: 5px 5px;
+    background-color: $grisTenue;
+    width: 95%;
+    height: 95%;
     border: none;
 
-    @include laptopDesktop() {
-      border-radius: 15px;
+    @include tabletLaptop() {
+        border-radius: 15px;
     }
 
-    @include desktopFull() {
-      border-radius: 15px;
+    @include laptopDesktop() {
+        border-radius: 15px;        
     }
-  }
+
+    @include desktopFull(){
+        border-radius: 15px;
+    }
+
+    
+}
+
+.radio{
+
+    input[type=radio]:checked+div {
+        /* style for the checked/selected state */
+        border-radius: 5px;
+        box-shadow: 0px 1px 7px 0px $grisOscuro;
+        background-color: white;
+        border: none;
+
+        @include laptopDesktop() {
+            border-radius: 15px;
+        }
+
+        @include desktopFull(){
+            border-radius: 15px; 
+        }
+    }
+
 }
 
 /* Radio Button */
 
 .radio {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-columns: auto;
-
-  input {
-    opacity: 0;
-    grid-column: 1;
-    grid-row: 1;
-    align-self: center;
-    justify-self: center;
-    z-index: 1;
-    width: 95%;
-    height: 100%;
-
-    @include laptopDesktop() {
-      min-height: 150px;
-    }
-    @include desktopFull() {
-      min-height: 150px;
-    }
-  }
-
-  div {
-    grid-column: 1;
-    grid-row: 1;
     display: grid;
-    grid-auto-rows: auto;
-    align-self: center;
-    justify-self: center;
+    grid-template-columns: auto;
+    grid-template-columns: auto;
+
+    input {
+        opacity: 0;
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+        justify-self: center;
+        z-index: 1;
+        width: 95%;
+        height: 100%;
+
+        @include laptopDesktop(){
+            min-height: 150px;
+        }
+        @include desktopFull(){
+            min-height: 150px;
+        }
+
+    }
+
+    div {
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        grid-auto-rows: auto;
+        align-self: center;
+        justify-self: center;
 
         .numBer {
             grid-row: 1;
-            font-family: Montserrat;
+            font-family: 'Montserrat';
             color: $grissOscuro;
             font-size: 20px;
             align-self: end;
@@ -459,715 +470,717 @@ input[type="radio"] + div {
             @include tabletLaptop() {
                 font-size: 55px;
                 font-weight: 600;
-                font-family: Montserrat;
+                font-family: 'Montserrat';
             }
 
             @include laptopDesktop(){
                 font-size: 55px;
                 font-weight: 600;
-                font-family: Montserrat;
+                font-family: 'Montserrat';
             }
 
             @include desktopFull(){
                 font-size: 55px;
                 font-weight: 600;
-                font-family: montserrat;
+                font-family: 'Montserrat';
             }
             
         }
 
-    .mes {
-      grid-row: 2;
-      font-size: 10px;
-      color: $blueGaes;
-      align-self: initial;
+        .mes {
+            grid-row: 2;
+            font-size: 10px;
+            color: $blueGaes;
+            align-self: initial;
 
-      @include tabletLaptop() {
-        font-size: 18px;
-        font-weight: 600;
-      }
+            @include tabletLaptop() {
+                font-size: 18px;
+                font-weight: 600;
+            }
 
-      @include laptopDesktop() {
-        font-size: 18px;
-        font-weight: 600;
-      }
+            @include laptopDesktop(){
+                font-size: 18px;
+                font-weight: 600;
+            }
 
-      @include desktopFull() {
-        font-size: 18px;
-        font-weight: 600;
-      }
+            @include desktopFull(){
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
     }
-  }
 }
 
+
 .cntPie {
-  display: grid;
-  grid-template-rows: 60px;
-  background-color: $blueGaes;
+    display: grid;
+    grid-template-rows: 60px;
+    background-color: $blueGaes;
 
     .small {
-        font-family: Montserrat;
+        font-family: 'Montserrat';
         color: white;
         font-size: 8px;
         grid-row: 1;
         align-self: center;
         justify-self: center;
 
-    @include tabletLaptop() {
-      font-size: 10px;
-    }
+        @include tabletLaptop() {
+            font-size: 10px;
+        }
 
-    @include laptopDesktop() {
-      font-size: 15px;
-    }
+        @include laptopDesktop() {
+            font-size: 15px;
+        }
 
-    @include desktopFull() {
-      font-size: 15px;
+        @include desktopFull(){
+            font-size: 15px;
+        }
     }
-  }
 }
 
 .cntAprox {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 0.5fr;
-  background-color: $grisTenue;
-  padding: 1%;
-  border-radius: 5px;
-  margin-top: 10px;
-
-  h3 {
-    margin-bottom: 0px;
-    grid-column: 5/7;
-    grid-row: 1;
-  }
-
-  .details {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 0.5fr;
-  }
+    background-color: $grisTenue;
+    padding: 1%;
+    border-radius: 5px;
+    margin-top: 10px;
 
-  .grayParrf {
-    grid-row: 1;
-    font-size: 9px;
-    color: $grisOscuro;
-    grid-column: 1/5;
-    font-weight: 600;
-
-    @include tabletLaptop() {
-      font-size: 10px;
-    }
-
-    @include laptopDesktop() {
-      font-size: 18px;
-    }
-    @include desktopFull() {
-      font-size: 18px;
-    }
-  }
-
-  .tooltip {
-    grid-row: 1;
-    grid-column: 6;
-    align-self: center;
-    justify-self: end;
-
-    i {
-      font-size: 12px;
-      color: $grisOscuro;
-
-      @include tabletLaptop() {
-        font-size: 25px;
-      }
-
-      @include laptopDesktop() {
-        font-size: 38px;
-      }
-    }
-  }
-}
-
-.cntAprox{
     h3{
-        align-self: center;
-        /* justify-self: right; */
+        margin-bottom: 0px;
+        grid-column: 5/7;
+        grid-row: 1;
     }
+    
+    .details{
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 0.5fr;
+    }   
+
+    .grayParrf {
+        grid-row: 1;
+        font-size: 9px;
+        color: $grisOscuro;
+        grid-column: 1/5;
+        font-weight: 600;
+
+        @include tabletLaptop() {
+            font-size: 10px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 18px;
+        }
+        @include desktopFull() {
+            font-size: 18px;
+        }
+    }   
+
+    .tooltip {
+        grid-row: 1;
+        grid-column: 6;
+        align-self: center;
+        justify-self: end;
+
+        i {
+            font-size: 12px;
+            color: $grisOscuro;
+
+            @include tabletLaptop() {
+                font-size: 25px;
+            }
+
+            @include laptopDesktop() {
+                font-size: 38px;
+            }
+        }
+    }
+
+
 }
 
 
 
 .cntBotones {
-  margin-top: 15px;
-  text-align: center;
 
     margin-top: 15px;
     text-align: center;
     
     button {
         font-size: 13px;
-        font-family: Montserrat;
+        font-family: 'Montserrat';
 
-    @include laptopDesktop() {
-      font-size: 13px;
+        @include laptopDesktop() {
+            font-size: 13px;
+        }
+
+        @include desktopFull(){
+            font-size: 13px;
+        }        
     }
 
-    @include desktopFull() {
-      font-size: 13px;
+    button:disabled, button[disabled]{
+        background-color: $disabledblue;
     }
-  }
-
-  button:disabled,
-  button[disabled] {
-    background-color: $disabledblue;
-  }
 }
 
 /* Boton Ayuda */
 
 .buttonHelp {
-  display: none;
-  grid-column: 6;
-  align-self: center;
-  justify-self: right;
-
-  @include tabletLaptop() {
-    display: block;
-  }
-
-  @include laptopDesktop() {
-    display: block;
-  }
-
-  @include desktopFull() {
-    display: block;
-  }
-
-  button {
-    border-radius: 15px;
-    width: 100%;
+    display: none;
+    grid-column: 6;
     align-self: center;
-    justify-self: end;
-    background-color: $blueGaes;
-    height: 30px;
-    padding: 0px 10px;
-    border: none;
-
-    .itemButton {
-      display: grid;
-
-      @include tabletLaptop() {
-        grid-template-columns: 40px 1fr;
-      }
-
-      @include laptopDesktop() {
-        grid-template-columns: 40px 1fr;
-      }
-
-      @include desktopFull() {
-        grid-template-columns: 40px 1fr;
-      }
-
-      .bigTitle {
-        font-size: 15px;
-        align-self: center;
-        justify-self: initial;
-        font-size: 12px;
-        margin-right: 15px;
-      }
-
-      .fa-question-circle {
-        align-self: center;
-        justify-self: center;
-        font-size: 15px;
-      }
-    }
+    justify-self: right;
 
     @include tabletLaptop() {
-      width: 100%;
+        display: block;
     }
 
     @include laptopDesktop() {
-      width: 100%;
+        display: block;
     }
 
-    @include desktopFull() {
-      width: 100%;
+    @include desktopFull(){
+        display: block;
     }
 
-    i {
-      color: white;
-      font-size: 20px;
+    button {
+        border-radius: 15px;
+        width: 100%;
+        align-self: center;
+        justify-self: end;
+        background-color: $blueGaes;
+        height: 30px;
+        padding: 0px 10px;
+        border: none;
+
+        .itemButton {
+            display: grid;
+
+            @include tabletLaptop() {
+                grid-template-columns: 40px 1fr;
+            }
+
+            @include laptopDesktop() {
+                grid-template-columns: 40px 1fr;
+            }
+    
+            @include desktopFull(){
+                grid-template-columns: 40px 1fr;
+            }
+
+            .bigTitle {
+                font-size: 15px;
+                align-self: center;
+                justify-self: initial;
+                font-size: 12px;
+                margin-right: 15px;
+            }
+
+            .fa-question-circle {
+                align-self: center;
+                justify-self: center;
+                font-size: 15px;
+            }
+        }
+
+        @include tabletLaptop() {
+            width: 100%;
+        }
+
+        @include laptopDesktop() {
+            width: 100%;
+        }
+
+        @include desktopFull(){
+            width: 100%;
+        }
+
+        i {
+            color: white;
+            font-size: 20px;
+        }
     }
-  }
 }
 
-#buttonHelp {
-  button {
-    .itemButton {
-      grid-template-columns: 1fr;
-      align-self: center;
-      justify-self: center;
-      .bigTitle {
-        margin-right: 0px;
-      }
-    }
-  }
-}
+.calcPdos {    
 
-.calcPdos {
-  .contPeriodo {
-    @include laptopDesktop() {
-      margin-bottom: $topMargin;
+    .contPeriodo {
+        @include laptopDesktop() {
+            margin-bottom: $topMargin;
+        }
     }
-  }
 }
 
 .calcPtres {
-  .contMinMax {
-    font-size: 12px;
-    @include tabletLaptop() {
-      font-size: 18px;
-    }
-    @include laptopDesktop() {
-      font-size: 18px;
-    }
-    @include desktopFull() {
-      font-size: 18px;
-    }
-  }
+    .contMinMax{
+            font-size: 12px;
+            @include tabletLaptop(){
+                font-size: 18px; 
+            }
+            @include laptopDesktop(){
+                font-size: 18px; 
+            }
+            @include desktopFull(){
+                font-size: 18px; 
+            }
+    }    
 }
 
-p.title {
-  margin-bottom: 30px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.contCondiciones {
-  p.title {
+p.title{
+    margin-bottom: 30px;
     font-size: 15px;
     font-weight: 600;
-    margin: 15px 0px;
-  }
 }
 
+.contCondiciones{
+    p.title{
+        font-size: 15px;
+        font-weight: 600;
+        margin: 15px 0px;
+    }
+}
+
+.ayudaM {
+    @include tabletLaptop() {
+        display: none;
+    }
+    @include laptopDesktop() {
+        display: none;
+    }
+    @include desktopFull() {
+        display: none;
+    }
+
+    button {
+        background-color: $grisTenue;
+        color: $grissOscuro;
+
+        .itemButton {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            font-size: 15px;
+
             .bigTitle {                
-                font-family: Montserrat;
+                font-family: 'Montserrat';
                 font-size: 16px;
             }
         }
     }
 
-  button {
-    background-color: $grisTenue;
-    color: $grissOscuro;
-
-    .itemButton {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
-      font-size: 15px;
-
-      .bigTitle {
-        font-family: Montserrat;
-        font-size: 16px;
-      }
-    }
-  }
 }
 
 .volverM {
-  text-align: center;
-  display: block;
+    text-align: center;
+    display: block;
 
-  @include tabletLaptop() {
-    display: none;
-  }
-  @include laptopDesktop() {
-    display: none;
-  }
-  @include desktopFull() {
-    display: none;
-  }
+    @include tabletLaptop() {
+        display: none;
+    }
+    @include laptopDesktop() {
+        display: none;
+    }
+    @include desktopFull() {
+        display: none;
+    }
 
-  button {
-    background-color: $grisTenue;
-    color: $grissOscuro;
-    border-radius: 15px;
-    margin: 5% 0px;
+    button {
+        background-color: $grisTenue;
+        color: $grissOscuro;
+        border-radius: 15px;
+        margin: 5% 0px;
 
-    .itemButton {
-      display: grid;
-      grid-template-columns: 1fr;
-      font-size: 15px;
+        .itemButton {
+            display: grid;
+            grid-template-columns: 1fr;
+            font-size: 15px;
 
             .bigTitle {
                 text-align: center;
-                font-family: Montserrat;
+                font-family: 'Montserrat';
                 font-size: 16px;
             }
         }
     }
-  }
+
 }
+
 
 /* Ayuda Ventas */
 
 .manSolicitud {
-  padding: 0px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
 
-  .pasos {
-    display: grid;
-    grid-auto-rows: auto;
-    grid-gap: 10px;
+    .pasos {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-gap: 10px;
 
-    .paso {
-      .parrafo {
-        margin: 0px 0px 15px 0px;
-        font-size: 13px;
-      }
+        .paso {
+            .parrafo {
+                margin: 0px 0px 15px 0px;
+                font-size: 13px;
+            }
 
-      .imagePaso {
-        img {
-          width: 100%;
+            .imagePaso {
+                img {
+                    width: 100%;
+                }
+            }
         }
-      }
     }
-  }
+
 }
 
 .imageAventas {
-  img {
-    width: 100%;
-  }
+    img {
+        width: 100%;
+    }
+
 }
 
 .manSolicitud {
-  @include tabletLaptop() {
-    padding: 0px 10% 0px 10%;
-  }
+    @include tabletLaptop() {
+        padding: 0px 10% 0px 10%;
+    }
 
-  @include laptopDesktop() {
-    padding: 0px 15% 0px 15%;
-  }
+    @include laptopDesktop() {
+        padding: 0px 15% 0px 15%;
+    }
 }
 
 .titleManSol {
     
     .title {
-        font-family: Montserrat;
+        font-family: 'Montserrat';
         font-size: 12px;
     }
 }
 
 .pasos {
-  @include tabletLaptop() {
-    display: grid;
-    grid-template-rows: repeat(8, auto);
-  }
-  @include laptopDesktop() {
-    display: grid;
-    grid-template-rows: repeat(8, auto);
-  }
-  @include desktopFull() {
-    display: grid;
-    grid-template-rows: repeat(8, auto);
-  }
-
-  .paso {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-gap: 20px;
-
-    img {
-      max-width: 70%;
-      @include Asmall() {
-        max-width: 80%;
-      }
+    @include tabletLaptop() {
+        display: grid;
+        grid-template-rows: repeat(8, auto);
     }
-  }
-
-  .textParrafo:first-letter {
-    font-weight: 600;
-  }
-
-  .textParrafo {
-    text-align: left;
-    padding-top: 30px;
-
-    @include Asmall() {
-      text-align: left;
+    @include laptopDesktop() {
+        display: grid;
+        grid-template-rows: repeat(8, auto);
     }
-  }
+    @include desktopFull() {
+        display: grid;
+        grid-template-rows: repeat(8, auto);
+    }
+
+    .paso {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-gap: 20px;
+
+            img {
+                max-width: 70%;
+                @include Asmall(){
+                    max-width: 80%;
+                }
+
+            }
+        }
+
+        .textParrafo:first-letter {
+            font-weight: 600;
+        }
+
+        .textParrafo {
+            text-align: left;
+            padding-top: 30px;
+
+            @include Asmall() {
+                text-align: left;
+            }
+        }
+    }
+
+
+.tipsVentas{
+    background-color: $grisTenue;
+    margin: 10px 0;
+    @include Asmall(){
+        display: none;
+    }
+    .contenido{
+        margin: 30px 0px;
+    }
 }
 
-.tipsVentas {
-  background-color: $grisTenue;
-  margin: 10px 0;
-  @include Asmall() {
-    display: none;
-  }
-  .contenido {
-    margin: 30px 0px;
-  }
+.margenInferior{
+    margin-bottom: 50px;
 }
 
-.margenInferior {
-  margin-bottom: 50px;
+hr{
+    margin: 50px 0px;
+    @include Asmall(){
+        margin: 30px 0px 20px 0px;
+    }
 }
 
-hr {
-  margin: 50px 0px;
-  @include Asmall() {
-    margin: 30px 0px 20px 0px;
-  }
-}
 
 .contDosBig {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+    
+    display: grid;
+    grid-template-columns: repeat(3, auto);
 
-  .item {
-    justify-self: center;
-    align-self: center;
-    text-align: center;
+        .item {
+            justify-self: center;
+            align-self: center;
+            text-align: center;
 
-    embed.reloj {
-      width: 25%;
-      margin-bottom: 20px;
-    }
+            embed.reloj {
+                width: 25%;
+                margin-bottom: 20px;
+            }
 
-    embed.personal {
-      width: 30%;
-      margin-bottom: 20px;
-    }
+            embed.personal {
+                width: 30%;
+                margin-bottom: 20px;
+            }
 
-    embed.martillo {
-      width: 30%;
-      margin-bottom: 20px;
-    }
+            embed.martillo {
+                width: 30%;
+                margin-bottom: 20px;
+            }
 
-    .title {
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
+            .title {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
 
-    .textContent {
-      font-size: 12px;
-      line-height: 18px;
-    }
-  }
-  @include Asmall() {
-    display: none;
-  }
+            .textContent {
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+        @include Asmall(){
+            display: none;
+        }
+    
+
 }
 
 .partDosIcons {
-  display: none;
-  background-color: $grisTenue;
-  margin: 50px 0;
+    display: none;
+    background-color: $grisTenue;
+    margin: 50px 0;
 
-  @include tabletLaptop() {
-    display: block;
-  }
+    @include tabletLaptop() {
+        display: block;
+    }
 
-  h1 {
-    padding: 50px 0px 0px 15%;
-  }
+    h1 {
+        padding: 50px 0px 0px 15%;
+    }
 }
 
 .buttonVolver {
-  display: none;
+    display: none;
 
-  @include tabletLaptop() {
-    display: block;
-    grid-column: 6;
-    align-self: center;
-    text-align: center;
-  }
-  @include laptopDesktop() {
-    display: block;
-    grid-column: 6;
-    align-self: center;
-    text-align: center;
-  }
-  @include desktopFull() {
-    display: block;
-    grid-column: 6;
-    align-self: center;
-    text-align: center;
-  }
+    @include tabletLaptop() {
+        display: block;
+        grid-column: 6;
+        align-self: center;
+        text-align: center;
 
-  .buttonAyuda {
-    grid-column: 6;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 5% 15% 5% 15%;
-    border-radius: 15px;
-
-    .itemButton {
-      grid-column: 6;
     }
-  }
+    @include laptopDesktop() {
+        display: block;
+        grid-column: 6;
+        align-self: center;
+        text-align: center;
+
+    }
+    @include desktopFull() {
+        display: block;
+        grid-column: 6;
+        align-self: center;
+        text-align: center;
+
+    }
+
+    .buttonAyuda {
+        grid-column: 6;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 5% 15% 5% 15%;
+        border-radius: 15px;
+
+        .itemButton {
+            grid-column: 6;
+        }
+    }
 }
 
-.contenidoContacto {
-  font-size: 12px;
-  margin-bottom: 30px;
+.contenidoContacto{
+    font-size: 12px;
+    margin-bottom: 30px;
 }
 
 /* Animaciones */
 
 .animated {
-  -webkit-animation-duration: 2000mss;
-  animation-duration: 2000ms;
-  -webkit-animation-fill-mode: backwards;
-  animation-fill-mode: backwards;
+    -webkit-animation-duration: 2000mss;
+    animation-duration: 2000ms;
+    -webkit-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
 }
 
 .fast {
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
+    0% {
+        opacity: 0;
+    }
 
-  25% {
-    opacity: 0;
-  }
+    25% {
+        opacity: 0;
+    }
 
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
 
-  75% {
-    opacity: 0;
-  }
+    75% {
+        opacity: 0;
+    }
 
-  100% {
-    opacity: 1;
-  }
+    100% {
+        opacity: 1;
+    }
+
+
 }
 
 .fadeIn {
-  animation-name: fadeIn;
+    animation-name: fadeIn;
 }
 
 .btnSeleccionar {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 
-  input[type="radio"] {
-    opacity: 0;
-    position: absolute;
-    grid-column: 1;
-    grid-row: 1;
-    width: 14%;
-    height: 4%;
+    input[type=radio] {
+        opacity: 0;
+        position: absolute;
+        grid-column: 1;
+        grid-row: 1;
+        width: 14%;
+        height: 4%;
 
-    @include Asmall() {
-      width: 35%;
+        @include Asmall(){
+            width: 35%;
+        }
+
+        @include tabletLaptop(){
+            width: 30%;
+            height: 8%;    
+        }
+        
+
     }
 
-    @include tabletLaptop() {
-      width: 30%;
-      height: 8%;
-    }
-  }
+    input[type=radio]+div {
+        border-radius: 5px;
+        background-color: $grisOscuro;
+        border: none;
+        color: $grissOscuro;
+        font-weight: 700;
+        font-size: 10px;
+        color: #fff;
 
-  input[type="radio"] + div {
-    border-radius: 5px;
-    background-color: $grisOscuro;
-    border: none;
-    color: $grissOscuro;
-    font-weight: 700;
-    font-size: 10px;
-    color: #fff;
-
-    @include laptopDesktop() {
-      font-size: 12px;
-      border-radius: 15px;
-    }
-    @include desktopFull() {
-      font-size: 15px;
-      border-radius: 15px;
-    }
-  }
-
-  input[type="radio"]:checked + div {
-    border-radius: 5px;
-    box-shadow: 0px 1px 7px 0px #b5b5b5;
-    padding: 5px 10px;
-    background-color: $blueGaes;
-    border: none;
-    color: white;
-    font-weight: 700;
-    font-size: 10px;
-
-    @include tabletLaptop() {
-      font-size: 10px;
-      border-radius: 5px;
+        @include laptopDesktop() {
+            font-size: 12px;
+            border-radius: 15px;
+        }
+        @include desktopFull() {
+            font-size: 15px;
+            border-radius: 15px;
+        }
     }
 
-    @include laptopDesktop() {
-      font-size: 15px;
-      border-radius: 15px;
+    input[type=radio]:checked+div {
+        border-radius: 5px;
+        box-shadow: 0px 1px 7px 0px #B5B5B5;
+        padding: 5px 10px;
+        background-color: $blueGaes;
+        border: none;
+        color: white;
+        font-weight: 700;
+        font-size: 10px;
+
+        @include tabletLaptop() {
+            font-size: 10px;
+            border-radius: 5px;
+        }
+
+        @include laptopDesktop() {
+            font-size: 15px;
+            border-radius: 15px;
+        }
+        @include desktopFull() {
+            font-size: 15px;
+            border-radius: 15px;
+        }
     }
-    @include desktopFull() {
-      font-size: 15px;
-      border-radius: 15px;
-    }
-  }
 }
 
 /* Button Imprimir */
 
 .cell {
-  @include tabletLaptop() {
-    font-size: 15px !important;
-  }
+    @include tabletLaptop() {
+        font-size: 15px !important;
+    }
 
-  @include laptopDesktop() {
-    font-size: 15px !important;
-  }
+    @include laptopDesktop() {
+        font-size: 15px !important;
+    }
 }
 
 .cellInput {
-  border: 2px solid transparent;
-  width: 100%;
-  font-weight: 600;
-  color: #4cb2dd;
-  outline: none;
-  text-align: center;
-  @include tabletLaptop() {
-    font-size: 20px;
+    border: 2px solid transparent;
+    width: 100%;    
+    font-weight: 600;
+    color: #4CB2DD;
+    outline: none;
+    text-align: center;
+    @include tabletLaptop(){
+        font-size: 20px;
+    }
+    @include laptopDesktop(){
+        font-size: 25px;
+    }
   }
-  @include laptopDesktop() {
-    font-size: 25px;
-  }
-}
 
 .contacto {
-  padding: 50px 15% 50px 15%;
+    padding: 50px 15% 50px 15%;
 
-  p {
-    font-size: 15px;
-  }
+    p {
+        font-size: 15px;
+    }
 }
 
 .noDesk {
-  @include laptopDesktop() {
-    display: none;
-  }
+    @include laptopDesktop() {
+        display: none;
+    }
 }
 
-.tooltipPrint {
-  display: none;
+.tooltipPrint{
+    display: none;
 }
 
 #cuotaInicial{
@@ -1181,216 +1194,230 @@ hr {
 
 /* Container Slide */
 
-.slidecontainer input {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 2px;
-  background: #eff3f6;
-  border: 0.5px solid #d2dbe4;
-  outline: 0;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4cb2dd;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4cb2dd;
-  cursor: pointer;
-}
-
-/* Enunciado minmax */
-
-.contMinMax {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  .contMax {
-    justify-self: right;
-  }
-}
-
-/* Cont Details */
-
-.cntAprox.details {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, auto);
-  grid-column-gap: 20px;
-  @include Asmall() {
-    grid-template-columns: 1fr;
-  }
-
-  .contDetail {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column: 1/4;
-
-    .grayParrf {
-      grid-column: 1;
-      justify-self: left;
-      align-self: center;
-      font-size: 10px;
-      font-weight: 600;
-
-      @include Asmall() {
-        font-size: 9px;
-      }
-
-      @include tabletLaptop() {
-        font-size: 9px;
-      }
-      @include laptopDesktop() {
-        font-size: 18px;
-      }
-      @include desktopFull() {
-        font-size: 18px;
-      }
+.slidecontainer 
+    input{
+        -webkit-appearance: none;
+        width: 100%;
+        height: 2px;
+        background: #eff3f6;
+        border: .5px solid #d2dbe4;
+        outline: 0;
+        opacity: .7;
+        transition: opacity .2s;
+        border-radius: 5px;
+        margin-bottom: 20px;
     }
 
-    .cifraBlack {
-      grid-column: 2;
-      justify-self: right;
-      font-size: 12px;
-      @include Asmall() {
-        font-size: 12px;
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%; 
+        background: #4CB2DD;
+        cursor: pointer;
       }
-      @include tabletLaptop() {
-        font-size: 18px;
+      
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CB2DD;
+        cursor: pointer;
       }
-      @include laptopDesktop() {
-        font-size: 18px;
-      }
-      @include desktopFull() {
-        font-size: 18px;
-      }
+
+    /* Enunciado minmax */
+
+    .contMinMax{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        .contMax{
+            justify-self: right;
+        }
     }
-  }
-}
+
+    /* Cont Details */
+
+    .cntAprox.details {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, auto);
+        grid-column-gap: 20px;
+            @include Asmall(){
+                grid-template-columns: 1fr; 
+            }
+
+        .contDetail{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            grid-column: 1/4;
+
+            .grayParrf{
+                grid-column: 1;
+                justify-self: left;
+                align-self: center;
+                font-size: 10px;
+                font-weight: 600;
+
+                @include Asmall(){
+                    font-size: 9px; 
+                }
+
+                @include tabletLaptop(){
+                    font-size: 9px;
+                }
+                @include laptopDesktop(){
+                    font-size: 18px;
+                }
+                @include desktopFull(){
+                    font-size: 18px;
+                }
+
+                
+            }
+    
+            .cifraBlack{
+                grid-column: 2;
+                justify-self: right;
+                font-size: 12px;
+                @include Asmall(){
+                    font-size: 12px; 
+                }
+                @include tabletLaptop(){
+                    font-size: 18px;
+                }
+                @include laptopDesktop(){
+                    font-size: 18px;
+                }
+                @include desktopFull(){
+                    font-size: 18px;
+                }
+            }
+
+        }
+        
+    }
 
 /* Calculadora Edad */
 
-.cntCalcAge {
-  input {
-    border: 1px dotted $grissOscuro;
-    border-radius: 5px;
-    height: 35px;
-    @include Asmall() {
-      font-size: 10px;
+    
+
+.cntCalcAge{
+
+
+    input{
+        border: 1px dotted $grissOscuro;
+        border-radius: 5px;
+        height: 35px;
+        @include Asmall(){
+            font-size: 10px;
+        }                               
     }
-  }
 
-  input:focus {
-    cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
-  }
-
-  .showAge {
-    font-size: 15px;
-    font-weight: 700;
-    justify-self: center;
-    align-self: center;
-  }
-
-  .columnaDos {
-    justify-content: center;
-    align-items: center;
-    @include Asmall() {
-      font-size: 12px;
+    input:focus{
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+        outline: none;
     }
-  }
+
+    .showAge{
+        font-size: 15px;
+        font-weight: 700;
+        justify-self: center;
+        align-self: center; 
+    }
+
+    .columnaDos{
+        justify-content: center;
+        align-items: center;
+        @include Asmall(){
+            font-size: 12px;
+        }
+    }
 }
+
 
 /* Radio Input, Disabled */
-.radio {
-  .disableOption {
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background-color: $blurObject;
-  }
+.radio{
 
-  input:disabled + div {
-    z-index: -1;
-  }
+    .disableOption{
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background-color: $blurObject;
 
-  input[type="radio"] + div {
-    padding: 15px 0;
-  }
+    }
+
+    input:disabled + div{
+        z-index: -1;
+    }
+
+    input[type=radio] + div{
+        padding: 15px 0;
+    }
 }
 
-.contCondiciones {
-  margin: 10px 0px;
-  h3 {
+.contCondiciones{
     margin: 10px 0px;
-  }
-  .listaItem {
-    font-size: 12px;
-  }
+    h3{
+        margin: 10px 0px;
+    }
+    .listaItem{
+        font-size: 12px;
+    }
 }
 
 /* Print */
 
-@media print {
-  .doNotPrint {
-    display: none;
-  }
-
-  .printOk {
-    display: block;
-    .tooltipPrint {
-      text-align: center;
-      font-size: 12px;
+@media print{
+    .doNotPrint{
+        display:none;
     }
-  }
 
-  input[type="radio"]:checked + div {
-    border: 5px solid red;
-  }
-  .btnSeleccionar {
-    input[type="radio"]:checked + div,
-    .opcion {
-      border: 5px solid red !important;
+    .printOk{
+        display: block;
+        .tooltipPrint{
+            text-align: center;
+            font-size: 12px;
+        }
     }
-  }
 
-  .logos {
-    img {
-      width: 100%;
-      display: inline-block;
-      page-break-after: avoid;
-      page-break-inside: avoid;
+    input[type=radio]:checked + div {
+        border: 5px solid red;
     }
-  }
+    .btnSeleccionar{
+        input[type=radio]:checked + div, .opcion{
+            border: 5px solid red !important;
+        }
+    }       
+    
+    .logos{
+        img{
+            width: 100%;
+            display: inline-block;
+            page-break-after: avoid;
+            page-break-inside: avoid;
+        }
+    }    
 
-  .cntAprox {
-    .grayParrf {
-      font-size: 15px;
+    .cntAprox{
+        .grayParrf{
+            font-size: 15px;
+        }
     }
-  }
 
-  .cntPie {
-    text-align: center;
-  }
+    .cntPie{
+        text-align: center;
+    }
 
-  hr {
-    margin: 15px 0px;
-  }
+    hr{
+        margin: 15px 0px;
+    }
+    
+
 }
+
 
 
