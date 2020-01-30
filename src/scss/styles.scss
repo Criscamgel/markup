@@ -1213,21 +1213,21 @@ hr {
 /* Cont Details */
 
 .cntAprox.details {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
-  grid-column-gap: 20px;
+  /* grid-column-gap: 20px; */
   @include Asmall() {
     grid-template-columns: 1fr;
   }
 
   .contDetail {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr;
-    grid-column: 1/4;
+    /* grid-column: 1/3; */
 
     .grayParrf {
-      grid-column: 1;
+      grid-column: 1/3;
       justify-self: left;
       align-self: center;
       font-size: 10px;
@@ -1249,8 +1249,8 @@ hr {
     }
 
     .cifraBlack {
-      grid-column: 2;
-      justify-self: right;
+      grid-column: 5/7;
+      justify-self: left;
       font-size: 12px;
       @include Asmall() {
         font-size: 12px;
