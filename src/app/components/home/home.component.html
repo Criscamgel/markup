@@ -344,7 +344,7 @@
                         <button class="imprimir" (click)="onPrint()"
                             [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
                     </div>
-                    <div class="cntBotones doNotPrint" (click)="linka()">
+                    <div class="cntBotones doNotPrint" (click)="linka(); gaesForm.reset()">
                         <button
                             [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR
                             SOLICITUD</button>
