@@ -15,6 +15,10 @@ import { ROUTES } from './app.routes';
 import { EditInputComponent } from './components/edit-input/edit-input.component';
 
 import { AutofocusDirective } from './autofocus.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/* Angular Material */
+import { MatDialogModule } from '@angular/material';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { AutofocusDirective } from './autofocus.directive';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot( ROUTES, { useHash:true } )
+    RouterModule.forRoot( ROUTES, { useHash:true } ),
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
