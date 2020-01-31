@@ -185,7 +185,7 @@
 
                             <span class="radio">
 
-                                <div *ngIf="diferencia < 18 || showAge < 18" class="disableOption"></div>
+                                <div *ngIf="diferencia < 36 || showAge < 18" class="disableOption"></div>
                                 <input id="treintaSeis" [(ngModel)]="cuotas" name="cuotaTreintaSeis"
                                     (click)="changeButtonCliente($event.target); changeButton($event.target)"
                                     type="radio" value="36" [disabled]="diferencia < 36 || showAge < 18">
