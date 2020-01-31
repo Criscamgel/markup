@@ -253,16 +253,26 @@
                                 <p class="cifraGray">{{ctamaxDes}}%</p>
                             </div>
                         </div>
-                        <hr>
                     </div>
 
                     <div id="cuotaInicial" class="cntAprox">
-                        <p class="grayParrf">Cuota inicial ({{ctainicialSlide}}%):</p>
-                        <h3>$ {{cuotaInicial | number:'1.0'}}</h3>
-
-                        <div class="tooltip">
-                        </div>
+                            <p class="grayParrf">Cuota inicial:</p>
+                            <h3>{{ctainicialSlide}}%</h3>
+    
+                            <div class="tooltip">
+                            </div>        
+                    </div>                        
+                    <hr>
+                    <div id="cuotaInicial" class="cntAprox">
+                            <p class="grayParrf">Valor cuota inicial:</p>
+                            <h3>$ {{cuotaInicial | number:'1.0'}}</h3>
+    
+                            <div class="tooltip">
+                            </div>
+    
                     </div>
+                 
+                    
                     <div class="cntAprox">
                         <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
                             (incluye seguro de vida)</p>
@@ -299,7 +309,7 @@
 
                         <div *ngIf="showDetailsOne" class="contDetail">
                             <p class="grayParrf">Cuota mensual del seguro:</p>
-                            <p class="cifraBlack">$ {{seguroCta | number:'1.0'}}</p>
+                            <p class="cifraBlack">$ {{seguroCta | number:'1.0-0'}}</p>
                         </div>
 
                         <div *ngIf="showDetailsOne" class="contDetail">
