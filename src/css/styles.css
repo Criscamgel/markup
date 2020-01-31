@@ -699,6 +699,7 @@ input[type="radio"] + div {
   grid-column: 6;
   align-self: center;
   justify-self: end;
+  grid-column: 6;
 }
 
 .cntAprox .tooltip i {
@@ -716,6 +717,10 @@ input[type="radio"] + div {
   .cntAprox .tooltip i {
     font-size: 38px;
   }
+}
+
+div#detailsTwo .tooltip {
+  grid-column: initial;
 }
 
 .cntAprox h3 {
