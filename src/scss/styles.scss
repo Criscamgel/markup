@@ -569,6 +569,7 @@ input[type="radio"] + div {
     grid-row: 1;
     align-self: center;
     justify-self: end;
+    grid-column: 6;
 
     i {
       font-size: 12px;
@@ -583,6 +584,10 @@ input[type="radio"] + div {
       }
     }
   }
+}
+
+div#detailsTwo .tooltip {
+  grid-column: initial;
 }
 
 .cntAprox {
