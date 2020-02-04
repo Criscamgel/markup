@@ -7,14 +7,7 @@ import { MatDialog } from '@angular/material';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-
-  constructor(public dialog: MatDialog) {
-    /* this.dialog.open(ModalContentComponent, {
-      width: '300px',
-      data: {ageCalc: this.ageCalc}
-  }); */
-  }
+export class HomeComponent {  
 
   cuotas = 0;
   tasa = 0.24;
@@ -25,13 +18,13 @@ export class HomeComponent {
   valorFinal = 0;
 
   /* Calculadora de Edad */
-  ageCalc = '0000-00-00';
+  ageCalc;
   showAge = 0;
   diferencia = 0;
 
   vlrCuota = 0;
   cuatroMil = 0;
-  nmv = 1.6;
+  nmv = 0;
   costoInterez = 0;
   dtoFinancia = 0;
   inCuatroSeg = 0;
@@ -73,9 +66,19 @@ export class HomeComponent {
   seguroCta = 0;
   seguroTotal = 0;
 
-  /* openDialog() {
-   this.dialog.open(ModalContentComponent);
-  } */  
+  constructor(public dialog: MatDialog) {
+    /* let dialogRef = this.dialog.open(ModalContentComponent, {
+      width: '300px',
+      data: {ageCalc: this.ageCalc}
+  });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result ---> " + JSON.stringify(result));
+      
+      this.ageCalc = result.ageCalc;
+      this.ageCalculator();         
+    }) */
+  }
 
   linka() {
     window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
@@ -226,6 +229,8 @@ export class HomeComponent {
     let nmv = Math.pow((1 + this.tasa), (1 / 12)) - 1;
     let seguro;
     let valorSolicitado = 0;
+    /* NMV Global */
+    this.nmv = +(nmv * 100).toFixed(1);
 
     if (val.value) {
       cuota = Number(val.value);
@@ -521,5 +526,29 @@ export class HomeComponent {
     }
 
   }
+
+
+
+  /* ageCalculator() {
+    if (this.ageCalc) {
+      
+      console.log("this.ageCalc", this.ageCalc);
+      
+
+      var showAge;
+
+      const convertAge = this.ageCalc.toISOString().slice(0,10);
+      const timeDiff = Date.now() - convertAge.getTime();
+      debugger;
+      console.log(Date.now());      
+      console.log("convertAge ---> ", convertAge);
+      
+      showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
+      this.diferencia = Math.round((75 - showAge) * 12);
+      this.showAge = Math.round(showAge);
+
+    }
+
+  } */
 
 }
