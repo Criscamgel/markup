@@ -262,31 +262,31 @@ hr {
   border: solid 1px #F0F0F0;
 }
 
-button {
+.btnCta {
   background-color: #4CB2DD;
   border: none;
   border-radius: 6px;
   color: white;
   font-size: 9px;
   font-family: Montserrat;
-  height: 60px;
+  height: 40px;
   width: 100%;
 }
 
 @media only screen and (max-width: 575.98px) {
-  button {
+  .btnCta {
     height: 40px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  button {
+  .btnCta {
     font-size: 22px;
   }
 }
 
 @media (min-width: 1200px) {
-  button {
+  .btnCta {
     font-size: 22px;
   }
 }
@@ -820,6 +820,7 @@ div#detailsTwo .tooltip {
   justify-self: initial;
   font-size: 12px;
   margin-right: 15px;
+  color: white;
 }
 
 .buttonHelp button .itemButton .fa-question-circle {

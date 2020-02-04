@@ -213,14 +213,14 @@ hr {
   border: solid 1px $grisTenue;
 }
 
-button {
+.btnCta {
   background-color: $blueGaes;
   border: none;
   border-radius: 6px;
   color: white;
   font-size: 9px;
   font-family: Montserrat;
-  height: 60px;
+  height: 40px;
   width: 100%;
 
   @include Asmall() {
@@ -672,6 +672,7 @@ div#detailsTwo .tooltip {
         justify-self: initial;
         font-size: 12px;
         margin-right: 15px;
+        color: white;
       }
 
       .fa-question-circle {

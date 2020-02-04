@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material';
+/* import { ModalContentComponent } from '../modal-content/modal-content.component' */
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
+  constructor(public dialog: MatDialog) {
+    /* this.dialog.open(ModalContentComponent, {
+      width: '300px',
+      data: {ageCalc: this.ageCalc}
+  }); */
+  }
+
   cuotas = 0;
-  tasa = 0.21;
+  tasa = 0.24;
   valorSolicitado = 0;
   valorSolicitadoDto = 0;
   vlrSolSinCi = 0;
@@ -63,6 +72,10 @@ export class HomeComponent {
   vlrCuotaSs = 0;
   seguroCta = 0;
   seguroTotal = 0;
+
+  /* openDialog() {
+   this.dialog.open(ModalContentComponent);
+  } */  
 
   linka() {
     window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
