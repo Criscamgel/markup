@@ -18,25 +18,30 @@ import { AutofocusDirective } from './autofocus.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* Angular Material */
-import { MatDialogModule } from '@angular/material';
+import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
+  entryComponents: [
+    ModalContentComponent
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
     AyudaComponent,
     EditInputComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    ModalContentComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot( ROUTES, { useHash:true } ),
-    BrowserAnimationsModule,
-    MatDialogModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

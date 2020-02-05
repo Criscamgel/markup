@@ -18,7 +18,7 @@ export class HomeComponent {
   valorFinal = 0;
 
   /* Calculadora de Edad */
-  ageCalc = '0000-00-00';
+  ageCalc;
   showAge = 0;
   diferencia = 0;
 
