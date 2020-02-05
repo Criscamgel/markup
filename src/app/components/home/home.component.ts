@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-/* import { ModalContentComponent } from '../modal-content/modal-content.component' */
+import { ModalContentComponent } from '../modal-content/modal-content.component'
 
 @Component({
   selector: 'app-home',
@@ -67,17 +67,17 @@ export class HomeComponent {
   seguroTotal = 0;
 
   constructor(public dialog: MatDialog) {
-    /* let dialogRef = this.dialog.open(ModalContentComponent, {
+    let dialogRef = this.dialog.open(ModalContentComponent, {
       width: '300px',
-      data: {ageCalc: this.ageCalc}
+      data: {ageCalc: this.ageCalc},
+      disableClose: true
   });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("result ---> " + JSON.stringify(result));
-      
+      console.log("result ---> " + JSON.stringify(result));      
       this.ageCalc = result.ageCalc;
       this.ageCalculator();         
-    }) */
+    })
   }
 
   linka() {
@@ -512,24 +512,8 @@ export class HomeComponent {
     window.print();
   }
 
+
   ageCalculator() {
-    if (this.ageCalc) {
-      
-      var showAge;
-
-      const convertAge = new Date(this.ageCalc);
-      const timeDiff = Date.now() - convertAge.getTime();
-      showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
-      this.diferencia = Math.round((75 - showAge) * 12);
-      this.showAge = Math.round(showAge);
-
-    }
-
-  }
-
-
-
-  /* ageCalculator() {
     if (this.ageCalc) {
       
       console.log("this.ageCalc", this.ageCalc);
@@ -537,18 +521,19 @@ export class HomeComponent {
 
       var showAge;
 
-      const convertAge = this.ageCalc.toISOString().slice(0,10);
-      const timeDiff = Date.now() - convertAge.getTime();
-      debugger;
-      console.log(Date.now());      
-      console.log("convertAge ---> ", convertAge);
+      const convertAge = this.ageCalc.getTime();
+      console.log("convertAge --> " + convertAge);
+      const timeDiff = Date.now() - convertAge;
+      console.log("timeDiff --> " + timeDiff);
       
       showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
+
+      console.log("showAge --> " + showAge);
       this.diferencia = Math.round((75 - showAge) * 12);
       this.showAge = Math.round(showAge);
 
     }
 
-  } */
+  }
 
 }
