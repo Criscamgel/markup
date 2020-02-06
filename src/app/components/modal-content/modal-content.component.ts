@@ -26,8 +26,6 @@ export class ModalContentComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ModalContentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar) {
 
-    /* data.ageCalc = new Date(); */
-
     this.forma = new FormGroup({
       'fechaNmto': new FormControl(new Date(), Validators.required)
     })
@@ -59,8 +57,7 @@ export class ModalContentComponent implements OnInit {
 
       showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
 
-      this.diferencia = Math.round((75 - showAge) * 12);
-      console.log("this.diferencia ---> " + this.diferencia);      
+      this.diferencia = Math.round((75 - showAge) * 12);    
       this.showAge = Math.round(showAge);
 
     }
