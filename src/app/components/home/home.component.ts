@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ModalContentComponent } from '../modal-content/modal-content.component'
 
 @Component({
   selector: 'app-home',
@@ -63,6 +65,20 @@ export class HomeComponent {
   vlrCuotaSs = 0;
   seguroCta = 0;
   seguroTotal = 0;
+
+  constructor(public dialog: MatDialog) {
+    let dialogRef = this.dialog.open(ModalContentComponent, {
+      width: '300px',
+      data: {ageCalc: this.ageCalc},
+      disableClose: true
+  });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result ---> " + JSON.stringify(result));      
+      this.ageCalc = result.ageCalc;
+      this.ageCalculator();         
+    })
+  }
 
   linka() {
     window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
@@ -563,14 +579,23 @@ export class HomeComponent {
     window.print();
   }
 
+
   ageCalculator() {
     if (this.ageCalc) {
       
+      console.log("this.ageCalc", this.ageCalc);
+      
+
       var showAge;
 
-      const convertAge = new Date(this.ageCalc);
-      const timeDiff = Date.now() - convertAge.getTime();
+      const convertAge = this.ageCalc.getTime();
+      console.log("convertAge --> " + convertAge);
+      const timeDiff = Date.now() - convertAge;
+      console.log("timeDiff --> " + timeDiff);
+      
       showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
+
+      console.log("showAge --> " + showAge);
       this.diferencia = Math.round((75 - showAge) * 12);
       this.showAge = Math.round(showAge);
 
