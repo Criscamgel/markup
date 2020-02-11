@@ -210,7 +210,7 @@
                             placeholder="Porcentaje de Descuento"
                             [(ngModel)]="descuentoSlide"
                             [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                            (change)="descuento(DtoSlide)"
+                            (change)="descuento()"
                             >
                         </mat-form-field>
                         <mat-error *ngIf="descuentoSlide < minDes || descuentoSlide > maxDes"><small>El valor diligenciado debe ser entre {{minDes}} a {{maxDes}}</small></mat-error>
