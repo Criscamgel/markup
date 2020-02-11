@@ -94,7 +94,7 @@ export class HomeComponent {
     this.changeButton(this.cuotas);
   }
 
-  descuento(op) {   
+  descuento() {   
 
     let dto = 0;
 
