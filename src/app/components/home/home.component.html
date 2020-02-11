@@ -197,53 +197,51 @@
 
                     <div class="calcPtres">
                         <p class="title">Porcentaje de descuento</p>
-                        <div class="slidecontainer doNotPrint">
-                            <input type="range" min="{{minDes}}" max="{{maxDes}}" step="1" value="0" class="slider"
-                                [(ngModel)]="descuentoSlide" name="dtoSlide" #DtoSlide="ngModel" id="myRange"
-                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                (change)="descuento()">
-                        </div>
-                        <div class="contMinMax doNotPrint">
-                            <div class="contMin">
-                                <p class="grayParrf">Mín:</p>
-                                <p class="cifraGray">{{minDes}}%</p>
-                            </div>
-                            <div class="contMax doNotPrint">
-                                <p class="grayParrf">Máx:</p>
-                                <p class="cifraGray">{{maxDes}}%</p>
-                            </div>
+                        <div class="fullInputNumber"> 
+                        <mat-form-field appearance="outline">
+                            <mat-label>Descuento</mat-label>
+                            <input                            
+                            matInput
+                            name="dtoSlide" 
+                            type="number" 
+                            min="{{minDes}}"
+                            max="{{maxDes}}"
+                            #DtoSlide="ngModel" 
+                            placeholder="Porcentaje de Descuento"
+                            [(ngModel)]="descuentoSlide"
+                            [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                            (change)="descuento(DtoSlide)"
+                            >
+                        </mat-form-field>
+                        <mat-error *ngIf="descuentoSlide < minDes || descuentoSlide > maxDes"><small>El valor diligenciado debe ser entre {{minDes}} a {{maxDes}}</small></mat-error>
                         </div>
                         <div class="cntAprox">
                             <p class="grayParrf doNotPrint">Descuento:</p>
                             <h3>{{descuentoSlide}}%</h3>
-
-                            <!-- <div class="tooltip doNotPrint">
-                                                        <i class="fa fa-question-circle"></i>
-                                                        <span class="tooltiptext">
-                                                            Contenido
-                                                        </span>
-                                                    </div> -->
                         </div>
                         <hr>
 
                         <!-- Rango de Anticipo -->
 
                         <p class="title">Porcentaje de cuota inicial</p>
-                        <div class="slidecontainer doNotPrint">
-                            <input type="range" min="{{ctaminDes}}" max="{{ctamaxDes}}" step="10" value="0"
-                                class="slider" [(ngModel)]="ctainicialSlide" name="ctaSlide" #DtoSlide="ngModel"
-                                id="myRange" [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                (change)="descuento()">
-                        </div>
-                        <div class="contMinMax doNotPrint">
-                            <div class="contMin">
-                                <p class="grayParrf">Mín:</p>
-                                <p class="cifraGray">{{ctaminDes}}%</p>
-                            </div>
-                            <div class="contMax doNotPrint">
-                                <p class="grayParrf">Máx:</p>
-                                <p class="cifraGray">{{ctamaxDes}}%</p>
-                            </div>
+
+                        <div class="fullInputNumber"> 
+                            <mat-form-field appearance="outline">
+                                <mat-label>Descuento</mat-label>
+                                <input                            
+                                matInput
+                                min="{{ctaminDes}}"
+                                max="{{ctamaxDes}}"
+                                name="ctaSlide" 
+                                #CtainicialSlide="ngModel" 
+                                type="number" 
+                                placeholder="Porcentaje de Descuento"
+                                [(ngModel)]="ctainicialSlide"
+                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                (change)="descuento()"
+                                >
+                            </mat-form-field>
+                            <mat-error *ngIf="ctainicialSlide < ctaminDes || ctainicialSlide > ctamaxDes"><small>El valor diligenciado debe ser entre {{ctaminDes}} a {{ctamaxDes}}</small></mat-error>
                         </div>
 
                         <div id="cuotaInicial" class="cntAprox">

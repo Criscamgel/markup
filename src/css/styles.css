@@ -9,6 +9,10 @@
   font-family: Montserrat;
 }
 
+.fullInputNumber > * {
+  width: 100%;
+}
+
 .contenedor {
   width: 100%;
   display: grid;

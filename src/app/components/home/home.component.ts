@@ -73,8 +73,7 @@ export class HomeComponent {
       disableClose: true
   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("result ---> " + JSON.stringify(result));      
+    dialogRef.afterClosed().subscribe(result => {    
       this.ageCalc = result.ageCalc;
       this.ageCalculator();         
     })
@@ -95,7 +94,8 @@ export class HomeComponent {
     this.changeButton(this.cuotas);
   }
 
-  descuento() {
+  descuento(op) {   
+
     let dto = 0;
 
     if (this.descuentoSlide !== 0) {
@@ -583,19 +583,14 @@ export class HomeComponent {
   ageCalculator() {
     if (this.ageCalc) {
       
-      console.log("this.ageCalc", this.ageCalc);
-      
 
       var showAge;
 
       const convertAge = this.ageCalc.getTime();
-      console.log("convertAge --> " + convertAge);
       const timeDiff = Date.now() - convertAge;
-      console.log("timeDiff --> " + timeDiff);
       
       showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
 
-      console.log("showAge --> " + showAge);
       this.diferencia = Math.round((75 - showAge) * 12);
       this.showAge = Math.round(showAge);
 
