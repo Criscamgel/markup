@@ -199,7 +199,7 @@
                         <p class="title">Porcentaje de descuento</p>
                         <div class="fullInputNumber doNotPrint"> 
                         <mat-form-field appearance="outline">
-                            <mat-label>Descuento</mat-label>
+                            <mat-label>{{lbDto}}</mat-label>
                             <input                            
                             matInput
                             name="dtoSlide" 
@@ -217,7 +217,7 @@
                         </div>
                         <div class="cntAprox">
                             <p class="grayParrf doNotPrint">Descuento:</p>
-                            <h3>{{descuentoSlide == undefined ? 0 : descuentoSlide}}%</h3>
+                            <h3>{{descuentoSlide == undefined || descuentoSlide > maxDes ? 0 : descuentoSlide}}%</h3>
                         </div>
                         <hr>
 
@@ -227,7 +227,7 @@
 
                         <div class="fullInputNumber doNotPrint"> 
                             <mat-form-field appearance="outline">
-                                <mat-label>Cuota Inicial</mat-label>
+                                <mat-label>{{lbCuoIni}}  </mat-label>
                                 <input                            
                                 matInput
                                 min="{{ctaminDes}}"
@@ -246,7 +246,7 @@
 
                         <div id="cuotaInicial" class="cntAprox">
                                 <p class="grayParrf">Cuota inicial:</p>
-                                <h3>{{ctainicialSlide == undefined ? 0 : ctainicialSlide}}%</h3>
+                                <h3>{{ctainicialSlide == undefined || ctainicialSlide > maxDes ? 0 : ctainicialSlide}}%</h3>
         
                                 <div class="tooltip">
                                 </div>        
