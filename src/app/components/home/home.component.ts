@@ -66,9 +66,6 @@ export class HomeComponent {
   seguroCta = 0;
   seguroTotal = 0;
 
-  lbDto="Descuento"
-  lbCuoIni="Cuota Inicial"
-
   constructor(public dialog: MatDialog) {
     let dialogRef = this.dialog.open(ModalContentComponent, {
       width: '300px',

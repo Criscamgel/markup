@@ -199,7 +199,6 @@
                         <p class="title">Porcentaje de descuento</p>
                         <div class="fullInputNumber doNotPrint"> 
                         <mat-form-field appearance="outline">
-                            <mat-label>{{lbDto}}</mat-label>
                             <input                            
                             matInput
                             name="dtoSlide" 
@@ -227,7 +226,6 @@
 
                         <div class="fullInputNumber doNotPrint"> 
                             <mat-form-field appearance="outline">
-                                <mat-label>{{lbCuoIni}}  </mat-label>
                                 <input                            
                                 matInput
                                 min="{{ctaminDes}}"
@@ -331,7 +329,7 @@
 
                         <div *ngIf="showDetailsTwo" class="contDetail">
                             <p class="grayParrf">Descuento Gaes:</p>
-                            <p class="cifraBlack">{{descuentoSlide}} %</p>
+                            <p class="cifraBlack">{{descuentoSlide == undefined ? 0 : descuentoSlide}} %</p>
                         </div>
 
                         <div *ngIf="showDetailsTwo" class="contDetail">
