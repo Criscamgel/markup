@@ -242,27 +242,29 @@
                         <!-- Rango de Anticipo -->
 
                         <p class="title">Porcentaje de cuota inicial</p>
-                        <div class="slidecontainer doNotPrint">
-                            <input type="range" min="{{ctaminDes}}" max="{{ctamaxDes}}" step="10" value="0"
-                                class="slider" [(ngModel)]="ctainicialSlide" name="ctaSlide" #DtoSlide="ngModel"
-                                id="myRange" [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                (change)="descuento()">
-                        </div>
-                        <div class="contMinMax doNotPrint">
-                            <div class="contMin">
-                                <p class="grayParrf">Mín:</p>
-                                <p class="cifraGray">{{ctaminDes}}%</p>
-                            </div>
-                            <div class="contMax doNotPrint">
-                                <p class="grayParrf">Máx:</p>
-                                <p class="cifraGray">{{ctamaxDes}}%</p>
-                            </div>
+
+                        <div class="fullInputNumber doNotPrint"> 
+                            <mat-form-field appearance="outline">
+                                <input                            
+                                matInput
+                                min="{{ctaminDes}}"
+                                max="{{ctamaxDes}}"
+                                name="ctaSlide" 
+                                #CtainicialSlide="ngModel" 
+                                type="number" 
+                                placeholder="Porcentaje de Cuota Inicial"
+                                [(ngModel)]="ctainicialSlide"
+                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                (change)="descuento()"
+                                >
+                            </mat-form-field>
+                            <mat-error *ngIf="ctainicialSlide < ctaminDes || ctainicialSlide > ctamaxDes"><small>El valor diligenciado debe ser entre {{ctaminDes}} a {{ctamaxDes}}</small></mat-error>
                         </div>
                     </div>
 
                     <div id="cuotaInicial" class="cntAprox">
                         <p class="grayParrf">Cuota inicial:</p>
-                        <h3>{{ctainicialSlide}}%</h3>
+                        <h3>{{ctainicialSlide == undefined || ctainicialSlide > maxDes ? 0 : ctainicialSlide}}%</h3>
 
                         <div class="tooltip">
                         </div>

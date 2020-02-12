@@ -20,6 +20,19 @@
     grid-column: 2;
   }
 
+  .fullInputNumber > *{
+    width: 100%;
+  }
+  
+  .matButton{
+    width: auto;
+  }
+  
+  mat-label {
+    letter-spacing: 0px;
+    margin-right: 10px;
+  }
+
   /* Media Querys */
 
   @include Asmall() {
