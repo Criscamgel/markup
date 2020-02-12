@@ -197,7 +197,7 @@
 
                     <div class="calcPtres">
                         <p class="title">Porcentaje de descuento</p>
-                        <div class="fullInputNumber"> 
+                        <div class="fullInputNumber doNotPrint"> 
                         <mat-form-field appearance="outline">
                             <mat-label>Descuento</mat-label>
                             <input                            
@@ -217,7 +217,7 @@
                         </div>
                         <div class="cntAprox">
                             <p class="grayParrf doNotPrint">Descuento:</p>
-                            <h3>{{descuentoSlide}}%</h3>
+                            <h3>{{descuentoSlide == undefined ? 0 : descuentoSlide}}%</h3>
                         </div>
                         <hr>
 
@@ -225,9 +225,9 @@
 
                         <p class="title">Porcentaje de cuota inicial</p>
 
-                        <div class="fullInputNumber"> 
+                        <div class="fullInputNumber doNotPrint"> 
                             <mat-form-field appearance="outline">
-                                <mat-label>Descuento</mat-label>
+                                <mat-label>Cuota Inicial</mat-label>
                                 <input                            
                                 matInput
                                 min="{{ctaminDes}}"
@@ -235,7 +235,7 @@
                                 name="ctaSlide" 
                                 #CtainicialSlide="ngModel" 
                                 type="number" 
-                                placeholder="Porcentaje de Descuento"
+                                placeholder="Porcentaje de Cuota Inicial"
                                 [(ngModel)]="ctainicialSlide"
                                 [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
                                 (change)="descuento()"
@@ -246,7 +246,7 @@
 
                         <div id="cuotaInicial" class="cntAprox">
                                 <p class="grayParrf">Cuota inicial:</p>
-                                <h3>{{ctainicialSlide}}%</h3>
+                                <h3>{{ctainicialSlide == undefined ? 0 : ctainicialSlide}}%</h3>
         
                                 <div class="tooltip">
                                 </div>        

@@ -33,7 +33,7 @@ import { MaterialModule } from './material/material.module';
     EditInputComponent,
     AutofocusDirective,
     ModalContentComponent
-  ],
+  ],  
   imports: [
     MaterialModule,
     BrowserModule,

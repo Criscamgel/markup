@@ -66,7 +66,7 @@ export class HomeComponent {
   seguroCta = 0;
   seguroTotal = 0;
 
-  constructor(public dialog: MatDialog) {
+  /* constructor(public dialog: MatDialog) {
     let dialogRef = this.dialog.open(ModalContentComponent, {
       width: '300px',
       data: {ageCalc: this.ageCalc},
@@ -77,7 +77,7 @@ export class HomeComponent {
       this.ageCalc = result.ageCalc;
       this.ageCalculator();         
     })
-  }
+  } */
 
   linka() {
     window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';

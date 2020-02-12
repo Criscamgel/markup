@@ -5,12 +5,21 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: all 0.5s;
+  transition: all 0.5s;  
   font-family: Montserrat;
 }
 
 .fullInputNumber > *{
   width: 100%;
+}
+
+.matButton{
+  width: auto;
+}
+
+mat-label {
+  letter-spacing: 0px;
+  margin-right: 10px;
 }
 
 .contenedor {
@@ -92,6 +101,12 @@
   @include Asmall() {
     background-image: url(../assets/img/gaesBlanco.png);
     background-size: 50% auto;
+  }
+  @include tabletLaptop() {
+    background-size: 60% auto;
+  }
+  @include laptopDesktop() {
+    background-size: 70% auto;
   }
 }
 .logoSantander {
