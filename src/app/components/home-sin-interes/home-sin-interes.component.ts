@@ -42,7 +42,7 @@ export class HomeSinInteresComponent {
     cuotaInicial = 0;
   
     /* Cuota inicial Slide */
-    ctainicialSlide = 0;
+    ctainicialSlide = 10;
     ctaminDes = 0;
     ctamaxDes = 70;
 
