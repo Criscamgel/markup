@@ -37,7 +37,7 @@
             </div>
 
 
-            <div class="contenedor textoHero doNotPrint">
+            <div class="contenedor textoHero doNotPrint" (click)="magicClick()">
                 <div class="contenido cuatroColumnas">
 
                     <div class="columnaUno">
@@ -241,35 +241,40 @@
                     </div>-->
                         <!-- Rango de Anticipo -->
 
+
+                        <div *ngIf="showInputs">
                         <p class="title">Porcentaje de cuota inicial</p>
 
-                        <div class="fullInputNumber doNotPrint"> 
-                            <mat-form-field appearance="outline">
-                                <input                            
-                                matInput
-                                min="{{ctaminDes}}"
-                                max="{{ctamaxDes}}"
-                                name="ctaSlide" 
-                                #CtainicialSlide="ngModel" 
-                                type="number" 
-                                placeholder="Porcentaje de Cuota Inicial"
-                                [(ngModel)]="ctainicialSlide"
-                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                (change)="descuento()"
-                                >
-                            </mat-form-field>
-                            <mat-error *ngIf="ctainicialSlide < ctaminDes || ctainicialSlide > ctamaxDes"><small>El valor diligenciado debe ser entre {{ctaminDes}} a {{ctamaxDes}}</small></mat-error>
+                            <div class="fullInputNumber doNotPrint"> 
+                                <mat-form-field appearance="outline">
+                                    <input                            
+                                    matInput
+                                    min="{{ctaminDes}}"
+                                    max="{{ctamaxDes}}"
+                                    name="ctaSlide" 
+                                    #CtainicialSlide="ngModel" 
+                                    type="number" 
+                                    placeholder="Porcentaje de Cuota Inicial"
+                                    [(ngModel)]="ctainicialSlide"
+                                    [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                    (change)="descuento()"
+                                    >
+                                </mat-form-field>
+                                <mat-error *ngIf="ctainicialSlide < ctaminDes || ctainicialSlide > ctamaxDes"><small>El valor diligenciado debe ser entre {{ctaminDes}} a {{ctamaxDes}}</small></mat-error>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="cuotaInicial" class="cntAprox">
-                        <p class="grayParrf">Cuota inicial:</p>
-                        <h3>{{ctainicialSlide == undefined || ctainicialSlide > maxDes ? 0 : ctainicialSlide}}%</h3>
+                    <div *ngIf="showInputs">
+                        <div id="cuotaInicial" class="cntAprox">
+                            <p class="grayParrf">Cuota inicial:</p>
+                            <h3>{{ctainicialSlide == undefined || ctainicialSlide > ctamaxDes ? 0 : ctainicialSlide}}%</h3>
 
-                        <div class="tooltip">
+                            <div class="tooltip">
+                            </div>
                         </div>
+                        <hr>
                     </div>
-                    <hr>
                     <div id="cuotaInicial" class="cntAprox">
                         <p class="grayParrf">Valor cuota inicial:</p>
                         <h3>$ {{cuotaInicial | number:'1.0'}}</h3>
@@ -283,7 +288,7 @@
                     <div class="cntAprox">
                         <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
                             (incluye seguro de vida)</p>
-                        <h3>$ {{vlrCuotaCliente | number:'1.0'}}</h3>
+                        <h3>$ {{vlrCuotaSs + seguroCta | number:'1.0-0'}}</h3>
 
                         <div class="tooltip doNotPrint">
                             <i class="fa fa-question-circle" (click)="details()"></i>
@@ -352,7 +357,7 @@
 
                     <div class="cntBotones doNotPrint">
                         <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
-                            <button class="buttonAyuda">
+                            <button class="btnCta buttonAyuda">
                                 <div class="itemButton">
                                     <i class="fa fa-question-circle"></i>
                                     <p class="bigTitle">AYUDA</p>

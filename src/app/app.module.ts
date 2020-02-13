@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeConInteresComponent } from './components/home-con-interes/home-con-interes.component';
 
 /* Forms */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,16 +20,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* Angular Material */
 import { MaterialModule } from './material/material.module';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-interes.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeConInteresComponent,
     AyudaComponent,
     EditInputComponent,
     AutofocusDirective,
-    ModalContentComponent
+    ModalContentComponent,
+    HomeSinInteresComponent
   ],
   entryComponents: [ModalContentComponent],
   imports: [

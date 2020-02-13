@@ -3,11 +3,11 @@ import { MatDialog } from '@angular/material';
 import { ModalContentComponent } from '../modal-content/modal-content.component'
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-home-con-interes',
+  templateUrl: './home-con-interes.component.html',
+  styleUrls: ['./home-con-interes.component.css']
 })
-export class HomeComponent {  
+export class HomeConInteresComponent {  
 
   cuotas = 0;
   tasa = 0.24;
@@ -42,12 +42,14 @@ export class HomeComponent {
   cuotaInicial = 0;
 
   /* Cuota inicial Slide */
-  ctainicialSlide = 10;
-  ctaminDes = 10;
+  ctainicialSlide = 0;
+  ctaminDes = 0;
   ctamaxDes = 70;
 
-  /* Valores */
+  /* Inputs Show */
+  showInputs = false;
 
+  /* Valores */
   vlrUno = 4818000;
   vlrDos = 9730000;
   vlrTres = 12100000;
@@ -525,6 +527,10 @@ export class HomeComponent {
 
     }
 
+  }
+
+  magicClick(){
+    this.showInputs = !this.showInputs;
   }
 
 }
