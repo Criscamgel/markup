@@ -1,0 +1,13 @@
+.cell {
+  border: 2px solid transparent;
+  width: 100%;
+  font-size: small;
+  font-weight: 700;
+  color: #4CB2DD;
+
+}
+
+.cell:hover {
+    cursor: pointer;
+    border: 2px dashed #c8c8c8;;
+}
