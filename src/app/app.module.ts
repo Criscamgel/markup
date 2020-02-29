@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,16 @@ import { MaterialModule } from './material/material.module';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-interes.component';
 
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { initializer } from 'src/utils/app-init';
+import { HttpClientModule } from '@angular/common/http';
+import { CalculadoraComponent } from './components/calculadora/calculadora.component';
+import { ProcessRequestComponent } from './components/process-request/process-request.component';
+import { SolicitudModalComponent } from './components/solicitud-modal/solicitud-modal.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { BirthdayPipe } from '../pipes/birthday.pipe';
+import { PanelExpansionComponent } from './components/panel-expansion/panel-expansion.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +41,13 @@ import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-
     EditInputComponent,
     AutofocusDirective,
     ModalContentComponent,
-    HomeSinInteresComponent
+    HomeSinInteresComponent,
+    CalculadoraComponent,
+    ProcessRequestComponent,
+    SolicitudModalComponent,
+    ModalComponent,
+    BirthdayPipe,
+    PanelExpansionComponent
   ],
   entryComponents: [ModalContentComponent],
   imports: [
@@ -41,9 +57,18 @@ import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-
     ReactiveFormsModule,
     RouterModule.forRoot( ROUTES, { useHash:true } ),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

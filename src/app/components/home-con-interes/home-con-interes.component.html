@@ -1,9 +1,6 @@
 <form #gaesForm="ngForm" (keydown.enter)="$event.preventDefault()">
-
-    <!-- MatDialog -->
-    <!-- <button mat-raised-button (click)="openDialog()">Open Dialog</button> -->
-    <!--  -->
-
+    <app-process-request *ngIf="startRequest" [inputCalculoCuota]="calculadora" [startRequest]="startRequest" (outputCancelRequest)="cancelRequest()">
+    </app-process-request>
     <div class="superContenedor animated fadeIn fast">
 
         <section id="hero" class="seccionFluida fondoImagen doNotPrint">
@@ -43,12 +40,7 @@
                     <div class="columnaUno">
                         <h1>FINANCIA EL DISPOSITIVO<br class="noDesk"> DE TU PACIENTE</h1>
                         <p class="parrafo">
-                            GAES es una compañía multinacional líder en el sector de la corrección auditiva, lleva 70
-                            años
-                            diseñando
-                            (I+D), produciendo, distribuyendo y comercializando audífonos para todas las personas con
-                            dificultades
-                            auditivas.
+                            GAES es una compañía multinacional líder en el sector de la corrección auditiva, lleva 70 años diseñando (I+D), produciendo, distribuyendo y comercializando audífonos para todas las personas con dificultades auditivas.
                         </p>
                     </div>
                 </div>
@@ -62,68 +54,14 @@
         <section id="calculadora">
             <div class="contenedor">
                 <div id="solicitud" class="contenido contSolicitud">
-                    <!-- <p class="title">Fecha de nacimiento del paciente</p>
-                    <div class="cntCalcAge dosColumnas"> -->
-                        <!-- Calculadora de Edad  -->
-                        <!-- <div class="columnaUno">
-                            <input name="agecalc" type="date" [(ngModel)]="ageCalc" (change)="ageCalculator()" />
-                        </div> -->
-                        <!-- <div class="columnaDos">
-                            {{showAge}} años
-                        </div> -->
-                        <!-- <div>{{diferencia}}</div> -->
-                    <!-- </div> -->
-
-                    <!-- <hr> -->
-
-                    <!--  -->
-
                     <div class="cntOpciones">
-                        <div class="opcion">
-                            <h3>Gama Básica</h3>
-                            <app-edit-input [data]='vlrUno'
-                                (change)="saveMonto($event.target.value); checkUno = true; vlrUno = $event.target.value; valorSolicitado = $event.target.value">
+                        <div class="opcion" *ngFor="let radio of cuotasRadio">
+                            <h3>{{radio.tittle}}</h3>
+                            <app-edit-input [data]='radio.value'>
                             </app-edit-input>
                             <div class="btnSeleccionar">
-                                <input id="basica" (click)="saveMonto($event.target.value)" name="gama" type="radio"
-                                    value="{{vlrUno}}" [checked]="checkUno">
-                                <div (click)="saveMonto($event.target.value)">SELECCIONAR</div>
-                            </div>
-                        </div>
-
-                        <div class="opcion">
-                            <h3>Gama Confort</h3>
-                            <app-edit-input [data]='vlrDos'
-                                (change)="saveMonto($event.target.value); checkDos = true; vlrDos = $event.target.value; valorSolicitado = $event.target.value">
-                            </app-edit-input>
-                            <div class="btnSeleccionar">
-                                <input id="confort" name="gama" (click)="saveMonto($event.target.value)" type="radio"
-                                    value="{{vlrDos}}" [checked]="checkDos">
-                                <div>SELECCIONAR</div>
-                            </div>
-                        </div>
-
-                        <div class="opcion">
-                            <h3>Gama Advance</h3>
-                            <app-edit-input [data]='vlrTres'
-                                (change)="saveMonto($event.target.value); checkTres = true; vlrTres = $event.target.value; valorSolicitado = $event.target.value">
-                            </app-edit-input>
-                            <div class="btnSeleccionar">
-                                <input id="advance" name="gama" (click)="saveMonto($event.target.value)" type="radio"
-                                    value="{{vlrTres}}" [checked]="checkTres">
-                                <div>SELECCIONAR</div>
-                            </div>
-                        </div>
-
-                        <div class="opcion">
-                            <h3>Gama Premium</h3>
-                            <app-edit-input [data]='vlrCuatro'
-                                (change)="saveMonto($event.target.value); checkCuatro = true; vlrCuatro = $event.target.value; valorSolicitado = $event.target.value">
-                            </app-edit-input>
-                            <div class="btnSeleccionar">
-                                <input id="premium" name="gama" (click)="saveMonto($event.target.value)" type="radio"
-                                    value="{{vlrCuatro}}" [checked]="checkCuatro">
-                                <div>SELECCIONAR</div>
+                                <input [id]="radio.id" (click)="saveMonto($event.target.value)" name="gama" type="radio" [value]="radio.value" [checked]="radio.isChecked">
+                                <div (click)="saveMonto($event.target.valueAsNumber)">SELECCIONAR</div>
                             </div>
                         </div>
 
@@ -202,63 +140,17 @@
                         </div>
                         <hr>
 
-                        <!-- Slider Descuento -->
 
-                        <!-- <div class="calcPtres">
-                                <p class="title">Porcentaje de descuento</p>
-                                        <div class="slidecontainer doNotPrint">
-                                            <input 
-                                                type="range" 
-                                                min="{{minDes}}" 
-                                                max="{{maxDes}}" 
-                                                step="1"
-                                                value="0" 
-                                                class="slider"
-                                                [(ngModel)]="descuentoSlide"
-                                                name="dtoSlide"
-                                                #DtoSlide="ngModel"
-                                                id="myRange"
-                                                [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                                (change)="descuento()"
-                                                >
-                                        </div>
-                                        <div class="contMinMax doNotPrint">
-                                            <div class="contMin">
-                                                <p class="grayParrf">Mín:</p>
-                                                <p class="cifraGray">{{minDes}}%</p>
-                                            </div>
-                                            <div class="contMax doNotPrint">
-                                                <p class="grayParrf">Máx:</p>
-                                                <p class="cifraGray">{{maxDes}}%</p>
-                                            </div>
-                                        </div>
-                                        <div class="cntAprox">
-                                            <p class="grayParrf doNotPrint">Descuento:</p>
-                                            <p class="cifraBlack">{{descuentoSlide}}%</p>
-                                        </div>
-                                        <hr>
-
-                    </div>-->
                         <!-- Rango de Anticipo -->
 
 
                         <div *ngIf="showInputs">
-                        <p class="title">Porcentaje de cuota inicial</p>
+                            <p class="title">Porcentaje de cuota inicial</p>
 
-                            <div class="fullInputNumber doNotPrint"> 
+                            <div class="fullInputNumber doNotPrint">
                                 <mat-form-field appearance="outline">
-                                    <input                            
-                                    matInput
-                                    min="{{ctaminDes}}"
-                                    max="{{ctamaxDes}}"
-                                    name="ctaSlide" 
-                                    #CtainicialSlide="ngModel" 
-                                    type="number" 
-                                    placeholder="Porcentaje de Cuota Inicial"
-                                    [(ngModel)]="ctainicialSlide"
-                                    [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                    (change)="descuento()"
-                                    >
+                                    <input matInput min="{{ctaminDes}}" max="{{ctamaxDes}}" name="ctaSlide" #CtainicialSlide="ngModel" type="number" placeholder="Porcentaje de Cuota Inicial" [(ngModel)]="ctainicialSlide" [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                        (change)="descuento()">
                                 </mat-form-field>
                                 <mat-error *ngIf="ctainicialSlide < ctaminDes || ctainicialSlide > ctamaxDes"><small>El valor diligenciado debe ser entre {{ctaminDes}} a {{ctamaxDes}}</small></mat-error>
                             </div>
@@ -286,8 +178,7 @@
 
 
                     <div class="cntAprox">
-                        <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
-                            (incluye seguro de vida)</p>
+                        <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk"> (incluye seguro de vida)</p>
                         <h3>$ {{vlrCuotaSs + seguroCta | number:'1.0-0'}}</h3>
 
                         <div class="tooltip doNotPrint">
@@ -345,12 +236,10 @@
                     <hr class="doNotPrint">
 
                     <div class="cntBotones doNotPrint">
-                        <button class="btnCta imprimir" (click)="onPrint()"
-                            [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
+                        <button class="btnCta imprimir" (click)="onPrint()" [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
                     </div>
-                    <div class="cntBotones doNotPrint" (click)="linka(); gaesForm.reset()">
-                        <button class="btnCta"
-                            [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR
+                    <div class="cntBotones doNotPrint" (click)="openSolicitud(); gaesForm.reset()">
+                        <button class="btnCta" [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR
                             SOLICITUD</button>
                     </div>
 
@@ -371,12 +260,8 @@
                     <div class="contCondiciones doNotPrint">
                         <p class="title">Condiciones para el cliente:</p>
                         <p class="listaItem">
-                            • Debe tener entre 18 y 75 años<br>
-                            • Ganar más de un salario mínimo<br>
-                            • El monto mínimo es $800.000<br>
-                            • El monto máximo es $20.000.000<br>
-                            • Colombiano o residente con visa e historia laboral<br>
-                            • Plazo de financiación máximo 12 meses adicionales a la duración del tratamiento
+                            • Debe tener entre 18 y 75 años<br> • Ganar más de un salario mínimo<br> • El monto mínimo es $800.000<br> • El monto máximo es $20.000.000<br> • Colombiano o residente con visa e historia laboral<br> • Plazo de financiación
+                            máximo 12 meses adicionales a la duración del tratamiento
                         </p>
                     </div>
 

@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalContentComponent } from '../modal-content/modal-content.component'
+import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { ResponseCalculoCuotas } from '../../../models/ResponseCalculoCuotas';
+import { CalculoCuotaService } from 'src/services/calculo-cuota.service';
+import { Cuota } from '../../../models/cuota';
 
 @Component({
   selector: 'app-home-con-interes',
   templateUrl: './home-con-interes.component.html',
   styleUrls: ['./home-con-interes.component.css']
 })
-export class HomeConInteresComponent {  
+export class HomeConInteresComponent implements OnInit {
 
   cuotas = 0;
   tasa = 0.24;
@@ -49,12 +52,6 @@ export class HomeConInteresComponent {
   /* Inputs Show */
   showInputs = false;
 
-  /* Valores */
-  vlrUno = 4818000;
-  vlrDos = 9730000;
-  vlrTres = 12100000;
-  vlrCuatro = 19600000;
-
   checkUno = false;
   checkDos = false;
   checkTres = false;
@@ -68,22 +65,62 @@ export class HomeConInteresComponent {
   seguroCta = 0;
   seguroTotal = 0;
 
-  constructor(public dialog: MatDialog) {
-    let dialogRef = this.dialog.open(ModalContentComponent, {
+  public startRequest = false;
+  public btnRequest = false;
+  public showErrorRequest = false;
+  public calculadora: ResponseCalculoCuotas;
+  public cuotasRadio: Cuota[] = [];
+
+  constructor(public dialog: MatDialog,
+              public calculoService: CalculoCuotaService) {
+    this.calculadora = new ResponseCalculoCuotas();
+    this.getEdad();
+  }
+
+  ngOnInit(): void {
+    this.getCuotas();
+  }
+
+  public getCuotas() {
+    this.calculoService.getCuotas()
+        .then(cuotasRadio => {
+          this.cuotasRadio = cuotasRadio;
+        }).catch(console.error);
+  }
+
+  public getEdad() {
+    const dialogRef = this.dialog.open(ModalContentComponent, {
       width: '300px',
       data: {ageCalc: this.ageCalc},
       disableClose: true
-  });
+    });
 
-    dialogRef.afterClosed().subscribe(result => {   
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('entro afterclosed');
       this.ageCalc = result.ageCalc;
-      this.ageCalculator();         
-    })
+      this.ageCalculator();
+    });
   }
 
-  linka() {
-    window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
+  public cancelRequest() {
+    this.startRequest = false;
+  }
 
+  openSolicitud() {
+    if (this.btnRequest) {
+      this.enableStartRequest();
+      window.scroll(0, 0);
+      this.startRequest = true;
+    } else {
+      this.showErrorRequest = true;
+    }
+  }
+
+  public enableStartRequest() {
+    this.calculadora.montoSolicitado = this.valorSolicitado;
+    this.calculadora.numeroCuotas  = this.cuotas;
+    this.calculadora.valorCuotaConSeguro = this.vlrCuotaSs + this.seguroCta;
+    console.log(this.valorSolicitado, this.cuotas);
   }
 
   saveMonto(val) {
@@ -225,7 +262,6 @@ export class HomeConInteresComponent {
 
 
   changeButton(val) {
-
     let cuota = 0;
     let nmv = Math.pow((1 + this.tasa), (1 / 12)) - 1;
     let seguro;
@@ -343,8 +379,8 @@ export class HomeConInteresComponent {
           this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
           this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + Number(this.ctainicialSlide);
           /* Evitando que se altere la cuota inicial con el descuento */
-          this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100)
-          this.vlrSolConCiSinDto = this.valorSolicitado - this.cuotaInicial;    
+          this.cuotaInicial = this.valorSolicitado * (Number(this.ctainicialSlide) / 100);
+          this.vlrSolConCiSinDto = this.valorSolicitado - this.cuotaInicial;
 
         break;
 
@@ -501,6 +537,7 @@ export class HomeConInteresComponent {
       default:
         break;
     }
+    this.btnRequest = true;
   }
 
   details() {
@@ -515,16 +552,17 @@ export class HomeConInteresComponent {
 
 
   ageCalculator() {
-    if (this.ageCalc) {      
+    console.log(this.ageCalc);
+    if (this.ageCalc) {
 
-      var showAge;
+      let showAge;
 
       const convertAge = this.ageCalc.getTime();
-      const timeDiff = Date.now() - convertAge;      
+      const timeDiff = Date.now() - convertAge;
       showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
       this.diferencia = Math.round((75 - showAge) * 12);
       this.showAge = Math.round(showAge);
-
+      console.log(this.diferencia, this.showAge);
     }
 
   }
