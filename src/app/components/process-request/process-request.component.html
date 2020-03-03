@@ -1,7 +1,7 @@
 <app-modal *ngIf="flagRequest">
     <img logo src="./assets/logo-santander.png" class="logo-modal">
     <h1 header class="title-request">Iniciar Solicitud</h1>
-    <app-solicitud-modal [inputCalculoCuota]="calculoCuota"></app-solicitud-modal>
+    <app-solicitud-modal [inputCalculoCuota]="calculoCuota" [inputDataRequest]="dataRequest"></app-solicitud-modal>
     <button class=" btn-request " start (click)="startProcessRequest()">SOLICITAR</button>
     <button class="btn-back " back (click)="cancelRequest() ">VOLVER</button>
 </app-modal>
@@ -23,11 +23,11 @@
     <h2 header class="title-message title-summary">Resumen de la solicitud</h2>
     <div class="info-cal box-summary">
         <div class="box-desc">Monto a solicitar</div>
-        <div class="box-info">${{calculoCuota.montoSolicitado | number:'1.0'}}</div>
+        <div class="box-info">${{calculoCuota.montoTotalFinanciamiento | number:'1.0'}}</div>
         <div class="box-desc">plazo en meses</div>
-        <div class="box-info">{{calculoCuota.numeroCuotas}}</div>
+        <div class="box-info">{{dataRequest.cuota}}</div>
         <div class="box-desc">cuota mensual</div>
-        <div class="box-info">${{calculoCuota.valorCuotaConSeguro | number:'1.0'}}</div>
+        <div class="box-info">${{calculoCuota.cuotaMensualSinInicial | number:'1.0'}}</div>
     </div>
 
     <div class="info-form box-summary">

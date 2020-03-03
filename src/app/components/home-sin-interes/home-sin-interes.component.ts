@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalContentComponent } from '../modal-content/modal-content.component'
+import { ModalContentComponent } from '../modal-content/modal-content.component';
 
 @Component({
   selector: 'app-home-sin-interes',
@@ -16,12 +16,12 @@ export class HomeSinInteresComponent {
     vlrSolSinCi = 0;
     vlrSolConCiSinDto = 0;
     valorFinal = 0;
-  
+
     /* Calculadora de Edad */
     ageCalc;
     showAge = 0;
     diferencia = 0;
-  
+
     vlrCuota;
     cuatroMil = 0;
     nmv = 0;
@@ -40,7 +40,7 @@ export class HomeSinInteresComponent {
     descuentoSlide = 0;
     montoTotal;
     cuotaInicial = 0;
-  
+
     /* Cuota inicial Slide */
     ctainicialSlide = 10;
     ctaminDes = 0;

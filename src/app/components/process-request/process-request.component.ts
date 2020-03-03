@@ -3,6 +3,7 @@ import { SolicitudModalComponent } from '../solicitud-modal/solicitud-modal.comp
 import { Constants } from 'src/utils/constants';
 import { ResponseCalculoCuotas } from '../../../models/ResponseCalculoCuotas';
 import { Person } from '../../../models/person';
+import { RequestCalculoCuota } from '../../../models/request-calculo-cuota';
 
 @Component({
   selector: 'app-process-request',
@@ -14,11 +15,13 @@ export class ProcessRequestComponent implements OnInit {
   public showFinalMessage = false;
   public showSummary = false;
   public calculoCuota: ResponseCalculoCuotas;
+  public dataRequest: RequestCalculoCuota;
   public flagRequest = false;
   public data: Person;
 
   @ViewChild(SolicitudModalComponent, {static: false}) public solicitud: SolicitudModalComponent;
-  @Input()  public inputCalculoCuota: ResponseCalculoCuotas;
+  @Input() public inputCalculoCuota: ResponseCalculoCuotas;
+  @Input() public inputDataRequest: RequestCalculoCuota;
   @Input() public startRequest: boolean;
   @Output() public outputCancelRequest = new EventEmitter<void>();
 
@@ -28,6 +31,7 @@ export class ProcessRequestComponent implements OnInit {
 
    ngOnInit(): void {
      this.calculoCuota = this.inputCalculoCuota;
+     this.dataRequest = this.inputDataRequest;
      this.flagRequest = this.startRequest;
      console.log(this.calculoCuota);
   }

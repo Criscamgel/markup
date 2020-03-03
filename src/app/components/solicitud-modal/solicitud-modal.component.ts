@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Constants } from '../../../utils/constants';
 import { ResponseCalculoCuotas } from 'src/models/ResponseCalculoCuotas';
+import { RequestCalculoCuota } from 'src/models/request-calculo-cuota';
 
 @Component({
   selector: 'app-solicitud-modal',
@@ -10,13 +11,40 @@ import { ResponseCalculoCuotas } from 'src/models/ResponseCalculoCuotas';
 })
 export class SolicitudModalComponent implements OnInit {
   public form: FormGroup;
-  public tipos;
+  public tipos: any;
+  public ocupaciones: any;
   public calculoCuota: ResponseCalculoCuotas = new ResponseCalculoCuotas();
+  public dataRequest: RequestCalculoCuota = new RequestCalculoCuota();
 
-  @Input() inputCalculoCuota: ResponseCalculoCuotas;
+  public dias: number[] = [];
+  public meses: number[] = [];
+  public years: number[] = [];
+  private currentDate = new Date();
+
+
+  @Input() public inputCalculoCuota: ResponseCalculoCuotas;
+  @Input() public inputDataRequest: RequestCalculoCuota;
 
   constructor() {
     this.initializerForm();
+    this.fillDate();
+  }
+
+  private fillDate() {
+    for (let i = 1; i <= 31; i++) {
+      this.dias.push(i);
+      if ( i <= 12) {
+        this.meses.push(i);
+      }
+    }
+
+    const yearToday = this.currentDate.getFullYear();
+    const yearMin = yearToday - 18;
+    const yearMax = yearToday - 75;
+    for ( let i = yearMin; i >= yearMax; i--) {
+      this.years.push(i);
+    }
+
   }
 
   private initializerForm() {
@@ -43,7 +71,9 @@ export class SolicitudModalComponent implements OnInit {
 
   ngOnInit() {
     this.tipos = Constants.tiposIdentificacion;
+    this.ocupaciones = Constants.ocupacion;
     this.calculoCuota = this.inputCalculoCuota;
+    this.dataRequest = this.inputDataRequest;
   }
 
   public setCalculoCuota( calculoCuota: ResponseCalculoCuotas) {
