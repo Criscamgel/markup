@@ -14,8 +14,8 @@ export class ProcessRequestComponent implements OnInit {
   public showvalidate = false;
   public showFinalMessage = false;
   public showSummary = false;
-  public calculoCuota: ResponseCalculoCuotas;
-  public dataRequest: RequestCalculoCuota;
+  public calculoCuota: ResponseCalculoCuotas = new ResponseCalculoCuotas();
+  public dataRequest: RequestCalculoCuota = new RequestCalculoCuota();
   public flagRequest = false;
   public data: Person;
 
@@ -33,7 +33,7 @@ export class ProcessRequestComponent implements OnInit {
      this.calculoCuota = this.inputCalculoCuota;
      this.dataRequest = this.inputDataRequest;
      this.flagRequest = this.startRequest;
-     console.log(this.calculoCuota);
+     console.log(this.calculoCuota, this.dataRequest);
   }
 
   public startProcessRequest() {

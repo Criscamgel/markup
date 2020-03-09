@@ -4,6 +4,7 @@ import { Observable, Subscriber } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseCalculoCuotas } from 'src/models/ResponseCalculoCuotas';
 import { Cuota } from 'src/models/cuota';
+import { RequestCalculoCuota } from '../models/request-calculo-cuota';
 
 @Injectable({
   providedIn: 'root'
@@ -25,15 +26,8 @@ export class CalculoCuotaService {
   ];
   constructor(private http: HttpClient) { }
 
-    public calcularCuotas(cantidadCuotas: number, valorSolicitado: number, descuento: number,
-                          aliadoId: number): Observable<ResponseCalculoCuotas> {
-        const request: object = {
-            cantidadCuotas,
-            valorSolicitado,
-            descuento,
-            aliadoId
-        };
-        return this.http.post<ResponseCalculoCuotas>(`${environment.backBdUrl}/calculoCuotas`, request);
+    public calcularCuotas(request: RequestCalculoCuota) {
+        return this.http.post<ResponseCalculoCuotas>(`${environment.backBdUrl}/calculoCuotasGaes`, request);
     }
 
     public getCuotas(): Promise<Cuota[]> {

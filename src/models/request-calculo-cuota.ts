@@ -1,16 +1,18 @@
 export class RequestCalculoCuota {
+
+    aliadoId: number;
+    cantidadCuotas: number;
     valorSolicitado: number;
-    cuota: number;
-    porcentajeDescuento: number;
-    valorSolicitadoDescuento: number;
-    descuentoMinimo: number;
-    descuentoMaximo: number;
+    descuento: number;
+    gaesInteres: boolean;
+    porcentajeCuotaInicial: number;
+
     constructor() {
+        this.aliadoId = 0;
+        this.cantidadCuotas = 0;
         this.valorSolicitado = 0;
-        this.porcentajeDescuento = 10;
-        this.valorSolicitadoDescuento = 0;
-        this.cuota = 0;
-        this.descuentoMinimo = 0;
-        this.descuentoMaximo = 70;
+        this.descuento = 0;
+        this.gaesInteres = false;
+        this.porcentajeCuotaInicial = 10;
     }
 }

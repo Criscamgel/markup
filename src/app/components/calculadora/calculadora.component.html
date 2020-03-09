@@ -24,7 +24,7 @@
 
                         <div *ngIf="diferencia < radio.value || showAge < 18" class="disableOption"></div>
 
-                        <input [id]="radio.id" [(ngModel)]="dataRequest.cuota" name="cuota"
+                        <input [id]="radio.id" [(ngModel)]="dataRequest.cantidadCuotas" name="cuota"
                             (ngModelChange)="calcularCuota()"
                             type="radio" [value]="radio.value" [disabled]="diferencia < radio.value || showAge < 18">
                         <div>
@@ -44,11 +44,11 @@
 
                 <div class="fullInputNumber doNotPrint">
                     <mat-form-field appearance="outline">
-                        <input matInput min="{{dataRequest.descuentoMinimo}}" max="{{dataRequest.descuentoMaximo}}" name="ctaSlide" #CtainicialSlide="ngModel" type="number" placeholder="Porcentaje de Cuota Inicial" [(ngModel)]="dataRequest.porcentajeDescuento" [disabled]="dataRequest.cuota == 36 || dataRequest.valorSolicitado == 0 ? 'disabled' : null"
+                        <input matInput [min]="minCuotaInicial" [max]="maxCuotaInicial" name="ctaSlide" #CtainicialSlide="ngModel" type="number" placeholder="Porcentaje de Cuota Inicial" [(ngModel)]="dataRequest.porcentajeCuotaInicial" [disabled]="dataRequest.cantidadCuotas == 36 || dataRequest.valorSolicitado == 0 ? 'disabled' : null"
                             (change)="calcularDescuento(true)">
                     </mat-form-field>
                     <mat-error *ngIf="showErrorDescuento">
-                        <small>El valor diligenciado debe ser entre {{dataRequest.descuentoMinimo}} a {{dataRequest.descuentoMaximo}}</small>
+                        <small>El valor diligenciado debe ser entre {{minCuotaInicial}} a {{maxCuotaInicial}}</small>
                     </mat-error>
                 </div>
             </div>
@@ -57,8 +57,7 @@
         <div *ngIf="showInputs">
             <div id="cuotaInicial" class="cntAprox">
                 <p class="grayParrf">Cuota inicial:</p>
-                <h3>{{dataRequest.porcentajeDescuento}}%</h3>
-
+                <h3>{{dataRequest.porcentajeCuotaInicial}}%</h3>
                 <div class="tooltip">
                 </div>
             </div>
@@ -68,16 +67,14 @@
         <div id="cuotaInicial" class="cntAprox">
             <p class="grayParrf">Valor cuota inicial:</p>
             <h3>$ {{dataResponse.cuotaInicial | number:'1.0'}}</h3>
-
             <div class="tooltip">
             </div>
-
         </div>
 
 
         <div class="cntAprox">
             <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk"> (incluye seguro de vida)</p>
-            <h3>$ {{dataResponse.cuotaMensualSinInicial | number:'1.0-0'}}</h3>
+            <h3>$ {{dataResponse.valorCuotaConSeguro | number:'1.0-0'}}</h3>
 
             <div class="tooltip doNotPrint">
                 <i class="fa fa-question-circle" (click)="details()"></i>
@@ -92,7 +89,7 @@
 
             <div *ngIf="showDetailsOne" class="contDetail">
                 <p class="grayParrf">Monto a financiar:</p>
-                <p class="cifraBlack">$ {{dataResponse.valorSinCuotaInicial | number:'1.0'}}</p>
+                <p class="cifraBlack">$ {{dataResponse.montoAFinanciar | number:'1.0'}}</p>
             </div>
 
             <div *ngIf="showDetailsOne" class="contDetail">
@@ -117,7 +114,7 @@
 
             <div *ngIf="showDetailsOne" class="contDetail">
                 <p class="grayParrf">Tasa efectivo anual:</p>
-                <p class="cifraBlack">{{tasa * 100}} %</p>
+                <p class="cifraBlack">{{dataResponse.tasa * 100}} %</p>
             </div>
 
             <div *ngIf="showDetailsOne" class="contDetail">
@@ -129,12 +126,12 @@
         <hr class="doNotPrint">
 
         <div class="cntBotones doNotPrint">
-            <button class="btnCta imprimir" (click)="onPrint()" [disabled]="dataRequest.valorSolicitado === 0 || dataRequest.cuota === 0 || showAge < 18 || diferencia < 6">
+            <button class="btnCta imprimir" (click)="onPrint()" [disabled]="dataRequest.valorSolicitado === 0 || dataRequest.cantidadCuotas === 0 || showAge < 18 || diferencia < 6">
                 IMPRIMIR
             </button>
         </div>
         <div class="cntBotones doNotPrint" (click)="openSolicitud()">
-            <button class="btnCta" [disabled]="dataRequest.valorSolicitado === 0 || dataRequest.cuota === 0 || showAge < 18 || diferencia < 6">
+            <button class="btnCta" [disabled]="dataRequest.valorSolicitado === 0 || dataRequest.cantidadCuotas === 0 || showAge < 18 || diferencia < 6">
                 INICIAR SOLICITUD
             </button>
         </div>

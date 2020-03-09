@@ -3,8 +3,11 @@ export class ResponseCalculoCuotas{
     valorCuotaSinSeguro: number;
     valorTotalSeguro: number;
     costoMensualSeguro: number;
+    montoAFinanciar: number;
     montoTotalFinanciamiento: number;
     valorConDescuento: number;
+    tasa: number;
+    nominalMesVencido: number;
     cuotaMensualSinInicial: number;
     cuotaInicial: number;
     valorSinCuotaInicial: number;
@@ -22,7 +25,10 @@ export class ResponseCalculoCuotas{
         this.valorCuotaSinSeguro = 0;
         this.valorTotalSeguro = 0;
         this.montoTotalFinanciamiento = 0;
+        this.montoAFinanciar = 0;
         this.valorConDescuento = 0;
+        this.tasa = 0;
+        this.nominalMesVencido = 0;
         this.cuotaMensualSinInicial = 0;
         this.cuotaInicial = 0;
         this.valorSinCuotaInicial = 0;
