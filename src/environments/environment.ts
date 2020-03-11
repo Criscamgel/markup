@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  backBdUrl: 'http://localhost:9091',
+  // backBdUrl: 'http://localhost:9091',
+  backBdUrl: 'https://bd-config-calculators.herokuapp.com',
   keycloakUrl: 'http://localhost:8080/auth',
   keycloakRealm: 'rei_calculadora_gaes',
   keycloakClientId: 'cli_calculadora_gaes',

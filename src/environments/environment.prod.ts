@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  backBdUrl: 'http://localhost:9091',
-  keycloakUrl: 'https://sso-credito-consumo.apps.sv-bsnc-arquitectura-openshift.itac.com.co/auth',
-  keycloakRealm: 'credito-consumo',
-  keycloakClientId: 'test',
+  backBdUrl: 'https://bd-config-calculators.herokuapp.com',
+  keycloakUrl: 'http://localhost:8080/auth',
+  keycloakRealm: 'rei_calculadora_gaes',
+  keycloakClientId: 'cli_calculadora_gaes',
   redirectUriLogout: 'https://www.youtube.com/'
 };
