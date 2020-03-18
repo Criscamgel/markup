@@ -1,0 +1,652 @@
+import { Component, OnInit } from '@angular/core';
+import { CalculoCuotaService } from 'src/services/calculo-cuota.service';
+import { UsuarioService } from 'src/services/usuario.service';
+import { ResponseCalculoCuotas } from 'src/models/ResponseCalculoCuotas';
+import { MatDialog } from '@angular/material';
+import { ModalComponent } from '../modal/modal.component';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit{
+
+  cuotas = 0;
+  // tasa = 0.0000000000001;
+  valorSolicitado = 0;
+  // valorSolicitadoDto = 0;
+  // vlrSolSinCi = 0;
+  // vlrSolSinCiSinDto = 0;
+  valorFinal = 0;
+
+  /* Calculadora de Edad */
+  ageCalc;
+  showAge = 0;
+  diferencia = 0;
+
+  // vlrCuota;
+  // cuatroMil = 0;
+  nmv = 0;
+  // costoInterez = 0;
+  // dtoFinancia = 0;
+  inCuatroSeg = 0;
+  // vlrCuotaCliente = 0;
+  // costoGaes = 0;
+  // costoTotalGaes = 0;
+
+  /* descuento; */
+  // vlrDto;
+  // pDto = 0;
+  minDes = 0;
+  maxDes = 10;
+  descuentoSlide = 0;
+  // montoTotal;
+  // cuotaInicial = 0;
+
+  /* Valores */
+
+  vlrUno = 4818000;
+  vlrDos = 9730000;
+  vlrTres = 12100000;
+  vlrCuatro = 19600000;
+
+  checkUno = false;
+  checkDos = false;
+  checkTres = false;
+  checkCuatro = false;
+  showDetails = false;
+  showDetailsOne = true;
+  showDetailsTwo = false;
+
+
+  // vlrCuotaSs = 0;
+  // seguroCta = 0;
+  // seguroTotal = 0;
+
+  idAliado:number;
+  calculoCuota: ResponseCalculoCuotas = new ResponseCalculoCuotas();
+  descuento = 0;
+
+  constructor(private calculoService: CalculoCuotaService, private usuarioService: UsuarioService, private dialog: MatDialog) {
+  }
+
+  ngOnInit() {
+    localStorage.clear();
+    if (typeof(Storage) !== "undefined") {
+      if(localStorage.getItem("aliado") == null || localStorage.getItem("aliado") == undefined){
+        // LocalStorage disponible
+        this.consultarAliado(true);
+      }else{
+        let aliado = JSON.parse(localStorage.getItem("aliado"));
+        this.idAliado = aliado.idAliado;
+      }
+    } else {
+        //no soporta localstorage
+        this.consultarAliado(false);
+    }
+  }
+
+  consultarAliado(saveLocalStorage: boolean){
+    this.usuarioService.consultarAliado().subscribe(
+      aliado =>{
+        this.idAliado = aliado.idAliado;
+        if(saveLocalStorage)
+          localStorage.setItem("aliado", JSON.stringify(aliado));
+      },
+      ()=>{
+        console.log("Error al consultar el aliado del usuario");
+      }
+    );
+  }
+
+  linka(){
+    window.location.href = 'https://apps.datacredito.com.co/raw/user-account/login/web/index';
+      
+  }
+
+  saveMonto(val){      
+    this.valorSolicitado = Number(val);    
+    // this.changeButtonCliente(this.cuotas);
+    this.changeButton(this.cuotas);      
+  }
+
+  descuentoChange(val){    
+
+    // this.pDto = Number(val.srcElement.value);
+    // this.valorSolicitadoDto = 0;
+    // var dto = 0;  
+    // dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
+    // this.valorFinal = this.valorSolicitado - dto;    
+    
+    // if(this.pDto !== 0){
+    // this.valorSolicitadoDto = this.valorSolicitado;
+    // var dto = 0;   
+    // dto = Math.round(this.valorSolicitadoDto * (this.pDto / 100));
+    // this.valorSolicitadoDto -= dto;
+    
+
+    // /* Sacando la Cuota Inicial */
+    // this.cuotaInicial = this.valorSolicitadoDto * 0.10;
+
+    // this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+    // this.vlrDto = this.vlrSolSinCi - dto; 
+    // this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / this.cuotas);
+    // this.changeButtonCliente(this.cuotas);    
+    // this.changeButton(this.cuotas);    
+    
+
+    // }else{
+    //   this.valorSolicitadoDto = 0;      
+    //   this.changeButtonCliente(this.cuotas);
+    //   this.changeButton(this.cuotas);
+    // }
+    this.descuento = Number(val.srcElement.value);
+    this.changeButton(Number(this.cuotas));
+  }
+
+  detailsTwo(){
+    this.showDetailsTwo = !this.showDetailsTwo;
+    this.showDetailsOne = !this.showDetailsOne;
+  }
+
+  // changeButtonCliente(val){    
+    
+  //   if(val !== undefined){
+
+  //     if(val.value !== undefined){
+  //     var cuota = Number(val.value);
+  //     }else{
+  //       var cuota = Number(val);
+  //     }
+    
+  //   }
+
+  //   switch (cuota) {
+  //     case 6:
+  //         this.tasa = 0;
+  //         this.nmv = 0;
+  //         this.vlrSolSinCi = 0;
+
+  //         if(this.valorSolicitadoDto === 0){
+  //           this.cuotaInicial = this.valorSolicitado * 0.10;
+  //           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+  //           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //           }else{
+  //           this.cuotaInicial = this.valorSolicitadoDto * 0.10;
+  //           this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+  //           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //           }         
+
+  //         break;
+
+  //      case 12:
+  //         this.tasa = 0;
+  //         this.nmv = 0;
+  //         this.vlrSolSinCi = 0;
+          
+  //         if(this.valorSolicitadoDto === 0){
+  //         this.cuotaInicial = this.valorSolicitado * 0.10;
+  //         this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+  //         this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //         }else{
+  //         this.cuotaInicial = this.valorSolicitadoDto * 0.10;
+  //         this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+  //         this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //         }
+       
+  //      break;
+
+  //      case 18:
+  //         this.tasa = 0;
+  //         this.nmv = 0;
+  //         this.vlrSolSinCi = 0;
+
+  //         if(this.valorSolicitadoDto === 0){
+  //           this.cuotaInicial = this.valorSolicitado * 0.10;
+  //           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+  //           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //           }else{
+  //           this.cuotaInicial = this.valorSolicitadoDto * 0.10;
+  //           this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+  //           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //           }   
+
+  //      break;
+
+  //      case 24:
+  //         this.tasa = 0;
+  //         this.nmv = 0;
+  //         this.vlrSolSinCi = 0;
+
+  //         if(this.valorSolicitadoDto === 0){
+  //           this.cuotaInicial = this.valorSolicitado * 0.10;
+  //           this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial;
+  //           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //           }else{
+  //           this.cuotaInicial = this.valorSolicitadoDto * 0.10;
+  //           this.vlrSolSinCi = this.valorSolicitadoDto - this.cuotaInicial;
+  //           this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+  //           }   
+
+  //      break;
+
+  //      case 36:
+
+  //         this.vlrDto = 0;
+  //         this.cuotas = Number(this.cuotas);
+  //         /* var nmv;
+  //         var vlrActual;
+  //         var vlrCuota;
+          
+  //         this.tasa = 0.0604;
+  //         nmv = Math.pow((1 + this.tasa),(1/12))-1;
+          
+  //         this.descuentoSlide = 0;
+  //         this.vlrSolSinCi = this.valorSolicitado - this.cuotaInicial; */
+          
+  //         /* var seguroTotal = 0.0000000000001; */
+  //         /* Aplicando Dto */
+
+  //         /* if(this.vlrDto !== 0 && this.vlrDto !== undefined){
+  //           this.vlrSolSinCi = this.vlrDto;  
+  //         } */
+
+  //         /* -- */
+
+  //         /* var vlrPartuno = vlrActual * nmv;
+  //         var vlrPartdos = Math.pow((1 + nmv), - cuota)
+  //         vlrPartdos = 1 - vlrPartdos;
+  //         vlrCuota = vlrPartuno / vlrPartdos;
+  //         vlrCuota = Math.round(vlrCuota); */
+
+  //         /* Valor Cuota sin seguro */
+
+  //         /* this.vlrCuotaSs = vlrCuota;   */
+
+  //         /* var vlrPartunoSeg = seguroTotal * nmv;      
+  //         var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+  //         vlrPartdosSeg = 1 - vlrPartdosSeg;
+  //         var seguroCta = vlrPartunoSeg / vlrPartdosSeg;
+  //         seguroCta = Math.round(seguroCta); */
+
+  //         /* Seguro de la cuota */
+
+  //         /* this.seguroCta = seguroCta;
+  //         this.vlrCuota = Math.round(vlrCuota + seguroCta); */
+  //         /* this.vlrCuotaCliente =  Math.round(this.vlrSolSinCi / cuota);
+
+  //         this.nmv = 0.643;
+  //         this.tasa = 7.99; */
+
+  //      break;
+    
+  //     default:
+  //       break;
+  //   }
+  // }
+  
+
+  changeButton(val){
+
+    // let cuota = 0;       
+    // let nmv = Math.pow((1 + this.tasa),(1/12))-1;
+    // let seguro;
+    // var valorSolicitado = 0;
+    
+    // if(val.value){
+    //   cuota = Number(val.value);
+    // }else{
+    //   cuota = Number(val);
+    // }
+
+    // if(this.valorSolicitadoDto !== 0 && this.descuentoSlide !== 0){
+    //   valorSolicitado = this.valorSolicitadoDto;  
+    // }else{
+    //   valorSolicitado = this.valorSolicitado;
+    //   /* this.valorSolicitadoDto = 0;   */ 
+    // }
+
+    let cuotas;
+    if(val.value !== undefined){
+      cuotas =  Number(val.value);
+    }else{
+      cuotas = val;
+    } 
+    this.calculoService.calcularCuotas(cuotas, this.valorSolicitado, this.descuento, this.idAliado)
+    .subscribe(
+      calculo =>{
+        this.calculoCuota = calculo;
+        console.log("Servicio consumido exitosamente, estos son los calculos:  "+JSON.stringify(calculo));
+      },
+      () =>{
+        console.log("Error consumiendo el servicio de calcular cuotas!!");
+      }
+    );
+  
+    
+    // switch (cuota) {
+    //   case 6:          
+
+    //       var cuotaInicial = Math.round(valorSolicitado * 0.10)
+    //       this.cuotaInicial = cuotaInicial;
+    //       this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+    //       seguro = (1200 / 1000000) * this.vlrSolSinCi;
+                  
+    //       var vlrCuota;
+    //       /* var vlrDescuento = Math.round(this.valorSolicitado * this.descuento); */
+    //       var seguroTotal = Math.round(seguro * cuota);
+    //       /* Seguro Total */        
+    //       this.seguroTotal = seguroTotal;
+                          
+  
+    //       var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);                
+    //       var vlrPartuno = vlrActual * nmv;
+    //       var vlrPartdos = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdos = 1 - vlrPartdos;
+    //       vlrCuota = vlrPartuno / vlrPartdos;
+    //       vlrCuota = Math.round(vlrCuota);
+    //       /* Valor Cuota sin seguro */
+    //       this.vlrCuotaSs = vlrCuota;       
+                 
+    //       var vlrPartunoSeg = seguroTotal * nmv;      
+    //       var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdosSeg = 1 - vlrPartdosSeg;
+    //       var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+    //       seguroCta = Math.round(seguroCta);
+    //       /* Seguro de la cuota */
+    //       this.seguroCta = seguroCta;
+    //       this.vlrCuota = Math.round(vlrCuota + seguroCta);
+    //       /* Monto total */
+    //       this.montoTotal = Math.round(seguroTotal + vlrActual)
+          
+    //       /* Cuatro por Mil */          
+    //       this.cuatroMil = 0;
+    //       this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+          
+    //       /* inCuatroSeg 
+    //       Es la suma entre el costo del interes mas seguro mas 4 * 1000
+    //       */
+    //       this.inCuatroSeg = 0;
+    //       this.tasa = 0.0000000000001;
+    //       /* var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil; */
+    //       var nmvUno = Math.pow((1 + this.tasa), (1/12)) - 1;          
+    //       var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+    //       var numerador = this.vlrCuotaCliente * potencia;
+    //       var resultado = numerador / nmvUno;
+    //       this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+    //       this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + 10;
+
+    //       var cuotaInicial = Math.round(this.valorSolicitado * 0.10);
+    //       this.vlrSolSinCiSinDto = this.valorSolicitado - cuotaInicial;
+                              
+    //     break;
+
+    //   case 12:
+        
+    //       var cuotaInicial = Math.round(valorSolicitado * 0.10)
+    //       this.cuotaInicial = cuotaInicial;
+    //       this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+    //       seguro = (1200 / 1000000) * this.vlrSolSinCi;
+                  
+    //       var vlrCuota;
+    //       /* var vlrDescuento = Math.round(this.valorSolicitado * this.descuento); */
+    //       var seguroTotal = Math.round(seguro * cuota);
+    //       /* Seguro Total */        
+    //       this.seguroTotal = seguroTotal;
+                          
+  
+    //       var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);                
+    //       var vlrPartuno = vlrActual * nmv;
+    //       var vlrPartdos = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdos = 1 - vlrPartdos;
+    //       vlrCuota = vlrPartuno / vlrPartdos;
+    //       vlrCuota = Math.round(vlrCuota);
+    //       /* Valor Cuota sin seguro */
+    //       this.vlrCuotaSs = vlrCuota;       
+                 
+    //       var vlrPartunoSeg = seguroTotal * nmv;      
+    //       var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdosSeg = 1 - vlrPartdosSeg;
+    //       var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+    //       seguroCta = Math.round(seguroCta);
+    //       /* Seguro de la cuota */
+    //       this.seguroCta = seguroCta;
+    //       this.vlrCuota = Math.round(vlrCuota + seguroCta);
+    //       /* Monto total */
+    //       this.montoTotal = Math.round(seguroTotal + vlrActual)
+          
+    //       /* Cuatro por Mil */          
+    //       this.cuatroMil = 0;
+    //       this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+          
+    //       /* inCuatroSeg 
+    //       Es la suma entre el costo del interes mas seguro mas 4 * 1000
+    //       */
+    //       this.inCuatroSeg = 0;
+    //       this.tasa = 0.0000000000001;
+    //       /* var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil; */
+    //       var nmvUno = Math.pow((1 + this.tasa), (1/12)) - 1;          
+    //       var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+    //       var numerador = this.vlrCuotaCliente * potencia;
+    //       var resultado = numerador / nmvUno;
+    //       this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+    //       this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + 10;
+
+    //       var cuotaInicial = Math.round(this.valorSolicitado * 0.10);
+    //       this.vlrSolSinCiSinDto = this.valorSolicitado - cuotaInicial;
+                              
+    //     break;
+
+
+    //   case 18:
+        
+    //       var cuotaInicial = Math.round(valorSolicitado * 0.10)
+    //       this.cuotaInicial = cuotaInicial;
+    //       this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+    //       seguro = (1200 / 1000000) * this.vlrSolSinCi;
+                  
+    //       var vlrCuota;
+    //       /* var vlrDescuento = Math.round(this.valorSolicitado * this.descuento); */
+    //       var seguroTotal = Math.round(seguro * cuota);
+    //       /* Seguro Total */        
+    //       this.seguroTotal = seguroTotal;
+                          
+  
+    //       var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);                
+    //       var vlrPartuno = vlrActual * nmv;
+    //       var vlrPartdos = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdos = 1 - vlrPartdos;
+    //       vlrCuota = vlrPartuno / vlrPartdos;
+    //       vlrCuota = Math.round(vlrCuota);
+    //       /* Valor Cuota sin seguro */
+    //       this.vlrCuotaSs = vlrCuota;       
+                 
+    //       var vlrPartunoSeg = seguroTotal * nmv;      
+    //       var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdosSeg = 1 - vlrPartdosSeg;
+    //       var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+    //       seguroCta = Math.round(seguroCta);
+    //       /* Seguro de la cuota */
+    //       this.seguroCta = seguroCta;
+    //       this.vlrCuota = Math.round(vlrCuota + seguroCta);
+    //       /* Monto total */
+    //       this.montoTotal = Math.round(seguroTotal + vlrActual)
+          
+    //       /* Cuatro por Mil */          
+    //       this.cuatroMil = 0;
+    //       this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+          
+    //       /* inCuatroSeg 
+    //       Es la suma entre el costo del interes mas seguro mas 4 * 1000
+    //       */
+    //       this.inCuatroSeg = 0;
+    //       this.tasa = 0.0000000000001;
+    //       /* var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil; */
+    //       var nmvUno = Math.pow((1 + this.tasa), (1/12)) - 1;          
+    //       var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+    //       var numerador = this.vlrCuotaCliente * potencia;
+    //       var resultado = numerador / nmvUno;
+    //       this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+    //       this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + 10;
+
+    //       var cuotaInicial = Math.round(this.valorSolicitado * 0.10);
+    //       this.vlrSolSinCiSinDto = this.valorSolicitado - cuotaInicial;         
+             
+    //     break;
+
+    //   case 24:
+        
+    //       var cuotaInicial = Math.round(valorSolicitado * 0.10)
+    //       this.cuotaInicial = cuotaInicial;
+    //       this.vlrSolSinCi = Math.round(valorSolicitado) - this.cuotaInicial;
+    //       seguro = (1200 / 1000000) * this.vlrSolSinCi;
+                  
+    //       var vlrCuota;
+    //       /* var vlrDescuento = Math.round(this.valorSolicitado * this.descuento); */
+    //       var seguroTotal = Math.round(seguro * cuota);
+    //       /* Seguro Total */        
+    //       this.seguroTotal = seguroTotal;
+                          
+  
+    //       var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);                
+    //       var vlrPartuno = vlrActual * nmv;
+    //       var vlrPartdos = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdos = 1 - vlrPartdos;
+    //       vlrCuota = vlrPartuno / vlrPartdos;
+    //       vlrCuota = Math.round(vlrCuota);
+    //       /* Valor Cuota sin seguro */
+    //       this.vlrCuotaSs = vlrCuota;       
+                 
+    //       var vlrPartunoSeg = seguroTotal * nmv;      
+    //       var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdosSeg = 1 - vlrPartdosSeg;
+    //       var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+    //       seguroCta = Math.round(seguroCta);
+    //       /* Seguro de la cuota */
+    //       this.seguroCta = seguroCta;
+    //       this.vlrCuota = Math.round(vlrCuota + seguroCta);
+    //       /* Monto total */
+    //       this.montoTotal = Math.round(seguroTotal + vlrActual)
+          
+    //       /* Cuatro por Mil */          
+    //       this.cuatroMil = 0;
+    //       this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+          
+    //       /* inCuatroSeg 
+    //       Es la suma entre el costo del interes mas seguro mas 4 * 1000
+    //       */
+    //       this.inCuatroSeg = 0;
+    //       this.tasa = 0.0000000000001;
+    //       /* var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil; */
+    //       var nmvUno = Math.pow((1 + this.tasa), (1/12)) - 1;          
+    //       var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+    //       var numerador = this.vlrCuotaCliente * potencia;
+    //       var resultado = numerador / nmvUno;
+    //       this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+    //       this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + 10;
+
+    //       var cuotaInicial = Math.round(this.valorSolicitado * 0.10);
+    //       this.vlrSolSinCiSinDto = this.valorSolicitado - cuotaInicial;       
+             
+    //     break;
+
+    //   case 36:
+
+    //       var cuotaInicial = Math.round(valorSolicitado * 0.10)
+    //       this.cuotaInicial = cuotaInicial;
+    //       valorSolicitado = Math.round(valorSolicitado) - cuotaInicial;
+    //       seguro = (1200 / 1000000) * valorSolicitado;
+    //       this.vlrSolSinCi = valorSolicitado;
+
+                  
+    //       var vlrCuota;
+    //       /* var vlrDescuento = Math.round(this.valorSolicitado * this.descuento); */
+    //       var seguroTotal = Math.round(seguro * cuota);
+    //       /* Seguro Total */        
+    //       this.seguroTotal = seguroTotal;
+                          
+  
+    //       var vlrActual = Math.round(valorSolicitado/*  - vlrDescuento */);                
+    //       var vlrPartuno = vlrActual * nmv;
+    //       var vlrPartdos = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdos = 1 - vlrPartdos;
+    //       vlrCuota = vlrPartuno / vlrPartdos;
+    //       vlrCuota = Math.round(vlrCuota);
+    //       /* Valor Cuota sin seguro */
+    //       this.vlrCuotaSs = vlrCuota;       
+                 
+    //       var vlrPartunoSeg = seguroTotal * nmv;      
+    //       var vlrPartdosSeg = Math.pow((1 + nmv), - cuota)
+    //       vlrPartdosSeg = 1 - vlrPartdosSeg;
+    //       var seguroCta = (Math.round(vlrPartunoSeg) / vlrPartdosSeg);
+    //       seguroCta = Math.round(seguroCta);
+    //       /* Seguro de la cuota */
+    //       this.seguroCta = seguroCta;
+    //       this.vlrCuota = Math.round(vlrCuota + seguroCta);
+    //       /* Monto total */
+    //       this.montoTotal = Math.round(seguroTotal + vlrActual)
+          
+    //       /* Cuatro por Mil */          
+    //       this.cuatroMil = 0;
+    //       this.cuatroMil = Math.round((this.vlrSolSinCi + seguroTotal) * 0.004)
+          
+    //       /* inCuatroSeg 
+    //       Es la suma entre el costo del interes mas seguro mas 4 * 1000
+    //       */
+    //       this.inCuatroSeg = 0;
+    //       this.tasa = 0.0000000000001;
+    //       /* var sumandoFin = this.vlrSolSinCi + seguroTotal + this.cuatroMil; */
+    //       var nmvUno = Math.pow((1 + this.tasa), (1/12)) - 1;          
+    //       var potencia = 1 - (Math.pow(1 + nmvUno, - cuota));
+    //       var numerador = this.vlrCuotaCliente * potencia;
+    //       var resultado = numerador / nmvUno;
+    //       this.costoInterez = (this.vlrSolSinCi + this.seguroTotal + this.cuatroMil) - resultado;
+    //       this.costoInterez === 0 ? this.dtoFinancia = 0 : this.dtoFinancia = Number((this.costoInterez / this.vlrSolSinCi * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoGaes = 0 : this.costoGaes = Number((this.costoInterez / this.valorSolicitado * 100).toFixed(2));
+    //       this.costoInterez === 0 ? this.costoTotalGaes = 0 : this.costoTotalGaes = Number(this.costoGaes) + 10;       
+
+    //     break;
+    
+    //   default:
+    //     break;
+    // }
+  }
+
+  details(){
+    this.showDetails = !this.showDetails;
+    
+  }
+  
+
+  onPrint(){
+    window.print();
+  }
+
+  ageCalculator(){
+    if(this.ageCalc){
+      var showAge;
+
+      const convertAge = new Date(this.ageCalc);
+      const timeDiff = Date.now() - convertAge.getTime();
+      showAge = Number(((timeDiff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2)));
+      this.diferencia = Math.round((75 - showAge) * 12);
+      this.showAge = Math.round(showAge);
+
+    }
+    
+  }
+
+  cerrarSesion(){
+    this.dialog.open(ModalComponent, { disableClose: true, data: { nombreModal: "cierreSession" } });
+  }
+
+}

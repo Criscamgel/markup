@@ -4,15 +4,16 @@
 
 export const environment = {
   production: false,
-  backBdUrl: 'http://localhost:9091',
-  keycloakUrl: 'http://localhost:8080/auth',
-  keycloakRealm: 'rei_calculadora_gaes',
-  keycloakClientId: 'cli_calculadora_gaes',
-  // datos de prueba con openshift
-  // backBdUrl: 'http://calculadora-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co',
-  // keycloakUrl: 'https://sso-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co/auth',
-  // keycloakRealm: 'rei_gaes',
-  // keycloakClientId: 'cli_gaes',
+  // backBdUrl: 'http://localhost:9091',
+  // keycloakUrl: 'http://localhost:8080/auth',
+  // keycloakRealm: 'rei_calculadora',
+  // keycloakClientId: 'cli_calculadora_gaes',
+  //datos de prueba con openshift
+  backBdUrl: 'http://calculadora-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co',
+  keycloakUrl: 'https://sso-dev-ccf-security.cloudapps.cosanpre.corp/auth',
+  //keycloakUrl: 'https://gestor-seguridad-credito-consumo-dev.apps.sv-bsnc-arquitectura-openshift.itac.com.co/auth',
+  keycloakRealm: 'rei_gaes',
+  keycloakClientId: 'cli_gaes',
   redirectUriLogout: 'https://www.youtube.com/'
 };
 

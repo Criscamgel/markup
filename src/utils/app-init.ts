@@ -7,9 +7,9 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
       try {
         await keycloak.init({
           config: {
-            url: environment.keycloakUrl,
-            realm: environment.keycloakRealm,
-            clientId: environment.keycloakClientId
+            'url': environment.keycloakUrl,
+            'realm': environment.keycloakRealm,
+            'clientId': environment.keycloakClientId
           },
           initOptions: {
             onLoad: 'login-required',
@@ -17,10 +17,10 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
           },
           bearerExcludedUrls: ['/assets', '/clients/public']
         });
-        console.log('logueo con exito!');
+        console.log("logueo con exito!");
         resolve();
       } catch (error) {
-        console.log('fallo el inicio de session!');
+        console.log("fallo el inicio de session!");
         reject(error);
       }
     });

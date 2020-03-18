@@ -1,26 +1,13 @@
-<div>
-    <div class="background"></div>
-
-    <div class="card animated fadeInUp fast">
-
-        <div class="logo-santander">
-            <ng-content select="[logo]"></ng-content>
+<div id="cierreSesionPoup" *ngIf="data.nombreModal =='cierreSession' ">
+    <div mat-dialog-content>
+        <p class="blue-excel">¿Desea cerrar la sesión?</p>
+    </div>
+    <div mat-dialog-actions>
+        <div>
+            <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
         </div>
-
-        <div class="header">
-            <ng-content select="[header]"></ng-content>
-        </div>
-
-        <div class="message">
-            <ng-content></ng-content>
-        </div>
-
-        <div class="footer">
-            <ng-content class="btn-request" select="[start]"></ng-content>
-        </div>
-        <div class="footer">
-            <ng-content class="btn-back" select="[back]"></ng-content>
+        <div>
+            <button mat-raised-button color="primary" cdkFocusInitial (click)="cerrarSession()">Aceptar</button>
         </div>
     </div>
-
 </div>

@@ -3,7 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeConInteresComponent } from './components/home-con-interes/home-con-interes.component';
+import { HomeComponent } from './components/home/home.component';
 
 /* Forms */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,51 +15,39 @@ import { ROUTES } from './app.routes';
 import { EditInputComponent } from './components/edit-input/edit-input.component';
 
 import { AutofocusDirective } from './autofocus.directive';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-/* Angular Material */
-import { MaterialModule } from './material/material.module';
-import { ModalContentComponent } from './components/modal-content/modal-content.component';
-import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-interes.component';
-
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializer } from 'src/utils/app-init';
-import { HttpClientModule } from '@angular/common/http';
-import { CalculadoraComponent } from './components/calculadora/calculadora.component';
-import { ProcessRequestComponent } from './components/process-request/process-request.component';
-import { SolicitudModalComponent } from './components/solicitud-modal/solicitud-modal.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatIconModule} from '@angular/material/';
+import { InterceptorService } from './interceptors/interceptor.service';
 import { ModalComponent } from './components/modal/modal.component';
-import { BirthdayPipe } from '../pipes/birthday.pipe';
-import { PanelExpansionComponent } from './components/panel-expansion/panel-expansion.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeConInteresComponent,
+    HomeComponent,
     AyudaComponent,
+    ModalComponent,
     EditInputComponent,
     AutofocusDirective,
-    ModalContentComponent,
-    HomeSinInteresComponent,
-    CalculadoraComponent,
-    ProcessRequestComponent,
-    SolicitudModalComponent,
-    ModalComponent,
-    BirthdayPipe,
-    PanelExpansionComponent
   ],
-  entryComponents: [ModalContentComponent],
+  entryComponents:[ModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    KeycloakAngularModule,
     RouterModule.forRoot( ROUTES, { useHash:true } ),
     BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    KeycloakAngularModule
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     {
@@ -67,7 +55,8 @@ import { PanelExpansionComponent } from './components/panel-expansion/panel-expa
       useFactory: initializer,
       multi: true,
       deps: [KeycloakService]
-    }
+    },
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
   ],
   bootstrap: [AppComponent]
 })
