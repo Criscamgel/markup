@@ -66,7 +66,8 @@
 
         <div id="cuotaInicial" class="cntAprox">
             <p class="grayParrf">Valor cuota inicial:</p>
-            <h3>$ {{dataResponse.cuotaInicial | number:'1.0'}}</h3>
+            <h3 *ngIf="!showSpinner">$ {{dataResponse.cuotaInicial | number:'1.0'}}</h3>
+            <mat-spinner diameter="20" *ngIf="showSpinner"></mat-spinner>
             <div class="tooltip">
             </div>
         </div>
@@ -74,8 +75,8 @@
 
         <div class="cntAprox">
             <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk"> (incluye seguro de vida)</p>
-            <h3>$ {{dataResponse.valorCuotaConSeguro | number:'1.0-0'}}</h3>
-
+            <h3 *ngIf="!showSpinner">$ {{dataResponse.valorCuotaConSeguro | number:'1.0-0'}}</h3>
+            <mat-spinner diameter="20" *ngIf="showSpinner"></mat-spinner>
             <div class="tooltip doNotPrint">
                 <i class="fa fa-question-circle" (click)="details()"></i>
 

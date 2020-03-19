@@ -1,6 +1,6 @@
+import { Constants } from '../utils/constants';
 export class RequestCalculoCuota {
-
-    aliadoId: number;
+    aliado: string;
     cantidadCuotas: number;
     valorSolicitado: number;
     descuento: number;
@@ -8,7 +8,7 @@ export class RequestCalculoCuota {
     porcentajeCuotaInicial: number;
 
     constructor() {
-        this.aliadoId = 0;
+        this.aliado = Constants.NOMBRE_ALIADO;
         this.cantidadCuotas = 0;
         this.valorSolicitado = 0;
         this.descuento = 0;

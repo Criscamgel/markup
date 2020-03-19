@@ -1,4 +1,5 @@
 export class Constants {
+    public static readonly NOMBRE_ALIADO = 'gaes';
     public static readonly PATTER_NUMBER = new RegExp('^[0-9]+$');
     public static readonly ALIADO = 'aliado';
     public static readonly PATTER_EMAIL = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$');

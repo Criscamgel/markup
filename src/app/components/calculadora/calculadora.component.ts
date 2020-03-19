@@ -21,10 +21,10 @@ export class CalculadoraComponent implements OnInit {
   public showErrorDescuento = false;
   public showDetails = false;
   public showDetailsOne = true;
+  public showSpinner = false;
   public nominalMesVencido: string;
   public minCuotaInicial = 10;
   public maxCuotaInicial = 70;
-
 
   @Input() public diferencia: number;
   @Input() public showAge: number;
@@ -39,36 +39,11 @@ export class CalculadoraComponent implements OnInit {
   }
 
   ngOnInit() {
-    localStorage.clear();
-    this.cargarAlidadoId();
     this.getCuotasRadio();
     this.getCuotasInput();
     this.dataRequest.gaesInteres = this.intereses;
   }
-
-  cargarAlidadoId() {
-    this.consultarAliado();
-    if (typeof(Storage) !== undefined) {
-      if (localStorage.getItem(Constants.ALIADO) == null || localStorage.getItem(Constants.ALIADO) === undefined) {
-        // LocalStorage disponible
-        localStorage.setItem(Constants.ALIADO, JSON.stringify(this.aliado));
-      } else {
-        this.aliado = JSON.parse(localStorage.getItem(Constants.ALIADO));
-      }
-    }
-  }
-
-  consultarAliado = () => {
-    this.usuarioService.consultarAliado().subscribe(
-      aliado => {
-        this.aliado = aliado;
-        this.dataRequest.aliadoId = this.aliado.idAliado;
-      }, (err) => {
-        console.error('Error al consultar el aliado del usuario', err);
-      }
-    );
-  }
-
+  
   public getCuotasInput() {
     this.calculoService.getCuotas()
         .then(cuotasInput => {
@@ -85,15 +60,20 @@ export class CalculadoraComponent implements OnInit {
 
   saveMonto(value: number) {
     this.dataRequest.valorSolicitado = Number(value);
-    this.calcularCuota();
+    if ( this.dataRequest.cantidadCuotas > 0) {
+      this.calcularCuota();
+    }
   }
 
   saveCuota(cuota: number) {
     this.dataRequest.cantidadCuotas = Number(cuota);
-    this.calcularCuota();
+    if (this.dataRequest.valorSolicitado > 0) {
+      this.calcularCuota();
+    }
   }
 
   calcularCuota() {
+    this.showSpinner = true;
     this.dataRequest.porcentajeCuotaInicial = this.showInputs ? this.dataRequest.porcentajeCuotaInicial : 10;
     console.log(this.dataRequest);
     this.calculoService.calcularCuotas(this.dataRequest)
@@ -103,9 +83,12 @@ export class CalculadoraComponent implements OnInit {
         this.nominalMesVencido = (this.dataResponse.nominalMesVencido * 100).toString().substr(0, 3);
         console.log(calculo);
       },
-      () => {
+      (err) => {
         this.enableStarRequest.emit(false);
         console.log('Error consumiendo el servicio de calcular cuotas!!');
+      },
+      () => {
+        this.showSpinner = false;
       }
     );
   }
