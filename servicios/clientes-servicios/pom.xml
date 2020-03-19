@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>acceso-datos-calculadora-client</module>
+        <module>acceso-datos-externos-client</module>
     </modules>
     <dependencyManagement>
         <dependencies>
