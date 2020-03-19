@@ -1,0 +1,12 @@
+kind: ConfigMap
+metadata:
+  name: ${calculadora.location}
+data:
+  application.yml: |-
+    spring:
+      profiles: openshift
+    calculadora:
+      proto: ${calculadora.proto}
+      # se pone la url del servicio si es consumo interno por openshift
+      host: ${calculadora.host}.${ocp.back.namespace}.svc.cluster.local
+      port: ${calculadora.port}

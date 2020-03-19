@@ -1,0 +1,5 @@
+# Service account definido para ver cambios en el namespace
+apiVersion: "v1"
+kind: "ServiceAccount"
+metadata:
+  name: ${cc.serviceaccount}

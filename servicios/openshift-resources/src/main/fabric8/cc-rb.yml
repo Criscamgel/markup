@@ -1,0 +1,10 @@
+# Este rolebinding permite ver eventos de cambios en el namespace al serviceaccount '${cc.serviceaccount}'
+apiVersion: "v1"
+kind: "RoleBinding"
+metadata:
+  name: ${cc.rolebinding}
+roleRef:
+  name: "view"
+subjects:
+  - kind: "ServiceAccount"
+    name: ${cc.serviceaccount}

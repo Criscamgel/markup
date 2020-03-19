@@ -1,72 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.5.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>redirect</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>redirect</name>
-	<description>Demo project for Spring Boot</description>
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.com.santander</groupId>
+  <artifactId>credito-consumo</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>servicios</module>
+  </modules>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-	</properties>
+    <fuse.version>7.4.0.fuse-sb2-740019-redhat-00005</fuse.version>
+    <camel.version>2.23.4</camel.version>
+    <cxf.version>3.2.7</cxf.version>
+    <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
+    <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+    <springboot-graceful-shutdown.version>2.0.1</springboot-graceful-shutdown.version>
+    <postgresql.client.version>42.2.6</postgresql.client.version>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-		</dependency>
+    <project.java.version>1.8</project.java.version>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
+    <ocp.graceful.shutdown.wait.seconds>20</ocp.graceful.shutdown.wait.seconds>
+    <ocp.master.url>https://sv-bsnc-arquitectura-openshift.itac.com.co:8443</ocp.master.url>
+    <ocp.namespace>credito-consumo</ocp.namespace>
+    <ocp.front.namespace>dev-ccf-front</ocp.front.namespace>
+    <ocp.security.namespace>dev-ccf-security</ocp.security.namespace>
+    <ocp.db.namespace>dev-ccf-database</ocp.db.namespace>
+    <ocp.common.namespace>dev-ccf-common</ocp.common.namespace>
+    <ocp.service.namespace>dev-ccf-service</ocp.service.namespace>
+    <ocp.back.namespace>dev-ccf-business</ocp.back.namespace>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <ocp.token></ocp.token>
+    <git.token></git.token>
+    <git.secret-name>git-secret</git.secret-name>
+  </properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <db.host></db.host>
+        <db.port>0</db.port>
+        <acceso-datos-clientes-externos.proto>http</acceso-datos-clientes-externos.proto>
+        <acceso-datos-clientes-externos.host>localhost</acceso-datos-clientes-externos.host>
+        <acceso-datos-clientes-externos.port>8080</acceso-datos-clientes-externos.port>
+      </properties>
+    </profile>
+    <profile>
+      <id>openshift</id>
+      <properties>
+        <cc.serviceaccount>${ocp.namespace}-sa</cc.serviceaccount>
+        <cc.rolebinding>${ocp.namespace}-rb</cc.rolebinding>
+
+        <db.service-name>database</db.service-name>
+        <db.host>${db.service-name}</db.host>
+        <db.port>5432</db.port>
+        <database.secret.name>database</database.secret.name>
+        <database.secret.db.key>database-name</database.secret.db.key>
+        <database.secret.user.key>database-user</database.secret.user.key>
+        <database.secret.password.key>database-password</database.secret.password.key>
+
+        <gestor-seguridad.service-name>gestor-seguridad</gestor-seguridad.service-name>
+
+        <calculadora.service-name>calculadora</calculadora.service-name>
+        <calculadora.location>calculadora-location</calculadora.location>
+        <calculadora.proto>http</calculadora.proto>
+        <calculadora.host>calculadora</calculadora.host>
+        <calculadora.port>8080</calculadora.port>
+
+        <dictum.service-name>dictum</dictum.service-name>
+        <dictum.location>dictum-location</dictum.location>
+        <dictum.proto>http</dictum.proto>
+        <dictum.host>dictum</dictum.host>
+        <dictum.port>8080</dictum.port>
+
+        <ubica.service-name>ubica</ubica.service-name>
+        <ubica.location>ubica-location</ubica.location>
+        <ubica.proto>http</ubica.proto>
+        <ubica.host>ubica</ubica.host>
+        <ubica.port>8080</ubica.port>
+
+        <mft.service-name>mft</mft.service-name>
+        <mft.location>mft-location</mft.location>
+        <mft.proto>http</mft.proto>
+        <mft.host>mft</mft.host>
+        <mft.port>8080</mft.port>
+
+        <mareigua.service-name>mareigua</mareigua.service-name>
+        <mareigua.location>mareigua-location</mareigua.location>
+        <mareigua.proto>http</mareigua.proto>
+        <mareigua.host>mareigua</mareigua.host>
+        <mareigua.port>8080</mareigua.port>
+
+		<transfiriendo.service-name>transfiriendo</transfiriendo.service-name>
+		<transfiriendo.location>transfiriendo-location</transfiriendo.location>
+        <transfiriendo.proto>http</transfiriendo.proto>
+        <transfiriendo.host>transfiriendo</transfiriendo.host>
+        <transfiriendo.port>8080</transfiriendo.port>
+
+		<deceval.service-name>deceval</deceval.service-name>
+		<deceval.location>deceval-location</deceval.location>
+        <deceval.proto>http</deceval.proto>
+        <deceval.host>deceval</deceval.host>
+        <deceval.port>8080</deceval.port>
+
+		<income.service-name>income</income.service-name>
+		<income.location>income-location</income.location>
+        <income.proto>http</income.proto>
+        <income.host>income</income.host>
+        <income.port>8080</income.port>
+
+        <evidente-master.service-name>evidente-master</evidente-master.service-name>
+        <evidente-master.location>evidente-master-location</evidente-master.location>
+        <evidente-master.proto>http</evidente-master.proto>
+        <evidente-master.host>evidente-master</evidente-master.host>
+        <evidente-master.port>8080</evidente-master.port>
+
+        <vigia.service-name>vigia</vigia.service-name>
+        <vigia.location>vigia-location</vigia.location>
+        <vigia.proto>http</vigia.proto>
+        <vigia.host>vigia</vigia.host>
+        <vigia.port>8080</vigia.port>
+
+        <reconocer.service-name>reconocer</reconocer.service-name>
+        <reconocer.location>reconocer-location</reconocer.location>
+        <reconocer.proto>http</reconocer.proto>
+        <reconocer.host>reconocer</reconocer.host>
+        <reconocer.port>8080</reconocer.port>
+
+        <acceso-datos-clientes-externos.service-name>acceso-datos-clientes-externos</acceso-datos-clientes-externos.service-name>
+        <acceso-datos-clientes-externos.location>acceso-datos-clientes-externos-location</acceso-datos-clientes-externos.location>
+        <acceso-datos-clientes-externos.proto>http</acceso-datos-clientes-externos.proto>
+        <acceso-datos-clientes-externos.host>acceso-datos-clientes-externos</acceso-datos-clientes-externos.host>
+        <acceso-datos-clientes-externos.port>8080</acceso-datos-clientes-externos.port>
+        <acceso-datos-clientes-externos.db.schema>credito_consumo_srv</acceso-datos-clientes-externos.db.schema>
+
+        <acceso-datos-calculadora.service-name>acceso-datos-calculadora</acceso-datos-calculadora.service-name>
+        <acceso-datos-calculadora.location>acceso-datos-calculadora-location</acceso-datos-calculadora.location>
+        <acceso-datos-calculadora.proto>http</acceso-datos-calculadora.proto>
+        <acceso-datos-calculadora.host>acceso-datos-calculadora</acceso-datos-calculadora.host>
+        <acceso-datos-calculadora.port>8080</acceso-datos-calculadora.port>
+        <acceso-datos-calculadora.db.schema>credito_consumo_calculadora_srv</acceso-datos-calculadora.db.schema>
+      </properties>
+    </profile>
+
+  </profiles>
 
 </project>

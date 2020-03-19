@@ -1,0 +1,30 @@
+# config de endpoint info para spring actuator
+info:
+  app:
+    name: calculadora Back
+    description: Servicio Calculadora
+    version: v1
+# config de endpoints para spring actuator
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+logging:
+  config: classpath:logback.xml
+# config de endpoints para spring actuator
+management:
+  server:
+    address: 0.0.0.0
+    port: 8080
+  endpoint:
+    restart:
+      enabled: true
+server:
+  address: 0.0.0.0
+  port: 8080
+spring:
+  cloud:
+    kubernetes:
+      # define politica para el servicio cuando se hacen cambios en el configmap
+      reload:
+        enabled: true

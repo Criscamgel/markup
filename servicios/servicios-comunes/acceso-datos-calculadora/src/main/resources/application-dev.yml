@@ -1,0 +1,51 @@
+# config de endpoint info para spring actuator
+info:
+  app:
+    name: acceso datos clientes
+    description: Servicio acceso datos clientes
+    version: v1
+# config de endpoints para spring actuator
+endpoints:
+  enabled: false
+  health:
+    enabled: true
+logging:
+  config: classpath:logback.xml
+# config de endpoints para spring actuator
+management:
+  server:
+    address: 0.0.0.0
+    port: 8080
+  endpoint:
+    restart:
+      enabled: true
+server:
+  address: 0.0.0.0
+  port: 9092
+spring:
+  cloud:
+    kubernetes:
+      # define politica para el servicio cuando se hacen cambios en el configmap
+      reload:
+        enabled: true
+  datasource:
+    password: root
+    platform: postgresql
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/credito_consumo_calc_srv
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+  flyway:
+    schemas: public
+  profiles:
+    active: "@spring.profiles.active@"

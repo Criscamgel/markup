@@ -1,0 +1,10 @@
+metadata:
+  name: ${acceso-datos-calculadora.service-name}
+data:
+  application.yml: |-
+    spring:
+      profiles: openshift
+    database:
+      host: ${db.host}.${ocp.db.namespace}.svc.cluster.local
+      port: ${db.port}
+      schema: ${acceso-datos-calculadora.db.schema}

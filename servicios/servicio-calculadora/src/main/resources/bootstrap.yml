@@ -1,0 +1,11 @@
+# yaml para carga de configmaps
+spring:
+  application:
+    name: ${calculadora.service-name}
+  cloud:
+    kubernetes:
+      config:
+        sources:
+         - name: ${calculadora.service-name}
+         - name: ${acceso-datos-calculadora.location}
+           namespace: ${ocp.common.namespace}

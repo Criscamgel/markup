@@ -1,0 +1,6 @@
+metadata:
+  name: ${calculadora.service-name}
+data:
+  application.yml: |-
+    spring:
+      profiles: openshift

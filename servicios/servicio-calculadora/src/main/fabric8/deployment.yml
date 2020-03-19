@@ -1,0 +1,36 @@
+metadata:
+  annotations:
+    configmap.fabric8.io/update-on-change: ${calculadora.service-name}
+spec:
+  template:
+    spec:
+      serviceAccountName: ${ocp.back.namespace}-sa
+      containers:
+        - 
+          resources:
+            requests:
+              cpu: "0.5"
+              memory: 512Mi
+            limits:
+              cpu: "1.0"
+              memory: 1024Mi
+          env:
+          - name: SPRING_APPLICATION_JSON
+            value: '{"server":{"undertow":{"io-threads":1, "worker-threads":2 }}}'
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 180
+            timeoutSeconds: 2
+            periodSeconds: 3
+            failureThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 300
+            timeoutSeconds: 2
+            periodSeconds: 8
+            failureThreshold: 1
+
