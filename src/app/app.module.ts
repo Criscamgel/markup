@@ -19,8 +19,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* Angular Material */
 import { MaterialModule } from './material/material.module';
-import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { ModalContentComponent } from './components/shared/modal-content/modal-content.component';
 import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-interes.component';
+import { HomeContigenciaComponent } from './components/home-contigencia/home-contigencia.component';
+import { EncabezadoComponent } from './components/shared/encabezado/encabezado.component';
+import { MenuComponent } from './components/shared/menu/menu.component';
+import { PieComponent } from './components/shared/pie/pie.component';
+import { InfoAdicionalComponent } from './components/shared/info-adicional/info-adicional.component';
+import { CalculadoraComponent } from './components/shared/calculadora/calculadora.component';
+import { PrintComponent } from './components/shared/print/print.component';
 
 
 @NgModule({
@@ -31,7 +38,14 @@ import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-
     EditInputComponent,
     AutofocusDirective,
     ModalContentComponent,
-    HomeSinInteresComponent
+    HomeSinInteresComponent,
+    HomeContigenciaComponent,
+    EncabezadoComponent,
+    MenuComponent,
+    PieComponent,
+    InfoAdicionalComponent,
+    CalculadoraComponent,
+    PrintComponent
   ],
   entryComponents: [ModalContentComponent],
   imports: [
@@ -39,7 +53,7 @@ import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot( ROUTES, { useHash:true } ),
+    RouterModule.forRoot( ROUTES, { useHash: true } ),
     BrowserAnimationsModule,
     MaterialModule
   ],

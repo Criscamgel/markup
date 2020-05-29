@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalContentComponent } from '../modal-content/modal-content.component'
+import { ModalContentComponent } from '../shared/modal-content/modal-content.component'
 
 @Component({
   selector: 'app-home-sin-interes',

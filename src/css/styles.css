@@ -110,7 +110,7 @@
 
 .logoGaes {
   background-image: url(../assets/img/LogoGaes.png);
-  background-size: 40% auto;
+  background-size: 60% auto;
 }
 
 @media only screen and (max-width: 575.98px) {
@@ -1637,4 +1637,8 @@ hr {
   hr {
     margin: 15px 0px;
   }
+}
+
+.contCondiciones {
+  grid-column: 2;
 }

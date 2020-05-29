@@ -97,7 +97,7 @@
 
 .logoGaes {
   background-image: url(../assets/img/LogoGaes.png);
-  background-size: 40% auto;
+  background-size: 60% auto;
   @include Asmall() {
     background-image: url(../assets/img/gaesBlanco.png);
     background-size: 50% auto;
@@ -1397,4 +1397,8 @@ hr {
   hr {
     margin: 15px 0px;
   }
+}
+
+.contCondiciones{
+  grid-column: 2;
 }

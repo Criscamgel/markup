@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalContentComponent } from '../modal-content/modal-content.component'
+import { ModalContentComponent } from '../shared/modal-content/modal-content.component';
 
 @Component({
   selector: 'app-home-con-interes',
   templateUrl: './home-con-interes.component.html',
   styleUrls: ['./home-con-interes.component.css']
 })
-export class HomeConInteresComponent {  
+export class HomeConInteresComponent {
 
   cuotas = 0;
   tasa = 0.24;

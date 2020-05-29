@@ -1,0 +1,20 @@
+<div id="calculadora">
+    <div class="contenedor">
+        <div class="contCondiciones doNotPrint">
+            <p class="title">Condiciones para el cliente:</p>
+            <p class="listaItem" *ngFor="let item of const.condiciones.uno.contenido">
+                • {{item}}<br>
+            </p>
+        </div>
+
+        
+        <div class="contCondiciones doNotPrint">
+            <hr class="doNotPrint">
+
+            <p class="title">{{const.condiciones.dos.titulo}}</p>
+            <p class="listaItem">• {{const.condiciones.dos.contenido[0]}}</p>
+            <p class="title">{{const.condiciones.tres.contenido}}</p>
+            <p class="listaItem">• {{const.condiciones.tres.contenido[0]}}</p>
+        </div>
+    </div>
+</div>

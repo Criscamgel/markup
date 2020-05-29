@@ -1,0 +1,181 @@
+<div id="calculadora">
+    <div class="contenedor">
+        <div id="solicitud" class="contenido contSolicitud">
+            
+
+            <div class="cntOpciones">
+                <div class="opcion" *ngFor="let producto of productos; let i=index">
+                    <h3>{{producto.nombre}}</h3>
+                    <app-edit-input [data]='producto.valor'
+                        (change)="guardarMonto($event.target.value); producto.valor = $event.target.value">
+                    </app-edit-input>
+                    <div class="btnSeleccionar">
+                        <input [id]="i" (click)="guardarMonto(producto.valor)" name="gama" type="radio">
+                        <div>SELECCIONAR</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="calcPdos">
+                <p class="title">¿En cuántas cuotas desea pagar el dispositivo?</p>
+
+                <div class="contPeriodo">
+
+                    <span class="radio" *ngFor="let periodo of const.periodos">
+
+                        <div *ngIf="valorSolicitado == 0" class="disableOption"></div>
+
+                        <input [id]="periodo" [(ngModel)]="periodo" name="cuota"
+                            (click)="guardarPeriodo(periodo)"
+                            type="radio" [value]="periodo">
+                        <div>
+                            <div class="numBer">{{periodo}}</div>
+                            <div class="mes">meses</div>
+                        </div>
+                    </span>                
+                </div>                         
+            </div>
+
+            <div *ngIf="calculadoraServicio.verInputs">
+                <br><p class="title">Porcentaje de cuota inicial</p>
+
+                    <div class="fullInputNumber doNotPrint"> 
+                        <mat-form-field appearance="outline">
+                            <input                            
+                            matInput
+                            min="{{ctaminDes}}"
+                            max="{{ctamaxDes}}"
+                            name="ctaSlide"
+                            type="number" 
+                            placeholder="Porcentaje de Cuota Inicial (%)"
+                            [(ngModel)]="porcentajeCuotaInicial"
+                            [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                            (input)="guardarCuotaInicial()"
+                            >
+                        </mat-form-field>
+                        <mat-error *ngIf="porcentajeCuotaInicial < const.ctaminDes || porcentajeCuotaInicial > const.ctamaxDes"><small>El valor diligenciado debe ser entre {{const.ctaminDes}} a {{const.ctamaxDes}}</small></mat-error>
+                    </div>
+                    <div class="contDetalle">
+                        <div id="cuotaInicial" class="cntAprox">
+                            <p class="grayParrf">Cuota inicial:</p>
+                            <h3>{{porcentajeCuotaInicial < const.ctaminDes || porcentajeCuotaInicial > const.ctamaxDes ? 0 : porcentajeCuotaInicial}}%</h3>
+        
+                            <div class="tooltip">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br><p class="title">Porcentaje de descuento</p>
+                            <div class="fullInputNumber doNotPrint"> 
+                            <mat-form-field appearance="outline">
+                                <input                            
+                                matInput
+                                name="dtoSlide" 
+                                type="number" 
+                                min="{{minDes}}"
+                                max="{{maxDes}}"
+                                placeholder="Porcentaje de Descuento (%)"
+                                [(ngModel)]="descuento"
+                                [disabled]="periodo == 36 || valorSolicitado == 0 ? 'disabled' : null"
+                                (input)="guardarDescuento()"
+                                >
+                            </mat-form-field>
+                            <mat-error *ngIf="descuento < const.minDes || descuento > const.maxDes"><small>El valor diligenciado debe ser entre {{const.minDes}} a {{const.maxDes}}</small></mat-error>
+                            </div>
+                            <div class="cntAprox">
+                                <p class="grayParrf doNotPrint">Valor de descuento:</p>
+                                <h3>${{descuento == undefined || descuento > const.maxDes || descuento < const.minDes ? 0 : descuento | number:'1.0-0'}}</h3>
+                            </div>
+            </div>   
+
+            
+            <div id="cuotaInicial" class="cntAprox">
+                <p class="grayParrf">Valor cuota inicial:</p>
+                <h3>$ {{calculadoraServicio.respuesta.cuotaInicial | number:'1.0'}}</h3>
+
+                <div class="tooltip">
+                </div>
+
+            </div>
+
+
+            <div class="cntAprox">
+                <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
+                    (incluye seguro de vida)</p>
+                <h3>$ {{calculadoraServicio.respuesta.valorCuotaConSeguro | number:'1.0-0'}}</h3>
+
+                <div class="tooltip doNotPrint">
+                    <i class="fa fa-question-circle" (click)="calculadoraServicio.mostrarDetalles()"></i>
+
+                </div>
+
+            </div>
+
+            <!-- Detalles -->
+
+            <div class="cntAprox details" *ngIf="calculadoraServicio.verDetalles">
+
+                <div class="contDetail">
+                    <p class="grayParrf">Monto a financiar:</p>
+                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.montoSolicitado | number:'1.0'}}</p>
+                </div>
+
+                <div class="contDetail">
+                    <p class="grayParrf">Valor de la cuota sin seguro:</p>
+                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.valorCuotaSinSeguro | number:'1.0'}}</p>
+                </div>
+
+                <div class="contDetail">
+                    <p class="grayParrf">Valor del seguro:</p>
+                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.valorTotalSeguro | number:'1.0'}}</p>
+                </div>
+
+                <div class="contDetail">
+                    <p class="grayParrf">Cuota mensual del seguro:</p>
+                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.valorTotalSeguro / calculadoraServicio.respuesta.numeroCuotas | number:'1.0-0'}}</p>
+                </div>
+
+                <div class="contDetail">
+                    <p class="grayParrf">Monto total a financiar:</p>
+                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.montoTotalFinanciamiento | number:'1.0-2'}}</p>
+                </div>
+
+                <div class="contDetail">
+                    <p class="grayParrf">Tasa efectivo anual:</p>
+                    <p class="cifraBlack">{{const.tasa * 100 | number:'1.0-2'}} %</p>
+                </div>
+
+                <div class="contDetail">
+                    <p class="grayParrf">Tasa nominal mes vencido:</p>
+                    <p class="cifraBlack">{{calculadoraServicio.respuesta.nominalMesVencido * 100 | number:'1.0-2'}} %</p>
+                </div>
+            </div>
+
+            <hr class="doNotPrint">
+
+            <div class="cntBotones doNotPrint">
+                <button class="btnCta imprimir" (click)="onPrint()"
+                    [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
+            </div>
+            <div class="cntBotones doNotPrint" (click)="linka(); gaesForm.reset()">
+                <button class="btnCta"
+                    [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR
+                    SOLICITUD</button>
+            </div>
+
+
+            <div class="cntBotones doNotPrint">
+                <a class="ayudaM doNotPrint" [routerLink]="['/ayuda']">
+                    <button class="btnCta buttonAyuda">
+                        <div class="itemButton">
+                            <i class="fa fa-question-circle"></i>
+                            <p class="bigTitle">AYUDA</p>
+                        </div>
+                    </button>
+                </a>
+            </div>
+        <!-- </div> -->
+    </div>
+</div>
