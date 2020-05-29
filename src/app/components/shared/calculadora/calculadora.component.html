@@ -27,7 +27,7 @@
 
                         <div *ngIf="valorSolicitado == 0" class="disableOption"></div>
 
-                        <input [id]="periodo" [(ngModel)]="periodo" #Rperiodo="ngModel" name="cuota"
+                        <input [id]="periodo" [(ngModel)]="periodo" name="cuota"
                             (click)="guardarPeriodo(periodo)"
                             type="radio" [value]="periodo">
                         <div>
@@ -48,10 +48,10 @@
                             min="{{ctaminDes}}"
                             max="{{ctamaxDes}}"
                             name="ctaSlide"
+                            #CtaSlide="ngModel"
                             type="number" 
                             placeholder="Porcentaje de Cuota Inicial (%)"
                             [(ngModel)]="porcentajeCuotaInicial"
-                            #RporcentajeCuotaInicial="ngModel"
                             [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
                             (input)="guardarCuotaInicial()"
                             >
@@ -74,12 +74,12 @@
                                 <input                            
                                 matInput
                                 name="dtoSlide" 
+                                #DtoSlide="ngModel"
                                 type="number" 
                                 min="{{minDes}}"
                                 max="{{maxDes}}"
                                 placeholder="Porcentaje de Descuento (%)"
                                 [(ngModel)]="descuento"
-                                #Rdescuento="ngModel"
                                 [disabled]="periodo == 36 || valorSolicitado == 0 ? 'disabled' : null"
                                 (input)="guardarDescuento()"
                                 >
