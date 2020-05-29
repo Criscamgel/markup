@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeConInteresComponent } from './components/home-con-interes/home-con-interes.component';
 
 /* Forms */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /* Angular Material */
 import { MaterialModule } from './material/material.module';
 import { ModalContentComponent } from './components/shared/modal-content/modal-content.component';
-import { HomeSinInteresComponent } from './components/home-sin-interes/home-sin-interes.component';
 import { HomeContigenciaComponent } from './components/home-contigencia/home-contigencia.component';
 import { EncabezadoComponent } from './components/shared/encabezado/encabezado.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
@@ -33,12 +31,10 @@ import { PrintComponent } from './components/shared/print/print.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeConInteresComponent,
     AyudaComponent,
     EditInputComponent,
     AutofocusDirective,
     ModalContentComponent,
-    HomeSinInteresComponent,
     HomeContigenciaComponent,
     EncabezadoComponent,
     MenuComponent,
