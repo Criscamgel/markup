@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalContentComponent } from '../shared/modal-content/modal-content.component';
 import { MatDialog } from '@angular/material';
+import { CalculadoraService } from 'src/app/services/calculadora.service';
 
 @Component({
   selector: 'app-home-contigencia',
@@ -14,7 +15,7 @@ export class HomeContigenciaComponent implements OnInit {
   showAge;
 
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, public calculadoraServicio: CalculadoraService) {
 
     let dialogRef = this.dialog.open(ModalContentComponent, {
       width: '300px',

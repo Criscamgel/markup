@@ -67,6 +67,7 @@ export class CalculadoraComponent implements OnInit {
 
   imprimir() {
     window.print();
+    location.reload();
   }
 
   iniciarSolicitud() {

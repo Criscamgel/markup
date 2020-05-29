@@ -1408,10 +1408,10 @@ app-print{
 }
 
 @media print {
-  app-encabezado, app-footer, app-calculadora, app-info-adiciona, app-pie{
-      display: none;
-  }
   app-print {
       display: block;
+  }
+  .superContenedor{
+    display: none;
   }
 }
