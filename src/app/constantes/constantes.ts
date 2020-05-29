@@ -17,7 +17,7 @@ export const constantes = {
                     valor: 19600000
                 }
                 ],
-    tasa: 0.181,
+    tasa: 0.24,
     periodoGracia: 2,
     periodos: ['06', '12', '18', '24', '36'],
     condiciones: {
@@ -50,5 +50,8 @@ export const constantes = {
     minDes: 0,
     maxDes: 10,
     ctaminDes: 0,
-    ctamaxDes: 70
+    ctamaxDes: 70,
+    imagenSantander: './assets/img/santanderConsumer.png',
+    imagenCliente: './assets/img/LogoGaes.png',
+    experian: 'https://apps.datacredito.com.co/raw/user-account/login/web/index'
 };

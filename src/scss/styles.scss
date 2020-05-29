@@ -1402,3 +1402,16 @@ hr {
 .contCondiciones{
   grid-column: 2;
 }
+
+app-print{
+  display: none;
+}
+
+@media print {
+  app-encabezado, app-footer, app-calculadora, app-info-adiciona, app-pie{
+      display: none;
+  }
+  app-print {
+      display: block;
+  }
+}

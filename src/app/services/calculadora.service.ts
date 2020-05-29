@@ -42,7 +42,6 @@ export class CalculadoraService {
   }
 
   calcularCuota(valorSolicitado: number, periodo: number, descuento: number, porcentajeCuotaInicial: number) {
-    console.log(valorSolicitado, periodo, descuento);
     this.respuesta.tasaEfectivaAnual = this.const.tasa;
     this.respuesta.periodoGracia = this.const.periodoGracia;
     this.respuesta.numeroCuotas = periodo;

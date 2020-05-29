@@ -62,7 +62,16 @@ export class CalculadoraComponent implements OnInit {
   }
 
   calcularCuota() {
-    console.log(this.descuento, this.porcentajeCuotaInicial);
     this.calculadoraServicio.calcularCuota(this.valorSolicitado, this.periodo, this.descuento, this.porcentajeCuotaInicial);
   }
+
+  imprimir() {
+    window.print();
+  }
+
+  iniciarSolicitud() {
+    window.location.href = this.const.experian;
+  }
 }
+
+

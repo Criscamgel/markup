@@ -1,13 +1,13 @@
 <div class="container">
     <div class="header">
         <div class="logo2">
-                <img src="../../../assets/img/logoAliado.png">            
+                <img [src]="const.imagenCliente">            
         </div>
         <div class="logo1">
-                <img src="../../../assets/img/consumerFinance.png">           
+                <img [src]="const.imagenSantander">           
         </div>
         <div class="title-print">
-            Monto solicitado: $ {{dataService.clickCuota.montoAFinanciar | number:'1.0':'es'}}
+            Monto solicitado: $ {{calculadoraServicio.respuesta.montoSolicitado | number:'1.0':'es'}}
         </div>
     </div>  
     <div class="plan-pagos">
@@ -16,10 +16,10 @@
         </div>
         <div class="body-plan-pagos">
             <div class="cuota">
-                {{dataService.clickCuota.numeroCuota}} Pagos
+                {{calculadoraServicio.respuesta.numeroCuotas}} Pagos
             </div>
             <div class="valor">
-                $ {{dataService.clickCuota.valorCuotaConSeguro | number:'1.0':'es'}} / mes
+                $ {{calculadoraServicio.respuesta.valorCuotaConSeguro | number:'1.0':'es'}} / mes
             </div>
         </div>
     </div>
@@ -32,35 +32,35 @@
             <div class="detalles-info">
                 <li class="dot-leader">
                         <span class="dot-leader__left">Costo total del seguro:</span>
-                        <span class="dot-leader__right">$ {{dataService.clickCuota.valorTotalSeguro | number:'1.0':'es'}}</span>
+                        <span class="dot-leader__right">$ {{calculadoraServicio.respuesta.valorTotalSeguro | number:'1.0':'es'}}</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Valor cuota sin seguro:</span>
-                        <span class="dot-leader__right">$ {{dataService.clickCuota.valorCuotaSinSeguro | number:'1.0':'es'}}</span>
+                        <span class="dot-leader__right">$ {{calculadoraServicio.respuesta.valorCuotaSinSeguro | number:'1.0':'es'}}</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Valor cuota con seguro:</span>
-                        <span class="dot-leader__right">$ {{dataService.clickCuota.valorCuotaConSeguro | number:'1.0':'es'}}</span>
+                        <span class="dot-leader__right">$ {{calculadoraServicio.respuesta.valorCuotaConSeguro | number:'1.0':'es'}}</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Cuota mensual del seguro:</span>
-                        <span class="dot-leader__right">$ {{dataService.clickCuota.costoMensualSeguro | number:'1.0':'es'}}</span>
+                        <span class="dot-leader__right">$ {{calculadoraServicio.respuesta.costoMensualSeguro | number:'1.0':'es'}}</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Monto total a finaciar:</span>
-                        <span class="dot-leader__right">$ {{dataService.clickCuota.montoTotalFinanciamiento | number:'1.0':'es'}}</span>
+                        <span class="dot-leader__right">$ {{calculadoraServicio.respuesta.montoTotalFinanciamiento | number:'1.0':'es'}}</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Cuatro por mil:</span>
-                        <span class="dot-leader__right">{{dataService.clickCuota.cuatroxMil | number:'1.0':'es'}}</span>
+                        <span class="dot-leader__right">{{calculadoraServicio.respuesta.cuatroPorMil | number:'1.0':'es'}}</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Tasa E.A:</span>
-                        <span class="dot-leader__right">{{dataService.clickCuota.tasa * 100 | number:'1.0':'es'}} %</span>
+                        <span class="dot-leader__right">{{calculadoraServicio.respuesta.tasaEfectivaAnual * 100 | number:'1.0':'es'}} %</span>
                 </li>
                 <li class="dot-leader">
                         <span class="dot-leader__left">Tasa NMV:</span>
-                        <span class="dot-leader__right">{{dataService.clickCuota.nominalMesVencido * 100 | number:'1.0-2':'es'}} %</span>
+                        <span class="dot-leader__right">{{calculadoraServicio.respuesta.nominalMesVencido * 100 | number:'1.0-2':'es'}} %</span>
                 </li>
             </div>
         </div>

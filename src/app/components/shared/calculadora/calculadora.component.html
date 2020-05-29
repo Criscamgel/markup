@@ -86,7 +86,7 @@
                             </div>
                             <div class="cntAprox">
                                 <p class="grayParrf doNotPrint">Valor de descuento:</p>
-                                <h3>${{descuento == undefined || descuento > const.maxDes || descuento < const.minDes ? 0 : descuento | number:'1.0-0'}}</h3>
+                                <h3>${{descuento == undefined || descuento > const.maxDes || descuento < const.minDes ? 0 : calculadoraServicio.respuesta.valorDescuento | number:'1.0-0'}}</h3>
                             </div>
             </div>   
 
@@ -156,12 +156,12 @@
             <hr class="doNotPrint">
 
             <div class="cntBotones doNotPrint">
-                <button class="btnCta imprimir" (click)="onPrint()"
-                    [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">IMPRIMIR</button>
+                <button class="btnCta imprimir" (click)="imprimir()"
+                    [disabled]="valorSolicitado === 0 || periodo === 0">IMPRIMIR</button>
             </div>
-            <div class="cntBotones doNotPrint" (click)="linka(); gaesForm.reset()">
+            <div class="cntBotones doNotPrint" (click)="iniciarSolicitud()">
                 <button class="btnCta"
-                    [disabled]="valorSolicitado === 0 || cuotas === 0 || showAge < 18 || diferencia < 6">INICIAR
+                    [disabled]="valorSolicitado === 0 || periodo === 0">INICIAR
                     SOLICITUD</button>
             </div>
 
