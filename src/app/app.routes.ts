@@ -11,6 +11,6 @@ export const ROUTES: Routes = [
     {path: 'homeconinteres', component: HomeConInteresComponent},
     {path: 'homesininteres', component: HomeSinInteresComponent},
     {path: 'homecontingencia', component: HomeContigenciaComponent},
-    {path: '**', pathMatch: 'full', redirectTo: 'homecontingencia'}
+    {path: '**', pathMatch: 'full', redirectTo: 'homeconinteres'}
 
 ]
