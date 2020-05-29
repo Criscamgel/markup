@@ -104,7 +104,7 @@
             <div class="cntAprox">
                 <p class="grayParrf">Cuota aproximada mensual:<br class="noDesk">
                     (incluye seguro de vida)</p>
-                <h3>$ {{calculadoraServicio.respuesta.valorCuotaConSeguro | number:'1.0-0'}}</h3>
+                <h3>$ {{calculadoraServicio.respuesta.valorCuotaConSeguro < 0 ? 0 : calculadoraServicio.respuesta.valorCuotaConSeguro | number:'1.0-0'}}</h3>
 
                 <div class="tooltip doNotPrint">
                     <i class="fa fa-question-circle" (click)="calculadoraServicio.mostrarDetalles()"></i>
