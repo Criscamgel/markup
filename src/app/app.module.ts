@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 /* Forms */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AyudaComponent } from './components/ayuda/ayuda.component'
+import { AyudaComponent } from './components/ayuda/ayuda.component';
 
 /* Routes */
 import { RouterModule } from '@angular/router';

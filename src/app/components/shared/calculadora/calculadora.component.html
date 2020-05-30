@@ -7,7 +7,7 @@
                 <div class="opcion" *ngFor="let producto of productos; let i=index">
                     <h3>{{producto.nombre}}</h3>
                     <app-edit-input [data]='producto.valor'
-                        (change)="guardarMonto($event.target.value); producto.valor = $event.target.value">
+                        (change)="guardarMonto($event.target.value)">
                     </app-edit-input>
                     <div class="btnSeleccionar">
                         <input [id]="i" (click)="guardarMonto(producto.valor)" name="gama" type="radio">
@@ -38,21 +38,19 @@
                 </div>                         
             </div>
 
-            <div *ngIf="calculadoraServicio.verInputs">
+            <form [formGroup]="grupoFormulario" *ngIf="calculadoraServicio.verInputs">
                 <br><p class="title">Porcentaje de cuota inicial</p>
 
                     <div class="fullInputNumber doNotPrint"> 
                         <mat-form-field appearance="outline">
                             <input                            
                             matInput
+                            formControlName="porcentajeCuotaInicial"
                             min="{{ctaminDes}}"
                             max="{{ctamaxDes}}"
-                            #cuotaInicialModel="ngModel"
                             type="number" 
                             placeholder="Porcentaje de Cuota Inicial (%)"
-                            [(ngModel)]="porcentajeCuotaInicial"
                             [disabled]="cuotas == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                            (input)="guardarCuotaInicial()"
                             >
                         </mat-form-field>
                         <mat-error *ngIf="porcentajeCuotaInicial < const.ctaminDes || porcentajeCuotaInicial > const.ctamaxDes"><small>El valor diligenciado debe ser entre {{const.ctaminDes}} a {{const.ctamaxDes}}</small></mat-error>
@@ -72,14 +70,12 @@
                             <mat-form-field appearance="outline">
                                 <input                            
                                 matInput
-                                #descuentoModel="ngModel"
-                                [(ngModel)]="descuento"
+                                formControlName="descuento"
                                 type="number" 
                                 min="{{minDes}}"
                                 max="{{maxDes}}"
                                 placeholder="Porcentaje de Descuento (%)"
                                 [disabled]="periodo == 36 || valorSolicitado == 0 ? 'disabled' : null"
-                                (input)="guardarDescuento()"
                                 >
                             </mat-form-field>
                             <mat-error *ngIf="descuento < const.minDes || descuento > const.maxDes"><small>El valor diligenciado debe ser entre {{const.minDes}} a {{const.maxDes}}</small></mat-error>
@@ -88,7 +84,7 @@
                                 <p class="grayParrf doNotPrint">Valor de descuento:</p>
                                 <h3>${{descuento == undefined || descuento > const.maxDes || descuento < const.minDes ? 0 : calculadoraServicio.respuesta.valorDescuento | number:'1.0-0'}}</h3>
                             </div>
-            </div>   
+                        </form>   
 
             
             <div id="cuotaInicial" class="cntAprox">
@@ -134,7 +130,7 @@
 
                 <div class="contDetail">
                     <p class="grayParrf">Cuota mensual del seguro:</p>
-                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.valorTotalSeguro / calculadoraServicio.respuesta.numeroCuotas | number:'1.0-0'}}</p>
+                    <p class="cifraBlack">$ {{calculadoraServicio.respuesta.costoMensualSeguro | number:'1.0-0'}}</p>
                 </div>
 
                 <div class="contDetail">

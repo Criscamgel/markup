@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { constantes } from 'src/app/constantes/constantes';
 import { CalculadoraService } from 'src/app/services/calculadora.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-calculadora',
@@ -11,9 +12,10 @@ export class CalculadoraComponent implements OnInit {
 
   const = constantes;
   valorSolicitado: number = 0;
-  periodo: number = 0;
+  periodo: number = 6;
+  grupoFormulario: FormGroup;
+  porcentajeCuotaInicial: number = 10;
   descuento: number = 0;
-  porcentajeCuotaInicial = 10;
 
   productos = [
       {
@@ -34,9 +36,28 @@ export class CalculadoraComponent implements OnInit {
       }
     ];
 
-  constructor(public calculadoraServicio: CalculadoraService) { }
+  constructor(public calculadoraServicio: CalculadoraService, public formBuilder: FormBuilder) {
+    this.informacionObservable();
+  }
 
   ngOnInit() {
+  }
+
+  informacionObservable() {
+
+    this.grupoFormulario = this.formBuilder.group({
+      porcentajeCuotaInicial: [10],
+      descuento : [0]
+    });
+
+    this.grupoFormulario.controls['descuento'].valueChanges.subscribe(value => {
+      this.descuento = value;
+      this.guardarDescuento();
+    });
+    this.grupoFormulario.controls['porcentajeCuotaInicial'].valueChanges.subscribe(value => {
+      this.porcentajeCuotaInicial = value;
+      this.guardarCuotaInicial();
+    });
   }
 
   guardarMonto(value) {
@@ -50,13 +71,13 @@ export class CalculadoraComponent implements OnInit {
   }
 
   guardarCuotaInicial() {
-    if (this.porcentajeCuotaInicial !== null && this.porcentajeCuotaInicial > this.const.ctaminDes && this.porcentajeCuotaInicial < this.const.ctamaxDes) {
+    if (this.porcentajeCuotaInicial !== null && this.porcentajeCuotaInicial > this.const.ctaminDes || this.porcentajeCuotaInicial < this.const.ctamaxDes) {
       this.calcularCuota();
     }
   }
 
   guardarDescuento() {
-    if (this.descuento !== null && this.descuento < this.const.maxDes && this.descuento > this.const.minDes) {
+    if (this.descuento !== null && this.descuento < this.const.maxDes || this.descuento > this.const.minDes) {
       this.calcularCuota();
     }
   }
@@ -67,7 +88,6 @@ export class CalculadoraComponent implements OnInit {
 
   imprimir() {
     window.print();
-    location.reload();
   }
 
   iniciarSolicitud() {

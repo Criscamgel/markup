@@ -71,7 +71,6 @@ export class CalculadoraService {
     this.respuesta.costoDeInteres = this.respuesta.valorTotalSeguro + this.respuesta.cuatroPorMil + this.respuesta.montoSolicitado;
     this.respuesta.costoDeInteres = this.calculoCostoDeInteres(this.respuesta.nominalMesVencido, periodo - this.respuesta.periodoGracia, this.respuesta.valorCuotaSinSeguro);
     this.respuesta.costoDeInteres -= this.respuesta.costoDeInteres;
-    console.log(this.respuesta);
     return this.respuesta;
   }
 

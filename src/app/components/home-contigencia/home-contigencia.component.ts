@@ -14,7 +14,6 @@ export class HomeContigenciaComponent implements OnInit {
   diferencia;
   showAge;
 
-
   constructor(public dialog: MatDialog, public calculadoraServicio: CalculadoraService) {
 
     let dialogRef = this.dialog.open(ModalContentComponent, {
