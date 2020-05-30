@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { constantes } from 'src/app/constantes/constantes';
 
 @Component({
   selector: 'app-menu',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+
+  const = constantes;
 
   constructor() { }
 
