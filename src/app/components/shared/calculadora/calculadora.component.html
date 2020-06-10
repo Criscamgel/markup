@@ -10,7 +10,7 @@
                         (change)="guardarMonto($event.target.value)">
                     </app-edit-input>
                     <div class="btnSeleccionar">
-                        <input [id]="i" (click)="guardarMonto(producto.valor)" name="gama" type="radio">
+                        <input [id]="i" (click)="guardarMonto(valorSolicitado === 0 ? producto.valor : valorSolicitado)" name="gama" type="radio">
                         <div>SELECCIONAR</div>
                     </div>
                 </div>

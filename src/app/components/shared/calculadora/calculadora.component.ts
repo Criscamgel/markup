@@ -61,9 +61,9 @@ export class CalculadoraComponent implements OnInit {
   }
 
   guardarMonto(value) {
-    this.valorSolicitado = Number(value);
-    this.calcularCuota();
-  }
+        this.valorSolicitado = Number(value);
+        this.calcularCuota();
+      }
 
   guardarPeriodo(value) {
     this.periodo = Number(value);
