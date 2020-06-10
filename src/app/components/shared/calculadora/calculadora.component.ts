@@ -60,9 +60,17 @@ export class CalculadoraComponent implements OnInit {
     });
   }
 
-  guardarMonto(value) {
-        this.valorSolicitado = Number(value);
+  guardarMonto(value, i) {
+        
+        if (value !== this.productos[i].valor) {
+        this.productos[i].valor = value;
+        this.valorSolicitado = this.productos[i].valor;
         this.calcularCuota();
+      } else {
+        this.valorSolicitado = this.productos[i].valor;
+        this.calcularCuota();
+      }
+        
       }
 
   guardarPeriodo(value) {

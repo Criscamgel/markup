@@ -7,10 +7,10 @@
                 <div class="opcion" *ngFor="let producto of productos; let i=index">
                     <h3>{{producto.nombre}}</h3>
                     <app-edit-input [data]='producto.valor'
-                        (change)="guardarMonto($event.target.value)">
+                        (change)="guardarMonto($event.target.value, i)">
                     </app-edit-input>
                     <div class="btnSeleccionar">
-                        <input [id]="i" (click)="guardarMonto(valorSolicitado === 0 ? producto.valor : valorSolicitado)" name="gama" type="radio">
+                        <input [id]="i" (click)="guardarMonto(producto.valor, i)" name="gama" type="radio">
                         <div>SELECCIONAR</div>
                     </div>
                 </div>
