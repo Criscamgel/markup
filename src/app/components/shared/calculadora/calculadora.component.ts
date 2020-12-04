@@ -18,23 +18,27 @@ export class CalculadoraComponent implements OnInit {
   descuento: number = 0;
 
   productos = [
-      {
-          nombre: 'Gama Básica',
-          valor: 4818000
-      },
-      {
-          nombre: 'Gama Confort',
-          valor: 9730000
-      },
-      {
-          nombre: 'Gama Advance',
-          valor: 12100000
-      },
-      {
-          nombre: 'Gama Premium',
-          valor: 19600000
-      }
-    ];
+    {
+        nombre: 'Gama Essence',
+        valor: 2634500
+    },
+    {
+        nombre: 'Gama Smart',
+        valor: 4059000
+    },
+    {
+        nombre: 'Gama Advance',
+        valor: 6825000
+    },
+    {
+        nombre: 'Gama Top',
+        valor: 8032500
+    },
+    {
+      nombre: 'Gama Excellence',
+      valor: 10426500
+    }
+  ];
 
   constructor(public calculadoraServicio: CalculadoraService, public formBuilder: FormBuilder) {
     this.informacionObservable();
