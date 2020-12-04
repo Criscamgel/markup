@@ -80,7 +80,7 @@
 
                     <div class="cntOpciones">
                         <div class="opcion">
-                            <h3>Gama Básica</h3>
+                            <h3>Gama Essence</h3>
                             <app-edit-input [data]='vlrUno'
                                 (change)="saveMonto($event.target.value); checkUno = true; vlrUno = $event.target.value; valorSolicitado = $event.target.value">
                             </app-edit-input>
@@ -92,7 +92,7 @@
                         </div>
 
                         <div class="opcion">
-                            <h3>Gama Confort</h3>
+                            <h3>Gama Smart</h3>
                             <app-edit-input [data]='vlrDos'
                                 (change)="saveMonto($event.target.value); checkDos = true; vlrDos = $event.target.value; valorSolicitado = $event.target.value">
                             </app-edit-input>
@@ -116,13 +116,25 @@
                         </div>
 
                         <div class="opcion">
-                            <h3>Gama Premium</h3>
+                            <h3>Gama Top</h3>
                             <app-edit-input [data]='vlrCuatro'
                                 (change)="saveMonto($event.target.value); checkCuatro = true; vlrCuatro = $event.target.value; valorSolicitado = $event.target.value">
                             </app-edit-input>
                             <div class="btnSeleccionar">
                                 <input id="premium" name="gama" (click)="saveMonto($event.target.value)" type="radio"
                                     value="{{vlrCuatro}}" [checked]="checkCuatro">
+                                <div>SELECCIONAR</div>
+                            </div>
+                        </div>
+
+                        <div class="opcion">
+                            <h3>Gama Excellence</h3>
+                            <app-edit-input [data]='vlrCinco'
+                                (change)="saveMonto($event.target.value); checkCinco = true; vlrCinco = $event.target.value; valorSolicitado = $event.target.value">
+                            </app-edit-input>
+                            <div class="btnSeleccionar">
+                                <input id="premium" name="gama" (click)="saveMonto($event.target.value)" type="radio"
+                                    value="{{vlrCinco}}" [checked]="checkCinco">
                                 <div>SELECCIONAR</div>
                             </div>
                         </div>
