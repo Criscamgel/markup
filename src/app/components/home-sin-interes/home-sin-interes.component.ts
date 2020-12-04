@@ -50,15 +50,17 @@ export class HomeSinInteresComponent {
     showInputs = false;
   
     /* Valores */  
-    vlrUno = 4818000;
-    vlrDos = 9730000;
-    vlrTres = 12100000;
-    vlrCuatro = 19600000;
+    vlrUno = 2634500;
+    vlrDos = 4059000;
+    vlrTres = 6825000;
+    vlrCuatro = 8032500;
+    vlrCinco = 10426500;
   
     checkUno = false;
     checkDos = false;
     checkTres = false;
     checkCuatro = false;
+    checkCinco = false;
     showDetails = false;
     showDetailsOne = true;
     showDetailsTwo = false;
